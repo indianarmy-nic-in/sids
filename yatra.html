@@ -1,711 +1,2724 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yatra Permit & ID Card Generator (3D UI)</title>
+<!-- Fully Updated Responsive SIDS Navbar Start -->
+<div class="mani-nav-full-width">
+  <style>
+    /* Google Fonts Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+
+    /* Reset and Full Width Outer Setup */
+    .mani-nav-full-width {
+      width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      background-color: #1e3a8a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      position: relative;
+      z-index: 9999;
+    }
+
+    .mani-navbar {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 75px; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .mani-navbar * {
+      box-sizing: border-box;
+    }
+
+    /* Logo Styling */
+    .mani-nav-logo {
+      text-decoration: none !important;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .mani-logo-flex-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .mani-logo-flip-box {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #ffffff;
+    }
+
+    .mani-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Shiny Light Glow Animation */
+    .mani-logo-flip-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: shinyGleamEffect 4s ease-in-out infinite;
+    }
+
+    @keyframes shinyGleamEffect {
+      0% { left: -150%; }
+      30%, 100% { left: 150%; }
+    }
+
+    .mani-slide-text-container {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .mani-logo-text-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .mani-main-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff !important;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+    }
+
+    .mani-first-word {
+      margin-right: 6px;
+    }
+
+    .mani-logo-highlight {
+      color: #f17329;
+    }
+
+    .mani-sub-brand {
+      font-size: 9px;
+      font-weight: 600;
+      color: #e2e8f0;
+      letter-spacing: 1.5px;
+      margin-top: 2px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    /* --- NAVIGATION MENU LINKS (DESKTOP) --- */
+    .mani-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mani-nav-link {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      padding: 8px 4px;
+      position: relative;
+    }
+
+    .mani-nav-link:hover {
+      color: #f17329 !important;
+    }
+
+    /* Hover underline effect */
+    .mani-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #f17329;
+      transition: width 0.3s ease;
+    }
+
+    .mani-nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Actions Right Area */
+    .mani-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Premium Mail Action CTA Button */
+    .mani-nav-cta-btn {
+      background: #f17329;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(241, 115, 41, 0.25);
+      animation: buttonPulseGlow 2.5s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    .mani-nav-cta-btn:hover {
+      background: #ffffff;
+      color: #1e3a8a !important;
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 14px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes buttonPulseGlow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); box-shadow: 0 4px 15px rgba(241, 115, 41, 0.45); }
+    }
+
+    /* Mobile Hamburger Menu Icon Button */
+    .mani-mobile-toggle-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+      z-index: 10001;
+    }
+
+    .mani-mobile-toggle-btn span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation to 'X' icon */
+    .mani-mobile-toggle-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 5px);
+    }
+    .mani-mobile-toggle-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .mani-mobile-toggle-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -5px);
+    }
+
+    /* --- RESPONSIVE MATRIX --- */
+    @media (max-width: 992px) {
+      .mani-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #11255a; /* Slightly darker shade for mobile drawer */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 90px 30px 30px 30px;
+        gap: 25px;
+        transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      }
+
+      .mani-nav-menu.active {
+        right: 0;
+      }
+
+      .mani-nav-link {
+        font-size: 16px;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 10px;
+      }
+
+      .mani-mobile-toggle-btn {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mani-navbar {
+        height: 65px;
+        padding: 0 12px;
+      }
+      .mani-logo-flip-box { width: 36px; height: 36px; }
+      .mani-main-brand { font-size: 16px; }
+      .mani-sub-brand { font-size: 8px; letter-spacing: 1px; }
+      .mani-nav-cta-btn {
+        padding: 8px 14px;
+        font-size: 11px;
+        animation: none;
+      }
+    }
+  </style>
+
+  <nav class='mani-navbar'>
+    <!-- Logo Zone -->
+    <a class='mani-nav-logo' href='/'>
+      <div class='mani-logo-flex-wrapper'>
+        <div class='mani-logo-flip-box'>
+          <img alt='Logo' class='mani-logo-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+        </div>
+        <div class='mani-slide-text-container'>
+          <div class='mani-logo-text-group'>
+            <div class='mani-main-brand'>
+              <span class='mani-first-word'>SIDS</span><span class='mani-logo-highlight'>INDIA</span>
+            </div>
+            <div class='mani-sub-brand'>CREATIVE HUB</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Responsive Navigation Links (Same for Desktop & Mobile Sidebar) -->
+    <ul class='mani-nav-menu'>
+      <li><a class='mani-nav-link' href='/'>Home</a></li>
+      <li><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
+      <li><a class='mani-nav-link' href='/p/about-sids.html'>About SIDS</a></li>
+      <li><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
+      <li><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
+    </ul>
+
+    <!-- Action Button Tray & Mobile Trigger -->
+    <div class='mani-nav-actions'>
+      <!-- Updated Mailto targeting infosidsmathura@gmail.com directly -->
+      <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.%20Could%20you%20please%20provide%20detailed%20information%3F'>
+        <span>Hire Us</span>
+      </a>
+
+      <!-- Hamburger button -->
+      <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Script for Mobile Menu Toggle Functionality -->
+  <script>
+    (function() {
+      const toggleBtn = document.querySelector('.mani-mobile-toggle-btn');
+      const navMenu = document.querySelector('.mani-nav-menu');
+
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener('click', function() {
+          this.classList.toggle('open');
+          navMenu.classList.toggle('active');
+        });
+
+        // Close sidebar drawer immediately if any internal menu link is clicked
+        const navLinks = document.querySelectorAll('.mani-nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            toggleBtn.classList.remove('open');
+            navMenu.classList.remove('active');
+          });
+        });
+      }
+    })();
+  </script>
+</div>
+<!-- Fully Updated Responsive SIDS Navbar End -->
+
+
+
+
+<div class='mani-banner-full-width protected-banner-zone'>
+  <div class='mani-banner-container'>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Background Images with Right-Click & Drag Protection -->
+    <picture class='secure-image-mask'>
+      <!-- Mobile View Background Image (Under 768px) -->
+      <source media='(max-width: 768px)' srcset='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&amp;w=800&amp;h=1000&amp;fit=crop'/>
+      <!-- Desktop View Background Image (Default) -->
+      <img alt='Banner Background' class='mani-banner-bg secure-img' oncontextmenu='return false;' ondragstart='return false;' src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=1600&amp;h=600&amp;fit=crop'/>
+    </picture>
+
+    <!-- Content Box with Anti-Copy Protocol -->
+    <div class='mani-banner-content-box'>
+      <div class='mani-banner-left-content secure-text-zone'>
+        
+        <h1 class='mani-banner-title'>
+          GROW YOUR BRAND<br/>WITH <span class='mani-text-highlight'>SIDS INDIA</span>
+        </h1>
+        
+        <p class='mani-banner-desc'>
+          Discover premium corporate marketing strategies, web development frameworks, and elite digital design components curated specifically to boost your platform&#39;s online presence.
+        </p>
+        
+        <div class='mani-banner-btn-wrap'>
+          <a class='mani-banner-animated-btn' href='#'>
+            <span>Get Started Now</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* Complete Section Copy Protection Layer */
+.protected-banner-zone {
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+/Edge */
+  user-select: none;          /* Standard Browsers */
+  -webkit-touch-callout: none; /* iOS Safari link/image long-press menu disable */
+}
+
+/* Image Saving Protection System */
+.secure-image-mask {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+}
+
+.secure-img {
+  pointer-events: none;
+  -webkit-user-drag: none; 
+  user-drag: none;
+}
+
+/* Full Width Page Bleed Alignment */
+.mani-banner-full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Strict Layout Canvas Size Dimensions (For Desktop) */
+.mani-banner-container {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  width: 100%;
+  max-width: 1600px;
+  height: 600px; 
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mani-banner-container * {
+  box-sizing: border-box;
+}
+
+/* Banner Image Layer Setup */
+.mani-banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Transparent Content Box */
+.mani-banner-content-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+  display: table;
+}
+
+/* Align Content Strictly to Left Vertically Centered */
+.mani-banner-left-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 80px;
+  padding-right: 40px;
+  width: 60%;
+  text-align: left;
+}
+
+/* Big Bold Main Header in Black Colour */
+.mani-banner-title {
+  font-size: 52px;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+/* Highlighted Text in Premium Blue Colour */
+.mani-banner-title .mani-text-highlight {
+  color: #1e3a8a;
+  display: inline-block;
+}
+
+/* Subtitle Text Description in Black Colour */
+.mani-banner-desc {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 0 35px 0;
+  font-weight: 500;
+}
+
+.mani-banner-btn-wrap {
+  display: block;
+}
+
+/* Premium Button Architecture in Blue Colour */
+.mani-banner-animated-btn {
+  display: inline-block;
+  position: relative;
+  background: #1e3a8a;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+}
+
+.mani-banner-animated-btn span {
+  position: relative;
+  z-index: 7;
+}
+
+/* Simple Clean Hover State */
+.mani-banner-animated-btn:hover {
+  background: #111827; 
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE SCALING - TABLET INTERFACE */
+@media (max-width: 992px) {
+  .mani-banner-left-content {
+    padding-left: 45px;
+    width: 80%;
+  }
+  .mani-banner-title {
+    font-size: 36px;
+  }
+}
+
+/* =======================================================
+   MOBILE VIEW OPTIMIZATION (AS PER YOUR SCREENSHOT)
+   ======================================================= */
+@media (max-width: 768px) {
+  /* मोबाइल में फुल-स्क्रीन व्यू देने के लिए 85vh से 100vh हाइट */
+  .mani-banner-container {
+    height: 90vh; 
+    min-height: 560px;
+  }
+  
+  /* स्क्रीनशॉट की तरह कंटेंट को सेंटर करने और बैकग्राउंड को थोड़ा डार्क इफ़ेक्ट देने के लिए */
+  .mani-banner-content-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); 
+  }
+  
+  .mani-banner-left-content {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    text-align: center; 
+  }
+  
+  /* स्क्रीनशॉट की तरह बड़ा, बोल्ड और वाइट टाइटल */
+  .mani-banner-title {
+    font-size: 34px;
+    color: #ffffff; 
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+  
+  /* SIDS INDIA का कलर स्क्रीनशॉट जैसा ब्राइट स्काई ब्लू */
+  .mani-banner-title .mani-text-highlight {
+    color: #3b82f6; 
+    display: inline-block;
+  }
+  
+  /* डिस्क्रिप्शन टेक्स्ट सफ़ेद और साफ़ */
+  .mani-banner-desc {
+    font-size: 15px;
+    color: #f3f4f6; 
+    margin: 0 auto 40px auto;
+    max-width: 90%;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  /* स्क्रीनशॉट जैसा बड़ा, गोल (Rounded) और ग्लोइंग बटन डिजाइन */
+  .mani-banner-animated-btn {
+    padding: 16px 45px;
+    font-size: 15px;
+    font-weight: 700;
+    background: #3b82f6; 
+    border-radius: 50px;
+    width: auto;
+    display: inline-block;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5); /* बटन के नीचे बढ़िया शैडो */
+    letter-spacing: 0.5px;
+  }
+  
+  .mani-banner-animated-btn:hover {
+    background: #ffffff;
+    color: #3b82f6 !important;
+    transform: scale(1.03);
+  }
+}
+
+/* छोटे मोबाइल स्क्रीन्स (जैसे iPhone SE / पुराने फ़ोन) के लिए माइनर एडजस्टमेंट */
+@media (max-width: 480px) {
+  .mani-banner-container {
+    height: 85vh;
+  }
+  .mani-banner-title {
+    font-size: 28px;
+  }
+  .mani-banner-desc {
+    font-size: 13.5px;
+  }
+  .mani-banner-animated-btn {
+    padding: 14px 38px;
+    font-size: 14px;
+  }
+}
+/*]]>*/
+</style>    
     
-    <!-- FontAwesome Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    
+    
+    
+    
+    
+    
+    
+<div class='mani-main-landing-wrapper'>
+
+  <div class='ts-section ts-about-section'>
+    <div class='ts-container'>
+      <div class='ts-row'>
+        <div class='ts-col ts-col-50 ts-img-collage-side'>
+          <div class='ts-collage-container'>
+            <div class='ts-collage-img img-top-left'>
+              <img alt='TechSky Office Workspace' src='https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&amp;w=600&amp;h=450&amp;fit=crop'/>
+            </div>
+            <div class='ts-collage-img img-bottom-right'>
+              <img alt='TechSky Media Setup' src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&amp;w=600&amp;h=400&amp;fit=crop'/>
+            </div>
+          </div>
+        </div>
+        
+        <div class='ts-col ts-col-50 ts-text-side'>
+          <span class='ts-section-tag'>ABOUT US</span>
+          <h2 class='ts-main-heading'>Helping Businesses Grow with <span class='ts-highlight-blue'>Smart Digital Solutions</span></h2>
+          <p class='ts-paragraph'>Techsky Media is a results-driven digital agency focused on helping businesses build a strong online presence. From website development and SEO to digital marketing and branding, we create innovative solutions tailored to your business goals.</p>
+          <p class='ts-paragraph'>Our team combines creativity, technology, and strategy to deliver impactful digital experiences that drive growth, engagement, and long-term success.</p>
+          
+          <div class='ts-btn-group'>
+            <a class='ts-btn ts-btn-filled' href='#'>Learn More &#10132;</a>
+            <a class='ts-btn ts-btn-outlined' href='#'>Explore Our Services &#10132;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='ts-section ts-process-section'>
+    <div class='ts-container'>
+      <div class='ts-center-head'>
+        <h2 class='ts-center-title'>Our Process</h2>
+      </div>
+      
+      <div class='ts-process-grid'>
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>💬</div>
+            <span class='ts-step-number'>01</span>
+          </div>
+          <h3 class='ts-card-title'>Requirement Analysis</h3>
+          <p class='ts-card-desc'>We understand your business goals, audience, and project requirements to create the right strategy.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>📊</div>
+            <span class='ts-step-number'>02</span>
+          </div>
+          <h3 class='ts-card-title'>Planning &amp; Strategy</h3>
+          <p class='ts-card-desc'>Our team creates a clear roadmap and customized digital strategy focused on performance and growth.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>💻</div>
+            <span class='ts-step-number'>03</span>
+          </div>
+          <h3 class='ts-card-title'>Design &amp; Development</h3>
+          <p class='ts-card-desc'>We build modern, responsive, and user-friendly websites and digital solutions tailored to your business.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>🚀</div>
+            <span class='ts-step-number'>04</span>
+          </div>
+          <h3 class='ts-card-title'>Launch &amp; Optimization</h3>
+          <p class='ts-card-desc'>After launch, we optimize performance, improve user experience, and ensure long-term digital success.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+    
+  
+
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* Global Base Wrapper Setup for Blogger Templates */
+.mani-main-landing-wrapper {
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.mani-main-landing-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.ts-section {
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.ts-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Row-Column System Framework */
+.ts-row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.ts-col {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ts-col-50 {
+  width: 50%;
+}
+
+/* --- SECTION 1 STYLING: ABOUT US --- */
+.ts-about-section {
+  background-color: #ffffff;
+}
+
+.ts-img-collage-side {
+  padding-right: 40px;
+}
+
+.ts-collage-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+}
+
+.ts-collage-img {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.ts-collage-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img-top-left {
+  width: 75%;
+  height: 260px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border: 4px solid #ffffff;
+}
+
+.img-bottom-right {
+  width: 70%;
+  height: 220px;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  border: 6px solid #ffffff;
+}
+
+.ts-text-side {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.ts-section-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0284c7;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.ts-main-heading {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.ts-highlight-blue {
+  color: #0284c7;
+}
+
+.ts-paragraph {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.ts-btn-group {
+  margin-top: 25px;
+}
+
+.ts-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+}
+
+.ts-btn-filled {
+  background-color: #0284c7;
+  color: #ffffff !important;
+}
+
+.ts-btn-filled:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+}
+
+.ts-btn-outlined {
+  background-color: transparent;
+  color: #0284c7 !important;
+  border: 2px solid #0284c7;
+}
+
+.ts-btn-outlined:hover {
+  background-color: #0284c7;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* --- SECTION 2 STYLING: PROCESS --- */
+.ts-process-section {
+  background-color: #f8fafc;
+}
+
+.ts-center-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.ts-center-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.ts-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ts-process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.ts-process-card:hover {
+  transform: translateY(-5px);
+}
+
+.ts-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ts-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.box-blue {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.ts-step-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #cbd5e1;
+  line-height: 1;
+}
+
+.ts-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.ts-card-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* --- SECTION 3 STYLING: GOVERNORS / TEAM --- */
+.ts-team-section {
+  background-color: #ffffff;
+}
+
+.ts-highlight-orange {
+  color: #ea580c;
+}
+
+.ts-center-subtitle {
+  font-size: 15px;
+  color: #475569;
+  max-width: 700px;
+  margin: 12px auto 0 auto;
+  line-height: 1.6;
+}
+
+/* Uniform 2 Columns Everywhere Configuration */
+.ts-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.ts-team-member {
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.ts-team-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none !important;
+}
+
+.ts-team-img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.ts-team-info {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.ts-member-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ea580c;
+  margin-bottom: 4px;
+}
+
+.ts-member-role {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* ==========================================================
+   MOBILE & RESPONSIVE MEDIA QUERIES (100% Mobile Friendly)
+   ========================================================== */
+
+@media (max-width: 992px) {
+  .ts-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .ts-main-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ts-section {
+    padding: 45px 15px;
+  }
+
+  /* About Section Stack to Single Column Mobile Friendly */
+  .ts-row {
+    display: block;
+  }
+  
+  .ts-col-50 {
+    display: block;
+    width: 100%;
+  }
+  
+  .ts-img-collage-side {
+    padding-right: 0;
+    margin-bottom: 35px;
+  }
+  
+  .ts-collage-container {
+    height: 300px;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .img-top-left {
+    height: 200px;
+  }
+  
+  .img-bottom-right {
+    height: 170px;
+  }
+  
+  .ts-text-side {
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .ts-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .ts-btn {
+    margin-right: 0;
+    width: 80%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Process Cards to 1 Column Stack */
+  .ts-process-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .ts-center-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Team Section Mobile Optimization (Keeps 2 columns neat & small) */
+  .ts-team-grid {
+    gap: 16px;
+  }
+  
+  .ts-team-member {
+    max-width: 150px;
+  }
+  
+  .ts-member-name {
+    font-size: 13.5px;
+  }
+  
+  .ts-member-role {
+    font-size: 11px;
+  }
+  
+  .ts-center-subtitle {
+    font-size: 13px;
+  }
+}
+/*]]>*/
+</style>    
+    
+    
+ 
+    
+ 
+<style type='text/css'>
+/*<![CDATA[*/
+/* CSS Core Structural Defaults */
+.mani-master-workflow-wrapper {
+  width: 100%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mani-master-workflow-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.mani-wf-section {
+  padding: 80px 20px;
+  width: 100%;
+  position: relative;
+}
+
+.mani-wf-bg-light { background-color: #f8fafc; }
+.mani-wf-bg-white { background-color: #ffffff; }
+
+.mani-wf-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Common Section Header Typography styles */
+.mani-wf-center-head {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.mani-wf-section-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.mani-wf-title-bar {
+  width: 60px;
+  height: 4px;
+  background-color: #0284c7;
+  margin: 15px auto 0 auto;
+  border-radius: 2px;
+}
+
+.mani-wf-highlight-orange { color: #ea580c; }
+
+.mani-wf-section-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 720px;
+  margin: 16px auto 0 auto;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 1 (PROCESS CARD MODULE GRID)
+   ========================================================== */
+.mani-wf-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mani-wf-process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 25px rgba(15, 23, 42, 0.03);
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(2, 132, 199, 0.06);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+.mani-wf-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.mani-wf-icon-box {
+  width: 46px;
+  height: 46px;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.mani-wf-step-number {
+  font-size: 44px;
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.mani-wf-process-card:hover .mani-wf-step-number {
+  color: #cbd5e1;
+}
+
+.mani-wf-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.mani-wf-card-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 2 (COUNTERS WITH 1-START ANIMATION)
+   ========================================================== */
+.mani-wf-counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mani-wf-counter-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-counter-num-wrap {
+  font-size: 46px;
+  font-weight: 800;
+  color: #0284c7;
+  line-height: 1;
+  margin-bottom: 12px;
+  font-family: Arial, sans-serif;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Property Configuration for CSS Pure Counter Engine */
+@property --c650 { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c300 { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c10  { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c2   { syntax: '<integer>'; inherits: false; initial-value: 1; }
+
+.mani-wf-counter-number {
+  transition: --c650 3s, --c300 3s, --c10 3s, --c2 3s;
+}
+
+/* Triggers animation automatically from value 1 up to destination parameter values */
+.num-650 {
+  animation: count650 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c650);
+}
+.num-650::after { content: counter(num); }
+
+.num-300 {
+  animation: count300 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c300);
+}
+.num-300::after { content: counter(num); }
+
+.num-10 {
+  animation: count10 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c10);
+}
+.num-10::after { content: counter(num); }
+
+.num-2 {
+  animation: count2 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c2);
+}
+.num-2::after { content: counter(num); }
+
+.mani-wf-plus {
+  color: #0284c7;
+  margin-left: 2px;
+}
+
+.mani-wf-counter-label {
+  font-size: 15px;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 3 (BOARD OF GOVERNORS MODULE CARD)
+   ========================================================== */
+.mani-wf-governors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.mani-wf-gov-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-gov-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.mani-wf-gov-img-holder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #f1f5f9;
+}
+
+.mani-wf-gov-img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mani-wf-gov-details {
+  padding: 4px 0 8px 0;
+}
+
+.mani-wf-gov-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.mani-wf-gov-role {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ea580c;
+}
+
+/* ==========================================================
+   KEYFRAMES FRAMEWORK & SEQUENTIAL STACK TIMINGS
+   ========================================================== */
+.mani-wf-delay-1 { animation-delay: 0.1s; }
+.mani-wf-delay-2 { animation-delay: 0.25s; }
+.mani-wf-delay-3 { animation-delay: 0.4s; }
+.mani-wf-delay-4 { animation-delay: 0.55s; }
+
+@keyframes maniWfFadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Counter Engine 1-Start Dynamic Targets */
+@keyframes count650 { from { --c650: 1; } to { --c650: 650; } }
+@keyframes count300 { from { --c300: 1; } to { --c300: 300; } }
+@keyframes count10  { from { --c10: 1; }  to { --c10: 10; } }
+@keyframes count2   { from { --c2: 1; }   to { --c2: 2; } }
+
+/* ==========================================================
+   RESPONSIVE DESIGN SYSTEM (100% MOBILE FRIENDLY READY)
+   ========================================================== */
+@media (max-width: 1024px) {
+  .mani-wf-process-grid, 
+  .mani-wf-counter-grid, 
+  .mani-wf-governors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mani-wf-section {
+    padding: 50px 15px;
+  }
+  
+  .mani-wf-section-title {
+    font-size: 26px;
+  }
+  
+  .mani-wf-process-grid,
+  .mani-wf-counter-grid {
+    grid-template-columns: 1fr; /* Full width stack on mobile viewports */
+    gap: 16px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  
+  .mani-wf-governors-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 grid layouts kept tight on mobile for team profiles */
+    gap: 12px;
+  }
+  
+  .mani-wf-counter-card {
+    padding: 25px 15px;
+  }
+  
+  .mani-wf-counter-num-wrap {
+    font-size: 38px;
+  }
+  
+  .mani-wf-gov-name {
+    font-size: 14px;
+  }
+  
+  .mani-wf-gov-role {
+    font-size: 11.5px;
+  }
+}
+/*]]>*/
+</style>   
+    
+    
+    
+    
+    
+ 
+    
+<div class='industries-section-m'>
+  <div class='ind-container-m'>
+    <div class='ind-header-m'>
+      <h2>Industries We Serve</h2>
+      <p>We build websites and apps for businesses across all industries. From startups to enterprises.</p>
+    </div>
+
+    <div class='ind-grid-m'>
+      <!-- Card 1: Restaurant -->
+      <div class='ind-card-m' style='--card-idx: 1;'>
+        <div class='ind-icon-w wrap-rest'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>
+        </div>
+        <h3>Restaurant &amp; Cafe</h3>
+      </div>
+
+      <!-- Card 2: E-commerce -->
+      <div class='ind-card-m' style='--card-idx: 2;'>
+        <div class='ind-icon-w wrap-ecom'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/></svg>
+        </div>
+        <h3>E-commerce Store</h3>
+      </div>
+
+      <!-- Card 3: Real Estate -->
+      <div class='ind-card-m' style='--card-idx: 3;'>
+        <div class='ind-icon-w wrap-real'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>
+        </div>
+        <h3>Real Estate</h3>
+      </div>
+
+      <!-- Card 4: Healthcare -->
+      <div class='ind-card-m' style='--card-idx: 4;'>
+        <div class='ind-icon-w wrap-health'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>
+        </div>
+        <h3>Healthcare</h3>
+      </div>
+
+      <!-- Card 5: Beauty & Salon -->
+      <div class='ind-card-m' style='--card-idx: 5;'>
+        <div class='ind-icon-w wrap-beauty'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='6' cy='6' r='3'/><circle cx='6' cy='18' r='3'/><line x1='9.8' x2='22' y1='8.5' y2='12.5'/><line x1='9.8' x2='22' y1='15.5' y2='11.5'/><circle cx='18' cy='12' r='1'/></svg>
+        </div>
+        <h3>Beauty &amp; Salon</h3>
+      </div>
+
+      <!-- Card 6: Education -->
+      <div class='ind-card-m' style='--card-idx: 6;'>
+        <div class='ind-icon-w wrap-edu'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M22 10v6M2 10l10-5 10 5-10 5z'/><path d='M6 12v5c0 2 2 3 6 3s6-1 6-3v-5'/></svg>
+        </div>
+        <h3>Education</h3>
+      </div>
+
+      <!-- Card 7: Hospital & Clinic -->
+      <div class='ind-card-m' style='--card-idx: 7;'>
+        <div class='ind-icon-w wrap-hosp'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><rect height='18' rx='2' ry='2' width='18' x='3' y='3'/><line x1='12' x2='12' y1='8' y2='16'/><line x1='8' x2='16' y1='12' y2='12'/></svg>
+        </div>
+        <h3>Hospital &amp; Clinic</h3>
+      </div>
+
+      <!-- Card 8: Bar & Brewery -->
+      <div class='ind-card-m' style='--card-idx: 8;'>
+        <div class='ind-icon-w wrap-bar'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M18 22H6M12 11V22M19 3H5l1 8h12z'/></svg>
+        </div>
+        <h3>Bar &amp; Brewery</h3>
+      </div>
+
+      <!-- Card 9: Hotel & Resort -->
+      <div class='ind-card-m' style='--card-idx: 9;'>
+        <div class='ind-icon-w wrap-hotel'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z'/><path d='M9 22V12h6v10M12 2v3M12 5a3 3 0 1 0 0 6 3 3 0 1 0 0-6Z'/></svg>
+        </div>
+        <h3>Hotel &amp; Resort</h3>
+      </div>
+
+      <!-- Card 10: Car Towing -->
+      <div class='ind-card-m' style='--card-idx: 10;'>
+        <div class='ind-icon-w wrap-tow'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7h2'/><circle cx='7' cy='17' r='2'/><circle cx='17' cy='17' r='2'/></svg>
+        </div>
+        <h3>Car Towing</h3>
+      </div>
+
+      <!-- Card 11: Jewellery -->
+      <div class='ind-card-m' style='--card-idx: 11;'>
+        <div class='ind-icon-w wrap-jewel'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M12 3 5 9l7 12 7-12-7-6z'/><path d='M5 9h14M12 3v18'/></svg>
+        </div>
+        <h3>Jewellery</h3>
+      </div>
+
+      <!-- Card 12: Pharmacy -->
+      <div class='ind-card-m' style='--card-idx: 12;'>
+        <div class='ind-icon-w wrap-pharm'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M4.8 15h14.4M12 4.8v14.4M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z'/></svg>
+        </div>
+        <h3>Pharmacy</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+.industries-section-m {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8faff;
+  padding: 50px 15px;
+  box-sizing: border-box;
+}
+.industries-section-m * {
+  box-sizing: border-box;
+}
+.ind-container-m {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ind-header-m {
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(-15px);
+  animation: indFadeDown 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.ind-header-m h2 {
+  font-size: 30px;
+  color: #0f1e36;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+.ind-header-m p {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.ind-grid-m {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.ind-card-m {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  opacity: 0;
+  transform: translateY(25px);
+  animation: indFadeUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+  animation-delay: calc(var(--ind-card-idx) * 0.06s);
+}
+.ind-card-m h3 {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 600;
+  margin: 12px 0 0 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+.ind-icon-w {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.ind-icon-w svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Custom Soft Palette colors */
+.wrap-rest { background-color: #e6fcf5; color: #0ca678; }
+.wrap-ecom { background-color: #fff0f6; color: #d6336c; }
+.wrap-real { background-color: #fff5f5; color: #fa5252; }
+.wrap-health { background-color: #ebfbee; color: #37b24d; }
+.wrap-beauty { background-color: #e8f7ff; color: #1c7ed6; }
+.wrap-edu { background-color: #fff0f6; color: #e64980; }
+.wrap-hosp { background-color: #fff5f5; color: #f03e3e; }
+.wrap-bar { background-color: #e6fcf5; color: #12b886; }
+.wrap-hotel { background-color: #f3f0ff; color: #7048e8; }
+.wrap-tow { background-color: #f1f3f5; color: #495057; }
+.wrap-jewel { background-color: #e8f7ff; color: #228be6; }
+.wrap-pharm { background-color: #e6fcf5; color: #0ca678; }
+
+/* Interactive Hover Actions */
+.ind-card-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(15, 30, 54, 0.08);
+  border-color: rgba(15, 30, 54, 0.06);
+}
+.ind-card-m:hover h3 {
+  color: #0f1e36;
+}
+.ind-card-m:hover .ind-icon-w {
+  transform: scale(1.1) rotate(8deg);
+}
+
+/* Animation Keyframes */
+@keyframes indFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes indFadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .ind-grid-m {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .ind-header-m h2 {
+    font-size: 26px;
+  }
+  .ind-grid-m {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .industries-section-m {
+    padding: 35px 10px;
+  }
+  .ind-header-m h2 {
+    font-size: 22px;
+  }
+  .ind-header-m p {
+    font-size: 13px;
+  }
+  .ind-grid-m {
+    grid-template-columns: repeat(2, 1fr); /* Mobile layout displays 2 clean cards side-by-side */
+    gap: 10px;
+  }
+  .ind-card-m {
+    padding: 16px 8px;
+    border-radius: 12px;
+  }
+  .ind-card-m h3 {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .ind-icon-w {
+    width: 44px;
+    height: 44px;
+  }
+  .ind-icon-w svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+/*]]>*/
+</style>
+    
+    
+    
+    
+    
+  <div class='purpose-section-m'>
+  <div class='purp-container-m'>
+    
+    <div class='purp-header-m'>
+      <span class='purp-subtitle-m'>OUR PURPOSE</span>
+      <h2>Our Vision, Our Mission &amp; Our Values</h2>
+      <p>At Techsky Media, we are committed to helping businesses grow through innovative digital marketing, web development, and SEO solutions. Our mission is to deliver impactful digital experiences that build long-term success and strong client relationships.</p>
+    </div>
+
+    <div class='purp-grid-m'>
+      
+      <div class='purp-card-m card-vision' style='--purp-idx: 1;'>
+        <div class='purp-icon-wrap icon-blue'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <path d='M10.08 8.12 19 3l2 3-8.88 5.12M14 14l-4-4M4 21l6-10M14 14l4 7M10 11l4 3'/>
+          </svg>
+        </div>
+        <h3>Our <span>Vision</span></h3>
+        <p class='card-desc'>To become a trusted digital solutions company recognized for creativity, innovation, and result-driven services that empower businesses to succeed online.</p>
+        <ul class='card-list list-blue'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Deliver innovative digital experiences</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Help businesses achieve online growth</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Set new standards in digital excellence</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class='purp-card-m card-mission' style='--purp-idx: 2;'>
+        <div class='purp-icon-wrap icon-orange'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/>
+          </svg>
+        </div>
+        <h3>Our <span>Mission</span></h3>
+        <p class='card-desc'>To provide high-quality web development, SEO, and digital marketing services that drive measurable results, increase brand visibility, and maximize business growth.</p>
+        <ul class='card-list list-orange'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Create result-oriented digital strategies</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Build long-term client partnerships</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Deliver performance-focused solutions</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class='purp-card-m card-values' style='--purp-idx: 3;'>
+        <div class='purp-icon-wrap icon-green'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <path d='M6 3h12l4 6-10 13L2 9z'/><path d='M11 3 8 9l4 13 4-13-3-6M2 9h20'/>
+          </svg>
+        </div>
+        <h3>Our <span>Values</span></h3>
+        <p class='card-desc'>We believe in transparency, creativity, commitment, and customer satisfaction. Our values guide every project we deliver and every relationship we build.</p>
+        <ul class='card-list list-green'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Integrity in every project</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Client success is our priority</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Innovation, teamwork &amp; continuous growth</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* CSS code safe from Blogger XML validation errors */
+
+.purpose-section-m {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f6f9fc;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+.purpose-section-m * {
+  box-sizing: border-box;
+}
+.purp-container-m {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header design matching your layout */
+.purp-header-m {
+  text-align: center;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: purpFadeInDown 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.purp-subtitle-m {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0066cc;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.purp-header-m h2 {
+  font-size: 32px;
+  color: #0f1e36;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+}
+.purp-header-m p {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3 Column Grid for desktop */
+.purp-grid-m {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card basic layout */
+.purp-card-m {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 25px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-bottom: 5px solid transparent;
+  
+  /* Entry animations */
+  opacity: 0;
+  transform: translateY(35px);
+  animation: purpFadeInUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+  animation-delay: calc(var(--purp-idx) * 0.15s);
+}
+
+/* Accent bottom borders matching screenshots */
+.card-vision { border-bottom-color: #0066cc; }
+.card-mission { border-bottom-color: #f7941d; }
+.card-values { border-bottom-color: #22b14c; }
+
+/* Icon wrappers styling with soft colors */
+.purp-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  padding: 18px;
+}
+.icon-blue { background-color: #e6f0fa; color: #0066cc; }
+.icon-orange { background-color: #fff4e6; color: #f7941d; }
+.icon-green { background-color: #ebf7ee; color: #22b14c; }
+
+.purp-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Typography Inside Cards */
+.purp-card-m h3 {
+  font-size: 20px;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+.card-vision h3 span { color: #0066cc; }
+.card-mission h3 span { color: #f7941d; }
+.card-values h3 span { color: #22b14c; }
+
+.card-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  min-height: 90px;
+}
+
+/* Bullet list inside cards with styling */
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.card-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.4;
+}
+.card-list li svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Specific checklist color matching themes */
+.list-blue li svg { color: #0066cc; }
+.list-orange li svg { color: #f7941d; }
+.list-green li svg { color: #22b14c; }
+
+/* Interactive Hover Actions */
+.purp-card-m:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(15, 30, 54, 0.08);
+}
+.purp-card-m:hover .purp-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Animation Keyframes */
+@keyframes purpFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes purpFadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .purp-grid-m {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .card-values {
+    grid-column: span 2;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card-desc {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .purp-header-m h2 {
+    font-size: 26px;
+  }
+  .purp-header-m p {
+    font-size: 14px;
+  }
+  .purp-grid-m {
+    grid-template-columns: 1fr; /* Tablet/Mobile single-column setup */
+    gap: 20px;
+  }
+  .card-values {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .purpose-section-m {
+    padding: 40px 15px;
+  }
+  .purp-header-m h2 {
+    font-size: 22px;
+  }
+  .purp-card-m {
+    padding: 30px 18px;
+    border-radius: 12px;
+  }
+  .purp-icon-wrap {
+    width: 64px;
+    height: 64px;
+    padding: 15px;
+  }
+  .purp-card-m h3 {
+    font-size: 18px;
+  }
+  .card-desc {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .card-list li {
+    font-size: 12.5px;
+  }
+}
+/*]]>*/
+</style>  
+    
+   
+<!-- Principal Welcome Section Start -->
+<div class="mv-welcome-section">
     <style>
-        /* Modern 3D Background */
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            user-select: none; 
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
+        /* Unique scoping to avoid layout conflicts with your existing website style */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
-        img { pointer-events: none; -webkit-user-drag: none; }
-
-        /* Preloader */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-        }
-        .preloader-img { width: 100px; height: 100px; object-fit: contain; animation: pulseAnim 1.5s infinite; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
-        @keyframes pulseAnim {
-            0% { transform: scale(0.85); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3)); }
-            100% { transform: scale(0.85); opacity: 0.8; }
-        }
-        .preloader-text { margin-top: 20px; font-size: 18px; font-weight: bold; color: #333; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* 3D Glass Panel Effect */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,0.8);
-            box-sizing: border-box;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .glass-panel:hover {
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,1);
-        }
-
-        /* -------------------------------------------
-           LAYOUT 1: Single Box for Image + Form
-           ------------------------------------------- */
-        .main-dual-box {
-            display: flex;
-            flex-direction: column;
+        .mv-welcome-section {
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .image-half {
-            width: 100%;
+            background-color: #ffffff;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed rgba(0,0,0,0.1);
-        }
-        
-        /* STRICTLY SMALL IMAGE (LOGO STYLE) */
-        .image-half img {
-            width: 130px; 
-            height: 130px;
-            object-fit: contain; /* Ensures the whole image is visible without stretching */
-            transition: transform 0.5s ease;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-            border-radius: 12px;
-        }
-        .image-half:hover img {
-            transform: scale(1.08);
-        }
-
-        .image-overlay-text {
-            color: #2c3e50;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 15px;
-            text-align: center;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .form-half {
-            padding: 25px 0 0 0;
-            width: 100%;
+            padding: 40px 20px;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* -------------------------------------------
-           LAYOUT 2: Separate Boxes for Result & Action
-           ------------------------------------------- */
-        .output-layout {
-            display: none;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
+        .mv-welcome-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mv-container {
             max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .permit-box { padding: 25px; width: 100%; }
-        .action-box { padding: 25px; width: 100%; display: flex; flex-direction: column; align-items: center; }
-
-        /* Desktop Breakpoint */
-        @media (min-width: 900px) {
-            .main-dual-box {
-                flex-direction: row;
-                align-items: center; /* Vertically Centers everything perfectly */
-                padding: 40px;
-            }
-            .image-half {
-                width: 40%;
-                border-bottom: none;
-                border-right: 2px dashed rgba(0,0,0,0.1);
-                padding-bottom: 0;
-                padding-right: 30px;
-            }
-            .image-half img {
-                width: 180px; /* Thoda sa bada on desktop, still small */
-                height: 180px;
-            }
-            .image-overlay-text {
-                font-size: 22px;
-                margin-top: 25px;
-            }
-            .form-half {
-                width: 60%;
-                padding: 0 0 0 40px;
-            }
-
-            .output-layout {
-                flex-direction: row;
-                align-items: flex-start;
-            }
-            .permit-box { width: 62%; }
-            .action-box { width: 38%; }
-        }
-
-        /* Form Elements */
-        .form-header { text-align: center; margin-bottom: 25px; }
-        .form-header h2 { margin: 0; color: #2c3e50; font-size: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); border-bottom: 2px solid #007bff; display: inline-block; padding-bottom: 5px;}
-
-        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; width: 100%; position: relative; }
-        .form-group label { font-weight: bold; margin-bottom: 6px; font-size: 13px; color: #444;}
-        .form-group input, .form-group select {
-            padding: 12px 15px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 14px; 
-            box-sizing: border-box; 
             width: 100%;
-            background: #f0f3f8;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.8);
-            transition: all 0.3s;
-        }
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            background: #fff;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0, 123, 255, 0.4);
-        }
-        
-        .status-icon { position: absolute; right: 12px; top: 36px; font-size: 18px; display: none; }
-        .status-icon.loading { color: #007bff; }
-        .status-icon.success { color: #28a745; text-shadow: 0 0 5px rgba(40, 167, 69, 0.4); }
-
-        .row { display: flex; gap: 15px; flex-wrap: wrap; }
-        .row .form-group { flex: 1; min-width: 45%; }
-
-        /* 3D Buttons */
-        button {
-            width: 100%; padding: 14px; color: white;
-            border: none; border-radius: 8px; font-size: 16px; font-weight: bold;
-            cursor: pointer; transition: all 0.2s; margin-top: 15px; box-sizing: border-box;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2), inset 0 -3px 0 rgba(0,0,0,0.2);
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        button:active {
-            transform: translateY(3px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2), inset 0 -1px 0 rgba(0,0,0,0.2);
-        }
-        .btn-primary { background: linear-gradient(135deg, #007bff, #0056b3); }
-        .btn-success { background: linear-gradient(135deg, #28a745, #1e7e34); }
-        .btn-info { background: linear-gradient(135deg, #17a2b8, #117a8b); }
-        .btn-secondary { background: linear-gradient(135deg, #6c757d, #495057); }
-
-        #loader { display: none; text-align: center; margin-top: 20px; font-weight: bold; color: #d9534f; }
-
-        /* -------------------------------------------
-           PERMIT TABLE 
-           ------------------------------------------- */
-        .permit-wrapper {
-            background: #fff; width: 100%; padding: 15px;
-            box-sizing: border-box; overflow: visible; 
-            border-radius: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        table.permit-table {
-            width: 100%; border-collapse: collapse !important; font-family: "Times New Roman", Times, serif;
-            color: #000; border: 2px solid #000 !important; table-layout: fixed; word-wrap: break-word;
-        }
-        table.permit-table td, table.permit-table th {
-            border: 1px solid #000 !important; padding: 8px; font-size: 14px; vertical-align: middle;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
         }
 
-        .header-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; flex-wrap: wrap;}
-        .logo-qr-row { display: flex; justify-content: space-between; align-items: center; gap: 5px;}
-        .logo-box-img { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
-        .center-text { text-align: center; flex-grow: 1; }
-        .center-text h3 { margin: 0; font-size: 16px; font-weight: bold; }
-        .center-text h4 { margin: 2px 0; font-size: 14px; font-weight: normal; }
-        .qr-box { width: 65px; height: 65px; flex-shrink: 0; }
-        .qr-box img { width: 100%; height: 100%; }
-
-        .note-row { text-align: center; font-size: 10px; font-weight: bold; }
-        .photo-row { display: flex; justify-content: space-between; align-items: center; }
-        .route-text { font-size: 22px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;}
-        
-        .photo-box { width: 85px; height: 105px; border: 1px solid #333; background: #eee; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-shrink: 0;}
-        .photo-box img { width: 100%; height: 100%; object-fit: cover; display: none; filter: grayscale(100%); }
-
-        .details-inline { display: flex; justify-content: flex-start; gap: 15px; flex-wrap: wrap; }
-        
-        .aadhaar-box { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
-        .aadhaar-logo { width: 35px; height: 25px; object-fit: contain; }
-        .aadhaar-text { font-size: 17px; font-weight: bold; letter-spacing: 1.5px; }
-
-        .footer-row { display: flex; justify-content: space-between; align-items: flex-end; height: 85px; position: relative; }
-        .signature-area { display: flex; flex-direction: column; align-items: flex-start; width: 150px; }
-        .sig-img { width: 70px; height: 35px; object-fit: contain; margin-bottom: 2px; }
-        .signature { font-size: 12px; font-weight: bold; line-height: 1.2; }
-        
-        .stamp-img {
-            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(-10deg);
-            width: 85px; height: 85px; object-fit: contain; opacity: 0.8; z-index: 10;
-        }
-        .ekyc-area { display: flex; flex-direction: column; align-items: flex-end; width: 120px; }
-        .ekyc-img { width: 75px; height: 30px; object-fit: contain; margin-bottom: 5px; }
-
-        /* -------------------------------------------
-           ID CARD COMPONENT
-           ------------------------------------------- */
-        #id-card-container { display: none; width: 100%; margin-top: 20px; }
-        
-        .id-card {
-            width: 300px; background: #fff; border: 2px solid #111; border-radius: 12px;
-            overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.25); display: flex; flex-direction: column;
-            align-items: center; font-family: Arial, sans-serif; margin: 0 auto;
-            position: relative; padding-bottom: 25px;
+        /* Left Side Text formatting */
+        .mv-content-side {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .id-title-bar {
-            width: 100%; background: linear-gradient(90deg, #b71c1c, #d32f2f, #b71c1c); color: white; text-align: center;
-            font-size: 22px; font-weight: 900; padding: 12px 0; letter-spacing: 2px;
-            text-transform: uppercase; margin-bottom: 15px; border-bottom: 3px solid #8e0000;
+        .mv-content-side h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
-        .id-photo {
-            width: 130px; height: 130px; margin-bottom: 20px; border: 4px solid #d32f2f;
-            border-radius: 10px; overflow: hidden; background: #fff; display: flex;
-            justify-content: center; align-items: center; box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        .mv-title-divider {
+            width: 60px;
+            height: 1px;
+            background-color: #ccc;
+            margin-bottom: 30px;
         }
-        .id-photo img { width: 100%; height: 100%; object-fit: contain; display: none; padding: 10px; box-sizing: border-box;}
 
-        .id-qr {
-            width: 100px; height: 100px; margin-bottom: 20px; padding: 5px; background: #fff;
-            border: 2px solid #ddd; border-radius: 8px;
+        .mv-content-side p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
         }
-        
-        .id-permit {
-            font-size: 18px; font-weight: bold; color: #d32f2f; letter-spacing: 1px;
-            background: #fdf2f2; padding: 8px 20px; border-radius: 6px; border: 2px dashed #d32f2f;
+
+        /* Read More Custom Button */
+        .mv-read-more-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: #666;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mv-read-more-btn:hover {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        /* Right Side Image formatting */
+        .mv-profile-side {
+            flex-shrink: 0;
+            width: 300px;
+            text-align: center;
+        }
+
+        .mv-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+
+        .mv-profile-side img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .mv-profile-side h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .mv-profile-side .mv-designation {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* --- STARTING SMOOTH ENTRY ANIMATION --- */
+        .mv-animate-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .mv-delay-1 { transition-delay: 0.1s; }
+        .mv-delay-2 { transition-delay: 0.3s; }
+
+        .mv-animate-fade-up.mv-is-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MOBILE & TABLET RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .mv-container {
+                flex-direction: column-reverse;
+                gap: 40px;
+            }
+
+            .mv-content-side h2 {
+                font-size: 1.8rem;
+            }
+
+            .mv-profile-side {
+                width: 260px;
+            }
         }
     </style>
-</head>
-<body>
 
+    <div class="mv-container">
+        <!-- Left Side Text and Button -->
+        <div class="mv-content-side mv-animate-fade-up mv-delay-1">
+            <h2>Principal's Welcome</h2>
+            <div class="mv-title-divider"></div>
+            <p>
+                "Besides offering experiences that foster the 21st century skills of critical thinking, creativity, collaboration and communication, the school’s true legacy lies in the social and emotional skills that it imparts to its students, enabling them to become responsible agents of change and socially aware citizens with sound ethics and integrity. It is this legacy of character building and leadership which makes the school stand out as a beacon amongst the many leading schools of the nation".
+            </p>
+            <a href="#" class="mv-read-more-btn">Read More</a>
+        </div>
+
+        <!-- Right Side Profile Photo & Details -->
+        <div class="mv-profile-side mv-animate-fade-up mv-delay-2">
+            <div class="mv-image-wrapper">
+                <!-- Replace with your actual image link -->
+                <img src="https://via.placeholder.com/300x380" alt="Mrs. Vibha Kapoor">
+            </div>
+            <h3>Mrs. Vibha Kapoor</h3>
+            <p class="mv-designation">Principal</p>
+        </div>
+    </div>
+
+    <!-- Script for handling the animation -->
     <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('copy', event => { event.preventDefault(); alert("Copying disabled."); });
-    </script>
+        (function() {
+            function triggerWelcomeAnimation() {
+                const elements = document.querySelectorAll('.mv-animate-fade-up');
+                setTimeout(() => {
+                    elements.forEach(el => el.classList.add('mv-is-active'));
+                }, 150);
+            }
 
-    <!-- Animated Preloader -->
-    <div id="preloader">
-        <img src="https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png" class="preloader-img" alt="Loading...">
-        <div class="preloader-text">Loading 3D Interface...</div>
-    </div>
-
-    <!-- MAIN INPUT SECTION: Single Box containing Image & Form -->
-    <div class="glass-panel main-dual-box" id="input-section">
-        <!-- Image Half (Behaves as a Centered Logo Area) -->
-        <div class="image-half">
-            <!-- Ensure your image source here -->
-            <img src="https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png" alt="Yatra Logo">
-            <div class="image-overlay-text">Shri Amarnathji Yatra</div>
-        </div>
-
-        <!-- Form Half -->
-        <div class="form-half">
-            <div class="form-header">
-                <h2>Yatra Registration</h2>
-            </div>
-            <form id="permitForm">
-                <div class="row">
-                    <div class="form-group">
-                        <label>ID Number (12 Digits)</label>
-                        <input type="text" id="inpAadhaar" maxlength="12" placeholder="e.g. 0000 0000 0000" required>
-                        <i id="aadhaarStatus" class="status-icon"></i>
-                    </div>
-                    <div class="form-group">
-                        <label>Permit No</label>
-                        <input type="text" id="inpPermitNo" readonly required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="inpName" placeholder="e.g. Odedra Ketan" required>
-                    </div>
-                    <div class="form-group">
-                        <label>DOB (Select Date)</label>
-                        <input type="date" id="inpDob" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group">
-                        <label>Gender</label>
-                        <select id="inpGender">
-                            <option value="M">M</option>
-                            <option value="F">F</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Blood Group</label>
-                        <select id="inpBg" required>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Spouse / Father's Name</label>
-                    <input type="text" id="inpFather" placeholder="S/O: Rajubhai" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Full Address</label>
-                    <input type="text" id="inpAddress" placeholder="Dharampur Garbi Chowk" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Emergency Contact No.</label>
-                    <input type="text" id="inpEmergency" placeholder="6359504950" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Upload Photo (Passport Size)</label>
-                    <input type="file" id="inpPhoto" accept="image/*" required>
-                </div>
-
-                <button type="submit" id="submitBtn" class="btn-primary">Generate Permit & Card</button>
-                <div id="loader">Processing Details, please wait...</div>
-            </form>
-        </div>
-    </div>
-
-    <!-- RESULT SECTION: Separate Boxes for Permit Table and Actions (ID Card) -->
-    <div id="output-section" class="output-layout">
-        
-        <!-- Permit Box -->
-        <div class="glass-panel permit-box">
-            <h3 style="margin-top: 0; margin-bottom: 25px; color: #333; text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 10px;">Official Permit</h3>
-            <div class="permit-wrapper" id="permit-wrapper">
-                <table class="permit-table">
-                    <tr>
-                        <td colspan="2">
-                            <div class="header-row">
-                                <span>Reporting Date at <span id="outGateName"></span></span>
-                                <span id="outDate"></span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="logo-qr-row">
-                                <img id="outBoardLogo" class="logo-box-img" src="" crossorigin="anonymous" alt="Board Logo">
-                                <div class="center-text">
-                                    <h3>Shri Amarnathji Yatra</h3>
-                                    <h3>YATRA PERMIT</h3>
-                                    <h4 id="outPermitNo"></h4>
-                                </div>
-                                <div class="qr-box" id="qrcode"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="note-row">
-                            TO BE USED BY YATRI FOR OBTAINING MOBILE CONNECTION, IF REQUIRED
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="photo-row">
-                                <span class="route-text" id="outRouteText">PAHALGAM</span>
-                                <div class="photo-box">
-                                    <img id="outPhoto" src="" alt="Yatri Photo">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="font-size: 16px;">
-                            Full Name : <strong id="outName"></strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="aadhaar-box">
-                                <img id="outAadhaarLogo" src="" class="aadhaar-logo" crossorigin="anonymous" alt="ID Icon">
-                                <span class="aadhaar-text" id="outAadhaar"></span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="details-inline">
-                                <span>Gender : <strong id="outGender"></strong></span>
-                                <span>DOB : <strong id="outDob"></strong></span>
-                                <span>BG: <strong id="outBg"></strong></span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            Spouse / Father : <span id="outFather"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="min-height: 40px;">
-                            Address : <span id="outAddress"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            In case of emergency, please contact:<br>
-                            <span id="outEmergency"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding-bottom: 12px;">
-                            <div class="footer-row">
-                                <div class="signature-area">
-                                    <img id="outSigImg" class="sig-img" src="" crossorigin="anonymous" alt="Signature Seal">
-                                    <div class="signature">Signature & Seal of<br>Registering Officer</div>
-                                </div>
-                                <img id="outStamp" class="stamp-img" src="" crossorigin="anonymous" alt="Stamp Badge">
-                                <div class="ekyc-area">
-                                    <img id="outEkycImg" class="ekyc-img" src="" crossorigin="anonymous" alt="eKYC Badge">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <button id="downloadPdfBtn" class="btn-success" style="margin-top: 25px;"><i class="fa-solid fa-file-pdf"></i> Save Permit as PDF</button>
-        </div>
-
-        <!-- Action Box / ID Card Box -->
-        <div class="glass-panel action-box">
-            <h3 style="margin-top: 0; color: #333; margin-bottom: 20px;">Actions & ID Card</h3>
-            <button id="viewCardBtn" class="btn-info"><i class="fa-solid fa-id-card"></i> View ID Card</button> 
-            <button onclick="location.reload()" class="btn-secondary"><i class="fa-solid fa-rotate-right"></i> Create New</button>
-
-            <!-- ID Card Component -->
-            <div id="id-card-container">
-                <div class="id-card" id="id-card-wrapper">
-                    <div class="id-title-bar">YATRA CARD</div>
-                    <div class="id-photo">
-                        <img id="idCardPhoto" src="" crossorigin="anonymous" alt="Yatra Symbol">
-                    </div>
-                    <div class="id-qr" id="idCardQr"></div>
-                    <div class="id-permit">Permit No: <span id="idCardPermitNo"></span></div>
-                </div>
-                <button id="downloadCardJpgBtn" class="btn-success" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-image"></i> Save ID Card JPG</button>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        let photoDataUrl = "";
-        
-        // =========================================================================
-        // IMAGE CONFIGURATIONS 
-        // =========================================================================
-        let shrineBoardLogoUrl = "https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png"; 
-        let stampImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThA7WtA2vHE_J4XmHqVdfh4KThFfEfST25k30eyoxUMnbVMZksePXOuK9f&s=10"; 
-        let signatureImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/af/Ryan-Signature.png"; 
-        let ekycBadgeImageUrl = "https://5.imimg.com/data5/SELLER/Default/2025/7/531030055/QC/YF/WL/39702676/e-kyc-500x500.png"; 
-        let aadhaarIconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/3840px-Aadhaar.svg.png";
-        let fixedCardImageUrl = "https://play-lh.googleusercontent.com/v1IU9UtgF4PFamfKmIi6Mizn89bb0ZiVt7vmocjATPLzQnW7T86XRVdYVxZift67Rq4pe4KCk23OxyozB4SiOg"; 
-        // =========================================================================
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').style.display = 'none';
-            }, 1000); 
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const minDigits = 100000;
-            const maxDigits = 999990;
-            const randomID = Math.floor(minDigits + Math.random() * (maxDigits - minDigits));
-            document.getElementById('inpPermitNo').value = "PP" + randomID;
-        });
-
-        const aadhaarInput = document.getElementById('inpAadhaar');
-        const aadhaarStatus = document.getElementById('aadhaarStatus');
-
-        aadhaarInput.addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g, ''); 
-            if (this.value.length === 12) {
-                aadhaarStatus.className = 'fa-solid fa-spinner fa-spin status-icon loading';
-                aadhaarStatus.style.display = 'block';
-                setTimeout(() => { aadhaarStatus.className = 'fa-solid fa-check-circle status-icon success'; }, 800);
+            // Handles both normal loading and AJAX/Blogger template rendering delays
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', triggerWelcomeAnimation);
             } else {
-                aadhaarStatus.style.display = 'none';
-                aadhaarStatus.className = 'status-icon';
+                triggerWelcomeAnimation();
             }
-        });
+        })();
+    </script>
+</div>
+<!-- Principal Welcome Section End -->
 
-        document.getElementById('inpPhoto').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) { photoDataUrl = e.target.result; }
-                reader.readAsDataURL(file);
-            }
-        });
 
-        document.getElementById('permitForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if(document.getElementById('inpAadhaar').value.length !== 12) {
-                alert("Please enter exactly 12 digits for ID."); return;
-            }
-            document.getElementById('submitBtn').style.display = 'none';
-            document.getElementById('loader').style.display = 'block';
-            setTimeout(() => { generatePermit(); }, 1500);
-        });
 
-        function formatDate(dateStr) {
-            if(!dateStr) return "";
-            const d = new Date(dateStr);
-            const days = String(d.getDate()).padStart(2, '0');
-            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return `${days}-${months[d.getMonth()]}-${d.getFullYear()}`;
+
+
+<!-- Faculty & Leadership Slider Section Start -->
+<div class="cg-faculty-section">
+    <style>
+        /* Unique Google Font integration */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+        .cg-faculty-section {
+            width: 100%;
+            background-color: #f6fafe; /* Light background from screenshot */
+            padding: 60px 20px;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            position: relative;
         }
 
-        function getRandomReportingDate() {
-            const start = new Date(2026, 7, 8); 
-            const end = new Date(2026, 9, 10);  
-            const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-            const days = String(date.getDate()).padStart(2, '0');
-            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return `${days} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        .cg-faculty-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        function generatePermit() {
-            const gates = ["CHANDANWARI GATE", "DOMEL GATE"];
-            const randomGate = gates[Math.floor(Math.random() * gates.length)];
-            const randomDate = getRandomReportingDate();
+        /* Header Styling */
+        .cg-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-            const permitNo = document.getElementById('inpPermitNo').value;
-            const name = document.getElementById('inpName').value;
-            const gender = document.getElementById('inpGender').value;
-            const dob = formatDate(document.getElementById('inpDob').value); 
-            const bg = document.getElementById('inpBg').value;
-            const father = document.getElementById('inpFather').value;
-            const address = document.getElementById('inpAddress').value;
-            const emergency = document.getElementById('inpEmergency').value;
-            const aadhaar = document.getElementById('inpAadhaar').value;
+        .cg-header span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
 
-            const formattedAadhaar = aadhaar.replace(/(\d{4})/g, '$1 ').trim();
+        .cg-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0b1a30; /* Dark premium blue */
+            margin-bottom: 12px;
+        }
 
-            document.getElementById('outGateName').innerText = randomGate;
+        .cg-header p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Slider Wrapper and Container */
+        .cg-slider-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .cg-slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .cg-slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        /* Card Item Design */
+        .cg-card-item {
+            flex-shrink: 0;
+            /* Desktop view: 3 items dynamically spaced */
+            width: calc(100% / 3); 
+            padding: 0 15px;
+        }
+
+        .cg-card-inner {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4 / 5; /* Maintained proportions */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            background-color: #eee;
+        }
+
+        .cg-card-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Bottom Dark Gradient Text Overlay */
+        .cg-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(11, 26, 48, 0.95) 0%, rgba(11, 26, 48, 0.6) 50%, transparent 100%);
+            padding: 30px 20px 20px 20px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
+        }
+
+        .cg-card-overlay h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .cg-card-overlay p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        /* Navigation Arrows */
+        .cg-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #00a896; /* Teal color from screenshot */
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 168, 150, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .cg-nav-btn:hover {
+            background-color: #008f80;
+        }
+
+        .cg-prev-btn { left: -20px; }
+        .cg-next-btn { right: -20px; }
+
+        /* --- RESPONSIVENESS (MOBILE VIEW) --- */
+        @media (max-width: 768px) {
+            .cg-header h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Mobile view: 2 items on screen */
+            .cg-card-item {
+                width: calc(100% / 2);
+                padding: 0 8px;
+            }
+
+            .cg-card-overlay h3 {
+                font-size: 1rem;
+            }
+
+            .cg-card-overlay p {
+                font-size: 0.75rem;
+            }
+
+            /* Adjust arrows position on small screens so they don't go out of bounds */
+            .cg-prev-btn { left: -5px; width: 32px; height: 32px; font-size: 1rem; }
+            .cg-next-btn { right: -5px; width: 32px; height: 32px; font-size: 1rem; }
+        }
+    </style>
+
+    <!-- Section Headers -->
+    <div class="cg-header">
+        <span>Faculty & Leadership</span>
+        <h2>The Columbus Guild</h2>
+        <p>A united team committed to excellence and care.</p>
+    </div>
+
+    <!-- Slider Area -->
+    <div class="cg-slider-wrapper">
+        <button class="cg-nav-btn cg-prev-btn" aria-label="Previous">&#10094;</button>
+        
+        <div class="cg-slider-container">
+            <div class="cg-slider-track">
+                
+                <!-- Card 1 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+1" alt="Dr. Ananya Rao">
+                        <div class="cg-card-overlay">
+                            <h3>Dr. Ananya Rao</h3>
+                            <p>Vice Principal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+2" alt="Vikram Malhotra">
+                        <div class="cg-card-overlay">
+                            <h3>Vikram Malhotra</h3>
+                            <p>Dean of Academics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+3" alt="Meera Joshi">
+                        <div class="cg-card-overlay">
+                            <h3>Meera Joshi</h3>
+                            <p>HOD Science</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+4" alt="Faculty 4">
+                        <div class="cg-card-overlay">
+                            <h3>Amit Sharma</h3>
+                            <p>HOD Mathematics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+5" alt="Faculty 5">
+                        <div class="cg-card-overlay">
+                            <h3>Priya Nair</h3>
+                            <p>Cultural Head</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+6" alt="Faculty 6">
+                        <div class="cg-card-overlay">
+                            <h3>Rohan Verma</h3>
+                            <p>Sports Director</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+7" alt="Faculty 7">
+                        <div class="cg-card-overlay">
+                            <h3>Sonia Williams</h3>
+                            <p>English Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+8" alt="Faculty 8">
+                        <div class="cg-card-overlay">
+                            <h3>Dr. Rajesh Kumar</h3>
+                            <p>Research Head</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+9" alt="Faculty 9">
+                        <div class="cg-card-overlay">
+                            <h3>Kriti Sen</h3>
+                            <p>Art & Design Mentor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+10" alt="Faculty 10">
+                        <div class="cg-card-overlay">
+                            <h3>Arjun Mehta</h3>
+                            <p>IT Specialist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+11" alt="Faculty 11">
+                        <div class="cg-card-overlay">
+                            <h3>Divya Hegde</h3>
+                            <p>Student Counselor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="cg-card-item">
+                    <div class="cg-card-inner">
+                        <img src="https://via.placeholder.com/400x500?text=Faculty+12" alt="Faculty 12">
+                        <div class="cg-card-overlay">
+                            <h3>Suresh Das</h3>
+                            <p>Admin Officer</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="cg-nav-btn cg-next-btn" aria-label="Next">&#10095;</button>
+    </div>
+
+    <!-- JavaScript Slider Engine -->
+    <script>
+        (function() {
+            let currentIndex = 0;
+            let autoSlideInterval;
             
-            let routeName = "";
-            if (randomGate === "CHANDANWARI GATE") {
-                routeName = "PAHALGAM";
-            } else if (randomGate === "DOMEL GATE") {
-                routeName = "BALTAL";
-            }
-            document.getElementById('outRouteText').innerText = routeName;
+            const track = document.querySelector('.cg-slider-track');
+            const prevBtn = document.querySelector('.cg-prev-btn');
+            const nextBtn = document.querySelector('.cg-next-btn');
+            const totalItems = document.querySelectorAll('.cg-card-item').length;
 
-            document.getElementById('outDate').innerText = randomDate;
-            document.getElementById('outPermitNo').innerText = "Permit No : " + permitNo;
-            document.getElementById('outName').innerText = name;
-            document.getElementById('outAadhaar').innerText = formattedAadhaar;
-            document.getElementById('outGender').innerText = gender;
-            document.getElementById('outDob').innerText = dob;
-            document.getElementById('outBg').innerText = bg;
-            document.getElementById('outFather').innerText = father;
-            document.getElementById('outAddress').innerText = father + " " + address;
-            document.getElementById('outEmergency').innerText = father + " (" + emergency + ")";
-
-            // ID Card update
-            document.getElementById('idCardPermitNo').innerText = permitNo;
-
-            if (photoDataUrl) {
-                const photoImg = document.getElementById('outPhoto');
-                photoImg.src = photoDataUrl;
-                photoImg.style.display = 'block';
+            function getVisibleCount() {
+                // Returns 3 for Desktop and 2 for Mobile based on Media Queries window width
+                return window.innerWidth <= 768 ? 2 : 3;
             }
 
-            if(fixedCardImageUrl.trim() !== "") {
-                const idPhotoImg = document.getElementById('idCardPhoto');
-                idPhotoImg.src = fixedCardImageUrl;
-                idPhotoImg.style.display = 'block';
+            function updateSliderPosition() {
+                const visibleCount = getVisibleCount();
+                const maxIndex = totalItems - visibleCount;
+
+                // Infinite loop protection/reset bounding box
+                if (currentIndex > maxIndex) {
+                    currentIndex = 0;
+                } else if (currentIndex < 0) {
+                    currentIndex = maxIndex;
+                }
+
+                // Smooth sliding based on exact card widths
+                const itemWidth = 100 / visibleCount;
+                track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
             }
 
-            if (shrineBoardLogoUrl.trim() !== "") document.getElementById('outBoardLogo').src = shrineBoardLogoUrl;
-            if (signatureImageUrl.trim() !== "") document.getElementById('outSigImg').src = signatureImageUrl;
-            if (ekycBadgeImageUrl.trim() !== "") document.getElementById('outEkycImg').src = ekycBadgeImageUrl;
-            if (stampImageUrl.trim() !== "") {
-                const stampImg = document.getElementById('outStamp');
-                stampImg.src = stampImageUrl; stampImg.style.display = 'block';
+            function nextSlide() {
+                const step = getVisibleCount(); // Desktop clicks skip 3 images, mobile clicks skip 2 images
+                currentIndex += step;
+                updateSliderPosition();
             }
-            if (aadhaarIconUrl.trim() !== "") document.getElementById('outAadhaarLogo').src = aadhaarIconUrl;
 
-            const qrData = `ID: ${permitNo} | Name: ${name} | UID: ****${aadhaar.slice(-4)}`;
-            document.getElementById('qrcode').innerHTML = ""; 
-            new QRCode(document.getElementById("qrcode"), { text: qrData, width: 65, height: 65, colorDark: "#000", colorLight: "#fff" });
-
-            document.getElementById('idCardQr').innerHTML = ""; 
-            new QRCode(document.getElementById("idCardQr"), { text: qrData, width: 100, height: 100, colorDark: "#000", colorLight: "#fff" });
-
-            // Swap Layouts
-            document.getElementById('input-section').style.display = 'none';
-            document.getElementById('output-section').style.display = 'flex';
-        }
-
-        document.getElementById('viewCardBtn').addEventListener('click', function() {
-            const cardContainer = document.getElementById('id-card-container');
-            if (cardContainer.style.display === 'none' || cardContainer.style.display === '') {
-                cardContainer.style.display = 'block';
-                this.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Hide ID Card';
-                this.classList.replace('btn-info', 'btn-secondary');
-            } else {
-                cardContainer.style.display = 'none';
-                this.innerHTML = '<i class="fa-solid fa-id-card"></i> View ID Card';
-                this.classList.replace('btn-secondary', 'btn-info');
+            function prevSlide() {
+                const step = getVisibleCount();
+                currentIndex -= step;
+                updateSliderPosition();
             }
-        });
 
-        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
-            window.scrollTo(0,0); 
-            const element = document.getElementById('permit-wrapper');
-            const opt = {
-                margin:       [0.2, 0.2, 0.2, 0.2], 
-                filename:     'Yatra_Permit_Document.pdf',
-                image:        { type: 'jpeg', quality: 1.0 },
-                html2canvas:  { scale: 2, useCORS: true, allowTaint: true },
-                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
-        });
+            // Starts 3-second cycle automation 
+            function startAutoSlide() {
+                stopAutoSlide();
+                autoSlideInterval = setInterval(nextSlide, 3000);
+            }
 
-        document.getElementById('downloadCardJpgBtn').addEventListener('click', function() {
-            window.scrollTo(0,0); 
-            const cardElement = document.getElementById('id-card-wrapper');
-            html2canvas(cardElement, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: "#ffffff" }).then(canvas => {
-                const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/jpeg', 1.0);
-                link.download = 'Yatra_ID_Card.jpg';
-                link.click();
+            function stopAutoSlide() {
+                if (autoSlideInterval) clearInterval(autoSlideInterval);
+            }
+
+            // Button Event Listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startAutoSlide(); // resets interval on user click
             });
-        });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startAutoSlide();
+            });
+
+            // Recalculates sizes instantly if screen rotates or resizes
+            window.addEventListener('resize', updateSliderPosition);
+
+            // Run initialization safely after DOM or asset mount
+            setTimeout(() => {
+                updateSliderPosition();
+                startAutoSlide();
+            }, 200);
+        })();
     </script>
-</body>
-</html>
+</div>
+<!-- Faculty & Leadership Slider Section End -->
+
+
+    
+    
+   
