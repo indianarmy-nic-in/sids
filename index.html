@@ -1,78 +1,97 @@
-<!-- SIDS Web Security Section Start (Anti-Copy, Anti-Save & Anti-Zoom) -->
+<!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
 <style>
-  /* --- CSS SE TEXT SELECTION BLOCK --- */
-  body {
-    -webkit-user-select: none !important;  /* Safari */
-    -moz-user-select: none !important;     /* Firefox */
-    -ms-user-select: none !important;      /* IE10+ */
-    user-select: none !important;          /* Standard Browsers */
+  /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
+  html, body {
+    /* Mobile me pinch-to-zoom aur double-tap-zoom ko completely disable karne ke liye CSS property */
+    touch-action: none !important; 
+    touch-action: pan-x pan-y !important; /* Sirf scroll karne dega, zoom nahi */
     
-    /* Mobile me long-press tap highlight ko rokne ke liye */
+    -webkit-user-select: none !important;  
+    -moz-user-select: none !important;     
+    -ms-user-select: none !important;      
+    user-select: none !important;          
     -webkit-touch-callout: none !important; 
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
   }
 
-  /* --- IMAGES KO PROTECT KARNE KE LIYE --- */
+  /* --- 2. IMAGES PROTECTION --- */
   img {
-    -webkit-user-drag: none !important;    /* Image drag karke desktop par drop nahi ki ja sakti */
+    -webkit-user-drag: none !important;    
     user-drag: none !important;
-    pointer-events: none !important;       /* Right-click ya long-press par save options ko block karta hai */
+    pointer-events: none !important;       
   }
 
-  /* Input and Textarea ko copy-protection se door rakha hai taaki form sahi se kaam kare */
-  input, textarea {
+  /* Forms ke andar typing me koi problem na ho, isliye exemption */
+  input, textarea, select {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
     -ms-user-select: text !important;
     user-select: text !important;
+    touch-action: auto !important; /* Form fields par default touch action allowed rahega */
   }
 </style>
 
 <script>
   (function() {
-    // 1. MOBILE VIEW ZOOMING DISABLE CRITICAL FIX
-    // Pehle se maujood viewport meta tag ko update ya naya force karega taaki pinch-to-zoom block ho sake
+    // 1. HIGH-PRIORITY VIEWPORT FORCING
+    // Yeh meta tag browser ko batata hai ki screen ka zoom level 1.0 par lock rahe
     let viewportMeta = document.querySelector('meta[name="viewport"]');
     if (!viewportMeta) {
       viewportMeta = document.createElement('meta');
       viewportMeta.name = "viewport";
       document.getElementsByTagName('head')[0].appendChild(viewportMeta);
     }
-    viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+    viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no";
 
-    // 2. DESKTOP VIEW MOUSE WHEEL ZOOM DISABLE (Ctrl + Wheel)
+    // 2. JAVASCRIPT TOUCH-GESTURE CORES (CRITICAL FOR MOBILE ZOOM LOCK)
+    // Jab koi do ungliyon (2 fingers) se pinch karne ki koshish karega, ye use block karega
+    document.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault(); // Multi-touch zoom block
+      }
+    }, { passive: false });
+
+    // Double tap karke zoom karne ki koshish ko block karne ke liye
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault(); // 300ms ke andar double tap block
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
+
+    // 3. DESKTOP VIEW ZOOM DISABLE (Ctrl + Wheel & Keys)
     window.addEventListener('wheel', function(e) {
       if (e.ctrlKey) {
         e.preventDefault();
       }
     }, { passive: false });
 
-    // 3. DESKTOP VIEW KEYBOARD ZOOM DISABLE (Ctrl + Plus, Ctrl + Minus, Ctrl + 0)
     window.addEventListener('keydown', function(e) {
       if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '+' || e.key === '0')) {
         e.preventDefault();
       }
-      // Ctrl + S (Save Page) aur Ctrl + C (Copy), Ctrl + U (View Source) ko block karne ke liye
       if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U')) {
         e.preventDefault();
       }
     });
 
-    // 4. RIGHT CLICK DISABLED (Bina kisi error popup ke, completely silent block)
+    // 4. SILENT RIGHT-CLICK & COPY DISABLE
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
 
-    // 5. COPY AUR CUT EVENT BALANCED BLOCK
     document.addEventListener('copy', function(e) {
       e.preventDefault();
     });
+    
     document.addEventListener('cut', function(e) {
       e.preventDefault();
     });
   })();
 </script>
-<!-- SIDS Web Security Section End -->
+<!-- SIDS Strict Mobile Anti-Zoom & Protection Section End -->
 
 
 
@@ -823,7 +842,7 @@
         <div class='ts-col ts-col-50 ts-text-side'>
           <span class='ts-section-tag'>ABOUT US</span>
           <h2 class='ts-main-heading'>Helping Businesses Grow with <span class='ts-highlight-blue'>Smart Digital Solutions</span></h2>
-          <p class='ts-paragraph'>Techsky Media is a results-driven digital agency focused on helping businesses build a strong online presence. From website development and SEO to digital marketing and branding, we create innovative solutions tailored to your business goals.</p>
+          <p class='ts-paragraph'>SIDS India is a results-driven digital agency focused on helping businesses build a strong online presence. From website development and SEO to digital marketing and branding, we create innovative solutions tailored to your business goals.</p>
           <p class='ts-paragraph'>Our team combines creativity, technology, and strategy to deliver impactful digital experiences that drive growth, engagement, and long-term success.</p>
           
           <div class='ts-btn-group'>
