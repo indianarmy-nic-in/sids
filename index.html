@@ -1,3 +1,81 @@
+<!-- SIDS Web Security Section Start (Anti-Copy, Anti-Save & Anti-Zoom) -->
+<style>
+  /* --- CSS SE TEXT SELECTION BLOCK --- */
+  body {
+    -webkit-user-select: none !important;  /* Safari */
+    -moz-user-select: none !important;     /* Firefox */
+    -ms-user-select: none !important;      /* IE10+ */
+    user-select: none !important;          /* Standard Browsers */
+    
+    /* Mobile me long-press tap highlight ko rokne ke liye */
+    -webkit-touch-callout: none !important; 
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  }
+
+  /* --- IMAGES KO PROTECT KARNE KE LIYE --- */
+  img {
+    -webkit-user-drag: none !important;    /* Image drag karke desktop par drop nahi ki ja sakti */
+    user-drag: none !important;
+    pointer-events: none !important;       /* Right-click ya long-press par save options ko block karta hai */
+  }
+
+  /* Input and Textarea ko copy-protection se door rakha hai taaki form sahi se kaam kare */
+  input, textarea {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+  }
+</style>
+
+<script>
+  (function() {
+    // 1. MOBILE VIEW ZOOMING DISABLE CRITICAL FIX
+    // Pehle se maujood viewport meta tag ko update ya naya force karega taaki pinch-to-zoom block ho sake
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.name = "viewport";
+      document.getElementsByTagName('head')[0].appendChild(viewportMeta);
+    }
+    viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+
+    // 2. DESKTOP VIEW MOUSE WHEEL ZOOM DISABLE (Ctrl + Wheel)
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // 3. DESKTOP VIEW KEYBOARD ZOOM DISABLE (Ctrl + Plus, Ctrl + Minus, Ctrl + 0)
+    window.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '+' || e.key === '0')) {
+        e.preventDefault();
+      }
+      // Ctrl + S (Save Page) aur Ctrl + C (Copy), Ctrl + U (View Source) ko block karne ke liye
+      if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+      }
+    });
+
+    // 4. RIGHT CLICK DISABLED (Bina kisi error popup ke, completely silent block)
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // 5. COPY AUR CUT EVENT BALANCED BLOCK
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+    });
+    document.addEventListener('cut', function(e) {
+      e.preventDefault();
+    });
+  })();
+</script>
+<!-- SIDS Web Security Section End -->
+
+
+
 <!-- SEO Meta Tags, Favicon, and Title Setup Start -->
 <!-- 1. Website Title -->
 <title>SIDS INDIA | Creative Hub - Website Design & Development</title>
