@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Contact Us Form</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+            --success: #16a34a;
+            --error: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .contact-container {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Access Key Highlighted Field */
+        .access-key-input {
+            background-color: #f0fdf4;
+            border: 1px dashed var(--success);
+            font-weight: 500;
+        }
+
+        .btn-submit {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-submit:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        #alert-box {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
+
+        #alert-box.success {
+            display: block;
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        #alert-box.error {
+            display: block;
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contact-container">
+    <div class="header">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you. Please fill out the form below.</p>
+    </div>
+
+    <form id="contactForm" method="POST">
+        <!-- Web3Forms Hidden Core Configurations -->
+        <input type="hidden" name="access_key" id="web3forms_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New Contact Us Submission">
+        <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+        <!-- Dynamic Access Key Field for testing/switching keys easily -->
+        <div class="form-group">
+            <label for="visible_key">Web3Forms Access Key *</label>
+            <input type="text" id="visible_key" class="access-key-input" placeholder="Paste your Web3Forms Access Key here..." required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="subject_opt">Purpose of Contact *</label>
+            <select id="subject_opt" name="contact_purpose" required>
+                <option value="" disabled selected>Choose a topic</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Business Partnership">Business Partnership</option>
+                <option value="Feedback">Feedback</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-submit">Send Message</button>
+    </form>
+
+    <div id="alert-box"></div>
+</div>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const visibleKeyInput = document.getElementById('visible_key');
+    const hiddenKeyInput = document.getElementById('web3forms_key');
+    const alertBox = document.getElementById('alert-box');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Transferring the key from UI input to hidden input smoothly
+    visibleKeyInput.addEventListener('input', (e) => {
+        hiddenKeyInput.value = e.target.value.trim();
+    });
+
+    // Form Submission Handler using Fetch API
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Safety check if the key is empty or placeholder value
+        if (!hiddenKeyInput.value || hiddenKeyInput.value === '2fa3ac36-c92e-41c9-9cca-c98cd1643e16') {
+            alertBox.className = 'error';
+            alertBox.innerText = 'Please provide a valid Web3Forms Access Key.';
+            return;
+        }
+
+        // Processing / Loading State
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Sending Message...';
+        alertBox.style.display = 'none';
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                alertBox.className = 'success';
+                alertBox.innerText = 'Thank you! Your message has been sent successfully.';
+                form.reset();
+                hiddenKeyInput.value = ''; // Reset core key maps
+            } else {
+                alertBox.className = 'error';
+                alertBox.innerText = res.message || 'Submission failed. Please check key or inputs.';
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alertBox.className = 'error';
+            alertBox.innerText = 'Network error occurred. Please try again.';
+        })
+        .then(function() {
+            // Re-enabling the button states
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Send Message';
+            
+            // Auto hide alerts after 5 seconds
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        });
+    });
+</script>
+
+</body>
+</html>
