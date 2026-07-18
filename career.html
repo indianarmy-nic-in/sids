@@ -3,101 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Career Application Form</title>
+    <title>Career Application Form with Resume Upload</title>
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text-dark: #0f172a;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --success-color: #16a34a;
-            --error-color: #dc2626;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --error: #dc2626;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        
         .form-container {
-            background: var(--card-bg);
+            background: var(--card);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             width: 100%;
             max-width: 600px;
         }
 
-        .form-header {
-            margin-bottom: 28px;
-            text-align: center;
-        }
+        .form-header { margin-bottom: 28px; text-align: center; }
+        .form-header h2 { font-size: 26px; color: var(--text-dark); margin-bottom: 8px; font-weight: 700; }
+        .form-header p { color: var(--text-muted); font-size: 15px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #334155; }
 
-        .form-header h2 {
-            font-size: 26px;
-            color: #0f172a;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .form-header p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #334155;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
+        input[type="text"], input[type="email"], textarea, input[type="file"] {
             width: 100%;
             padding: 12px 14px;
             border: 1px solid var(--border-color);
+            border: 1px solid var(--border);
             border-radius: 6px;
             font-size: 15px;
-            transition: all 0.2s ease;
-            background-color: #fff;
-            color: var(--text-main);
             outline: none;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            background: #f1f5f9;
+            cursor: pointer;
         }
 
         input:focus, textarea:focus {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        textarea { resize: vertical; min-height: 120px; }
 
         .btn-submit {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
             border: none;
             padding: 14px 20px;
@@ -106,19 +70,12 @@
             border-radius: 6px;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.2s ease;
+            transition: background 0.2s ease;
             margin-top: 10px;
         }
 
-        .btn-submit:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-submit:disabled {
-            background-color: var(--text-muted);
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
+        .btn-submit:hover { background-color: var(--primary-hover); }
+        .btn-submit:disabled { background-color: var(--text-muted); cursor: not-allowed; opacity: 0.7; }
 
         #result {
             margin-top: 20px;
@@ -129,20 +86,8 @@
             display: none;
             font-weight: 500;
         }
-
-        #result.success {
-            display: block;
-            background-color: #dcfce7;
-            color: var(--success-color);
-            border: 1px solid #bbf7d0;
-        }
-
-        #result.error {
-            display: block;
-            background-color: #fee2e2;
-            color: var(--error-color);
-            border: 1px solid #fecaca;
-        }
+        #result.success { display: block; background-color: #dcfce7; color: var(--success); border: 1px solid #bbf7d0; }
+        #result.error { display: block; background-color: #fee2e2; color: var(--error); border: 1px solid #fecaca; }
     </style>
 </head>
 <body>
@@ -150,15 +95,12 @@
 <div class="form-container">
     <div class="form-header">
         <h2>Career Application Form</h2>
-        <p>Apply now by filling up your details below.</p>
+        <p>Apply now by filling up your details and uploading your documents.</p>
     </div>
 
-    <!-- HTML Form Structure -->
-    <form id="form" method="POST">
-        <!-- Aapki Web3Forms Access Key Hidden Field Me -->
+    <!-- IMP: enctype="multipart/form-data" add kiya hai file transfer ke liye -->
+    <form id="form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="access_key" value="21a517e3-1904-4a3c-9638-ac5684ff5dcb">
-        
-        <!-- Optional HoneyPot Field Spam Filters ke liye -->
         <input type="checkbox" name="botcheck" style="display: none;">
 
         <div class="form-group">
@@ -171,19 +113,23 @@
             <input type="email" id="email" name="email" placeholder="name@example.com" required>
         </div>
 
+        <!-- FILE UPLOAD FIELD -->
         <div class="form-group">
-            <label for="message">Cover Letter / Message *</label>
-            <textarea id="message" name="message" placeholder="Describe your experience or paste your cover letter here..." required></textarea>
+            <label for="attachment">Upload Resume / Document (PDF, JPG, PNG) *</label>
+            <input type="file" id="attachment" name="attachment" accept=".pdf, .jpg, .jpeg, .png" required>
         </div>
 
-        <button type="submit" class="btn-submit">Submit Form</button>
+        <div class="form-group">
+            <label for="message">Cover Letter / Message *</label>
+            <textarea id="message" name="message" placeholder="Describe your experience..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Application</button>
     </form>
 
-    <!-- Success/Error Messages Display Section -->
     <div id="result"></div>
 </div>
 
-<!-- JavaScript Engine Logic (Form Handling, Loader & Fetch Submission) -->
 <script>
     const form = document.getElementById('form');
     const result = document.getElementById('result');
@@ -192,28 +138,28 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Processing & Loader State
         result.style.display = 'block';
         result.className = ''; 
-        result.innerHTML = "Sending...";
+        result.innerHTML = "Sending Application...";
         
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = "Sending...";
+        submitBtn.textContent = "Uploading & Sending...";
         submitBtn.disabled = true;
 
+        // Direct FormData browser engine pass karega file ke saath
         const formData = new FormData(form);
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                body: formData
+                body: formData // JSON stringify nahi karna hai ab
             });
 
             const data = await response.json();
 
             if (data.success) {
                 result.className = 'success';
-                result.innerHTML = "Form Submitted Successfully";
+                result.innerHTML = "Form & Attachment Submitted Successfully!";
                 form.reset();
             } else {
                 result.className = 'error';
@@ -224,14 +170,12 @@
             result.className = 'error';
             result.innerHTML = "Network error. Please try again.";
         } finally {
-            // Restore Button State
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
             
-            // Message ko 5 seconds baad auto-hide karne ke liye
             setTimeout(() => {
                 result.style.display = 'none';
-            }, 5000);
+            }, 6000);
         }
     });
 </script>
