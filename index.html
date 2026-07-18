@@ -1,0 +1,745 @@
+ <!-- Full Width Navbar Container -->
+
+<div class='mani-nav-full-width'>
+
+  <nav class='mani-navbar'>
+
+    
+
+    <!-- Logo Zone -->
+
+    <a class='mani-nav-logo' href='https://sids.manishchaudharymathura.in/'>
+
+      <div class='mani-logo-flex-wrapper'>
+
+        <div class='mani-logo-flip-box'>
+
+          <img alt='Logo' class='mani-logo-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+
+        </div>
+
+        <div class='mani-slide-text-container'>
+
+          <div class='mani-logo-text-group'>
+
+            <div class='mani-main-brand'>
+
+              <span class='mani-first-word'>SIDS</span><span class='mani-logo-highlight'>INDIA</span>
+
+            </div>
+
+            <div class='mani-sub-brand'>CREATIVE HUB</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- 4 Clean Navbar Links (Home Removed) -->
+
+    <div class='mani-nav-links'>
+
+      <a href='#about' class='mani-link-item active' data-target='about'>About</a>
+
+      <a href='#services' class='mani-link-item' data-target='services'>Services</a>
+
+      <a href='#portfolio' class='mani-link-item' data-target='portfolio'>Portfolio</a>
+
+      <a href='#contact' class='mani-link-item' data-target='contact'>Contact</a>
+
+    </div>
+
+
+
+    <!-- Back to Main Redirect Button (Replaced Hire Us) -->
+
+    <a class='mani-nav-back-btn' id="mani-back-trigger" href='#'>
+
+      <span>Back to Main</span>
+
+    </a>
+
+    
+
+  </nav>
+
+</div>
+
+
+
+<!-- Modern Full Screen Loader Overlay -->
+
+<div id="mani-loader-overlay" class="mani-loader-hidden">
+
+  <div class="mani-spinner-box">
+
+    <div class="mani-double-bounce1"></div>
+
+    <div class="mani-double-bounce2"></div>
+
+  </div>
+
+  <p id="mani-loader-text">Loading Section...</p>
+
+</div>
+
+
+
+<!-- MAIN DYNAMIC CONTENT AREA (Desktop aur Mobile optimized widths) -->
+
+<main class="mani-preview-container">
+
+  <div id="dynamic-content">
+
+    
+
+    <!-- DEFAULT VIEW: ABOUT SECTION (Rich content and image) -->
+
+    <div class="preview-card animate-fade">
+
+      <div class="mani-grid-layout">
+
+        <div class="mani-content-col">
+
+          <h2>About SIDS INDIA</h2>
+
+          <p class="mani-lead-text">We craft next-generation digital experiences that elevate brands and build global value chains.</p>
+
+          <p>SIDS INDIA Creative Hub ek global innovation agency hai. Hum businesses ke liye modern solutions, UI/UX optimization, aur high-performance digital architectures design karte hain. Hamara maqsad aapke business goals ko technology ke sath align karna hai.</p>
+
+          <div class="mani-features-list">
+
+            <div class="feature-tag">✨ Premium Strategy</div>
+
+            <div class="feature-tag">🚀 Rapid Scaling</div>
+
+            <div class="feature-tag">🎨 Award Winning Designs</div>
+
+          </div>
+
+        </div>
+
+        <div class="mani-image-col">
+
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="About SIDS India team" class="section-responsive-img"/>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</main>
+
+
+
+<!-- Footer Section -->
+
+<footer class="mani-site-footer">
+
+  <p>Copyright by 2026 / manish chaudhary website</p>
+
+</footer>
+
+
+
+<!-- CSS STYLING -->
+
+<style type='text/css'>
+
+/* Global & Reset Core */
+
+.mani-nav-full-width {
+
+  width: 100%;
+
+  background-color: #1e3a8a;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  position: relative;
+
+  z-index: 9999;
+
+}
+
+
+
+.mani-navbar {
+
+  max-width: 1300px;
+
+  margin: 0 auto;
+
+  padding: 0 20px;
+
+  height: 75px; 
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+}
+
+
+
+.mani-navbar * { box-sizing: border-box; }
+
+
+
+/* Logo Styles */
+
+.mani-logo-flex-wrapper { display: flex; align-items: center; gap: 14px; height: 100%; }
+
+.mani-nav-logo { text-decoration: none !important; white-space: nowrap; display: inline-block; }
+
+.mani-logo-flip-box {
+
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+
+  position: relative; flex-shrink: 0; border-radius: 50%; overflow: hidden; border: 2px solid #ffffff;
+
+}
+
+.mani-logo-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+
+
+.mani-logo-flip-box::after {
+
+  content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+
+  transform: skewX(-25deg); animation: shinyGleamEffect 4s ease-in-out infinite;
+
+}
+
+@keyframes shinyGleamEffect {
+
+  0% { left: -150%; }
+
+  30%, 100% { left: 150%; }
+
+}
+
+
+
+.mani-slide-text-container { overflow: hidden; display: inline-block; vertical-align: middle; padding-right: 20px; }
+
+.mani-logo-text-group { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+
+.mani-main-brand { font-size: 22px; font-weight: 800; color: #ffffff !important; line-height: 1.1; display: flex; align-items: center; }
+
+.mani-first-word { margin-right: 10px; }
+
+.mani-logo-highlight { color: #f17329; }
+
+.mani-sub-brand { font-size: 10px; font-weight: 600; color: #e2e8f0; letter-spacing: 1.5px; margin-top: 2px; text-transform: uppercase; }
+
+
+
+/* Navbar Links Core */
+
+.mani-nav-links { display: flex; gap: 28px; align-items: center; }
+
+.mani-link-item {
+
+  color: #e2e8f0; text-decoration: none; font-size: 15px; font-weight: 600;
+
+  padding: 6px 4px; position: relative; transition: all 0.25s ease;
+
+}
+
+.mani-link-item:hover, .mani-link-item.active { color: #ffffff; }
+
+.mani-link-item::after {
+
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+
+  background-color: #f17329; transition: width 0.3s ease;
+
+}
+
+.mani-link-item:hover::after, .mani-link-item.active::after { width: 100%; }
+
+
+
+/* Back Button Design (Updated from Hire Us) */
+
+.mani-nav-back-btn {
+
+  background: #ef4444; color: #ffffff !important; text-decoration: none !important;
+
+  font-size: 14px; font-weight: 700; padding: 10px 22px; border-radius: 4px;
+
+  text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;
+
+  transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.25);
+
+  flex-shrink: 0;
+
+}
+
+.mani-nav-back-btn:hover { background: #ffffff; color: #ef4444 !important; transform: translateY(-1.5px); }
+
+
+
+/* Loader Design Overlay */
+
+#mani-loader-overlay {
+
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.96); z-index: 100000;
+
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+
+}
+
+#mani-loader-overlay.mani-loader-visible { opacity: 1; pointer-events: auto; }
+
+#mani-loader-overlay p {
+
+  margin-top: 20px; font-family: sans-serif; font-weight: 600; color: #1e3a8a; letter-spacing: 0.5px;
+
+}
+
+.mani-spinner-box { width: 50px; height: 50px; position: relative; }
+
+.mani-double-bounce1, .mani-double-bounce2 {
+
+  width: 100%; height: 100%; border-radius: 50%; background-color: #f17329;
+
+  opacity: 0.6; position: absolute; top: 0; left: 0; animation: sk-bounce 2.0s infinite ease-in-out;
+
+}
+
+.mani-double-bounce2 { background-color: #1e3a8a; animation-delay: -1.0s; }
+
+@keyframes sk-bounce { 0%, 100% { transform: scale(0.0); } 50% { transform: scale(1.0); } }
+
+
+
+/* Main Screen Preview Content Architecture */
+
+.mani-preview-container {
+
+  max-width: 1250px; margin: 50px auto; padding: 0 20px; min-height: 500px;
+
+  box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif;
+
+}
+
+.preview-card {
+
+  background: #ffffff; padding: 40px; border-radius: 16px;
+
+  box-shadow: 0 12px 35px rgba(0,0,0,0.04); border: 1px solid #e9eff6;
+
+}
+
+.mani-grid-layout {
+
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;
+
+}
+
+.mani-content-col h2 { color: #1e3a8a; margin-top: 0; font-size: 32px; font-weight: 800; }
+
+.mani-lead-text { font-size: 18px; color: #334155; font-weight: 600; line-height: 1.5; }
+
+.mani-content-col p { color: #64748b; line-height: 1.7; font-size: 15px; }
+
+
+
+/* Features tags styling instead of code */
+
+.mani-features-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+
+.feature-tag {
+
+  background: #eff6ff; color: #1e40af; padding: 8px 16px; border-radius: 30px;
+
+  font-size: 13px; font-weight: 600; border: 1px solid #dbeafe;
+
+}
+
+
+
+/* Image styling */
+
+.mani-image-col { width: 100%; height: 100%; min-height: 300px; }
+
+.section-responsive-img {
+
+  width: 100%; height: 100%; max-height: 400px; object-fit: cover;
+
+  border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+
+}
+
+
+
+/* Portfolio & Service Specific Cards Setup */
+
+.portfolio-grid, .services-grid {
+
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;
+
+}
+
+.grid-item-card {
+
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden;
+
+  transition: transform 0.3s ease;
+
+}
+
+.grid-item-card:hover { transform: translateY(-5px); }
+
+.grid-item-card img { width: 100%; height: 200px; object-fit: cover; }
+
+.grid-item-info { padding: 20px; }
+
+.grid-item-info h3 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 19px; }
+
+.grid-item-info p { margin: 0; font-size: 14px; color: #64748b; }
+
+
+
+/* Footer */
+
+.mani-site-footer {
+
+  width: 100%; background: #0f172a; color: #94a3b8; text-align: center;
+
+  padding: 25px 20px; font-size: 14px; font-weight: 500;
+
+  border-top: 3px solid #f17329; margin-top: 70px;
+
+}
+
+
+
+.animate-fade { animation: fadeIn 0.4s ease forwards; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+
+
+/* RESPONSIVE LAYOUT (Desktop & Mobile Matrix Auto-Width) */
+
+@media (max-width: 992px) {
+
+  .mani-grid-layout { grid-template-columns: 1fr; gap: 30px; }
+
+  .mani-image-col { min-height: auto; text-align: center; }
+
+  .section-responsive-img { max-height: 300px; width: 100%; }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .mani-navbar { height: auto; padding: 15px; flex-direction: column; gap: 15px; }
+
+  .mani-nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+  .mani-logo-flex-wrapper { gap: 10px; }
+
+  .mani-main-brand { font-size: 18px; }
+
+  .mani-sub-brand { font-size: 8px; }
+
+  .mani-nav-back-btn { width: 100%; text-align: center; padding: 10px 0; }
+
+  .mani-preview-container { margin: 25px auto; padding: 0 15px; }
+
+  .preview-card { padding: 25px; }
+
+}
+
+</style>
+
+
+
+<!-- JAVASCRIPT CODE WITH REAL TIME URL MANIPULATION & REDIRECTS -->
+
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const links = document.querySelectorAll('.mani-link-item');
+
+  const loader = document.getElementById('mani-loader-overlay');
+
+  const loaderText = document.getElementById('mani-loader-text');
+
+  const contentArea = document.getElementById('dynamic-content');
+
+  const backBtn = document.getElementById('mani-back-trigger');
+
+
+
+  // Real business images aur pages data framework stack
+
+  const pageData = {
+
+    about: `
+
+      <div class="preview-card animate-fade">
+
+        <div class="mani-grid-layout">
+
+          <div class="mani-content-col">
+
+            <h2>About SIDS INDIA</h2>
+
+            <p class="mani-lead-text">We craft next-generation digital experiences that elevate brands and build global value chains.</p>
+
+            <p>SIDS INDIA Creative Hub ek global innovation agency hai. Hum businesses ke liye modern solutions, UI/UX optimization, aur high-performance digital architectures design karte hain. Hamara maqsad aapke business goals ko technology ke sath align karna hai.</p>
+
+            <div class="mani-features-list">
+
+              <div class="feature-tag">✨ Premium Strategy</div>
+
+              <div class="feature-tag">🚀 Rapid Scaling</div>
+
+              <div class="feature-tag">🎨 Award Winning Designs</div>
+
+            </div>
+
+          </div>
+
+          <div class="mani-image-col">
+
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="About SIDS India team" class="section-responsive-img"/>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `,
+
+    services: `
+
+      <div class="preview-card animate-fade">
+
+        <h2>Our Premium Services</h2>
+
+        <p class="mani-lead-text">Strategic engineering designed to turn complex problems into growth engines.</p>
+
+        <div class="services-grid">
+
+          <div class="grid-item-card">
+
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="UI Development"/>
+
+            <div class="grid-item-info">
+
+              <h3>Creative Web Design</h3>
+
+              <p>Modern UI architectures designed for lightning fast user engagement.</p>
+
+            </div>
+
+          </div>
+
+          <div class="grid-item-card">
+
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=80" alt="Consulting"/>
+
+            <div class="grid-item-info">
+
+              <h3>Expert Consulting</h3>
+
+              <p>Scale your business architecture under standard global paradigms.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `,
+
+    portfolio: `
+
+      <div class="preview-card animate-fade">
+
+        <h2>Interactive Showcase</h2>
+
+        <p class="mani-lead-text">Explore our recent elite brand custom setups deployed successfully.</p>
+
+        <div class="portfolio-grid">
+
+          <div class="grid-item-card">
+
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80" alt="Project Alpha"/>
+
+            <div class="grid-item-info">
+
+              <h3>Brand Hub System</h3>
+
+              <p>E-Commerce layout redesign scaling conversion rates.</p>
+
+            </div>
+
+          </div>
+
+          <div class="grid-item-card">
+
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=500&q=80" alt="Project Beta"/>
+
+            <div class="grid-item-info">
+
+              <h3>Dashboard Panel</h3>
+
+              <p>High-end administrative interface with interactive visuals.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `,
+
+    contact: `
+
+      <div class="preview-card animate-fade">
+
+        <div class="mani-grid-layout">
+
+          <div class="mani-content-col">
+
+            <h2>Get In Touch</h2>
+
+            <p class="mani-lead-text">Ready to experience digital acceleration? Let's cooperate.</p>
+
+            <p>Aap hume contact panel system ya directly coordination hubs ke zariye reach out kar sakte hain. SIDS India Hub 24/7 corporate support frameworks provide karta hai.</p>
+
+            <p><strong>Email:</strong> team@sidsindia.in<br><strong>Location:</strong> Creative Studios, Hub Complex</p>
+
+          </div>
+
+          <div class="mani-image-col">
+
+            <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=800&q=80" alt="Contact support"/>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `
+
+  };
+
+
+
+  // 1. Navigation Event Listeners
+
+  links.forEach(link => {
+
+    link.addEventListener('click', function(e) {
+
+      e.preventDefault();
+
+      
+
+      const target = this.getAttribute('data-target');
+
+      
+
+      // Active states changes
+
+      links.forEach(l => l.classList.remove('active'));
+
+      this.classList.add('active');
+
+
+
+      // URL Change Action (Real System simulation: index.html/about)
+
+      window.history.pushState(null, null, 'index.html/' + target);
+
+
+
+      // Trigger 4-Second Loader
+
+      loaderText.innerText = "Loading " + target.toUpperCase() + " Section...";
+
+      loader.classList.add('mani-loader-visible');
+
+
+
+      setTimeout(function() {
+
+        loader.classList.remove('mani-loader-visible');
+
+        contentArea.innerHTML = pageData[target] || pageData['about'];
+
+      }, 4000); // 4 Seconds Load time
+
+    });
+
+  });
+
+
+
+  // 2. Back Button Action (3 Second Loading + Redirect Trigger)
+
+  backBtn.addEventListener('click', function(e) {
+
+    e.preventDefault();
+
+    
+
+    loaderText.innerText = "Redirecting to Website Panel...";
+
+    loader.classList.add('mani-loader-visible');
+
+
+
+    setTimeout(function() {
+
+      loader.classList.remove('mani-loader-visible');
+
+      window.location.href = "https://sids.manishchaudharymathura.in/";
+
+    }, 3000); // Exactly 3 seconds load time for redirection
+
+  });
+
+});
+
+</script>
