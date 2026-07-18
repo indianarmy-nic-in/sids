@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yatra Permit & ID Card Generator (3D UI)</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- FontAwesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Modern 3D Background */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            user-select: none; 
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        img { pointer-events: none; -webkit-user-drag: none; }
+
+        /* Preloader */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+        .preloader-img { width: 100px; height: 100px; object-fit: contain; animation: pulseAnim 1.5s infinite; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+        @keyframes pulseAnim {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3)); }
+            100% { transform: scale(0.85); opacity: 0.8; }
+        }
+        .preloader-text { margin-top: 20px; font-size: 18px; font-weight: bold; color: #333; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* 3D Glass Panel Effect */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,0.8);
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-panel:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15), inset 0 2px 0 rgba(255,255,255,1);
+        }
+
+        /* -------------------------------------------
+           LAYOUT 1: Single Box for Image + Form
+           ------------------------------------------- */
+        .main-dual-box {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .image-half {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed rgba(0,0,0,0.1);
+        }
+        
+        /* STRICTLY SMALL IMAGE (LOGO STYLE) */
+        .image-half img {
+            width: 130px; 
+            height: 130px;
+            object-fit: contain; /* Ensures the whole image is visible without stretching */
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            border-radius: 12px;
+        }
+        .image-half:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-overlay-text {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .form-half {
+            padding: 25px 0 0 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* -------------------------------------------
+           LAYOUT 2: Separate Boxes for Result & Action
+           ------------------------------------------- */
+        .output-layout {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .permit-box { padding: 25px; width: 100%; }
+        .action-box { padding: 25px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        /* Desktop Breakpoint */
+        @media (min-width: 900px) {
+            .main-dual-box {
+                flex-direction: row;
+                align-items: center; /* Vertically Centers everything perfectly */
+                padding: 40px;
+            }
+            .image-half {
+                width: 40%;
+                border-bottom: none;
+                border-right: 2px dashed rgba(0,0,0,0.1);
+                padding-bottom: 0;
+                padding-right: 30px;
+            }
+            .image-half img {
+                width: 180px; /* Thoda sa bada on desktop, still small */
+                height: 180px;
+            }
+            .image-overlay-text {
+                font-size: 22px;
+                margin-top: 25px;
+            }
+            .form-half {
+                width: 60%;
+                padding: 0 0 0 40px;
+            }
+
+            .output-layout {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .permit-box { width: 62%; }
+            .action-box { width: 38%; }
+        }
+
+        /* Form Elements */
+        .form-header { text-align: center; margin-bottom: 25px; }
+        .form-header h2 { margin: 0; color: #2c3e50; font-size: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); border-bottom: 2px solid #007bff; display: inline-block; padding-bottom: 5px;}
+
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; width: 100%; position: relative; }
+        .form-group label { font-weight: bold; margin-bottom: 6px; font-size: 13px; color: #444;}
+        .form-group input, .form-group select {
+            padding: 12px 15px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 14px; 
+            box-sizing: border-box; 
+            width: 100%;
+            background: #f0f3f8;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            background: #fff;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0, 123, 255, 0.4);
+        }
+        
+        .status-icon { position: absolute; right: 12px; top: 36px; font-size: 18px; display: none; }
+        .status-icon.loading { color: #007bff; }
+        .status-icon.success { color: #28a745; text-shadow: 0 0 5px rgba(40, 167, 69, 0.4); }
+
+        .row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .row .form-group { flex: 1; min-width: 45%; }
+
+        /* 3D Buttons */
+        button {
+            width: 100%; padding: 14px; color: white;
+            border: none; border-radius: 8px; font-size: 16px; font-weight: bold;
+            cursor: pointer; transition: all 0.2s; margin-top: 15px; box-sizing: border-box;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2), inset 0 -3px 0 rgba(0,0,0,0.2);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        button:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2), inset 0 -1px 0 rgba(0,0,0,0.2);
+        }
+        .btn-primary { background: linear-gradient(135deg, #007bff, #0056b3); }
+        .btn-success { background: linear-gradient(135deg, #28a745, #1e7e34); }
+        .btn-info { background: linear-gradient(135deg, #17a2b8, #117a8b); }
+        .btn-secondary { background: linear-gradient(135deg, #6c757d, #495057); }
+
+        #loader { display: none; text-align: center; margin-top: 20px; font-weight: bold; color: #d9534f; }
+
+        /* -------------------------------------------
+           PERMIT TABLE 
+           ------------------------------------------- */
+        .permit-wrapper {
+            background: #fff; width: 100%; padding: 15px;
+            box-sizing: border-box; overflow: visible; 
+            border-radius: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        table.permit-table {
+            width: 100%; border-collapse: collapse !important; font-family: "Times New Roman", Times, serif;
+            color: #000; border: 2px solid #000 !important; table-layout: fixed; word-wrap: break-word;
+        }
+        table.permit-table td, table.permit-table th {
+            border: 1px solid #000 !important; padding: 8px; font-size: 14px; vertical-align: middle;
+        }
+
+        .header-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; flex-wrap: wrap;}
+        .logo-qr-row { display: flex; justify-content: space-between; align-items: center; gap: 5px;}
+        .logo-box-img { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
+        .center-text { text-align: center; flex-grow: 1; }
+        .center-text h3 { margin: 0; font-size: 16px; font-weight: bold; }
+        .center-text h4 { margin: 2px 0; font-size: 14px; font-weight: normal; }
+        .qr-box { width: 65px; height: 65px; flex-shrink: 0; }
+        .qr-box img { width: 100%; height: 100%; }
+
+        .note-row { text-align: center; font-size: 10px; font-weight: bold; }
+        .photo-row { display: flex; justify-content: space-between; align-items: center; }
+        .route-text { font-size: 22px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;}
+        
+        .photo-box { width: 85px; height: 105px; border: 1px solid #333; background: #eee; overflow: hidden; display: flex; justify-content: center; align-items: center; flex-shrink: 0;}
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; display: none; filter: grayscale(100%); }
+
+        .details-inline { display: flex; justify-content: flex-start; gap: 15px; flex-wrap: wrap; }
+        
+        .aadhaar-box { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+        .aadhaar-logo { width: 35px; height: 25px; object-fit: contain; }
+        .aadhaar-text { font-size: 17px; font-weight: bold; letter-spacing: 1.5px; }
+
+        .footer-row { display: flex; justify-content: space-between; align-items: flex-end; height: 85px; position: relative; }
+        .signature-area { display: flex; flex-direction: column; align-items: flex-start; width: 150px; }
+        .sig-img { width: 70px; height: 35px; object-fit: contain; margin-bottom: 2px; }
+        .signature { font-size: 12px; font-weight: bold; line-height: 1.2; }
+        
+        .stamp-img {
+            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(-10deg);
+            width: 85px; height: 85px; object-fit: contain; opacity: 0.8; z-index: 10;
+        }
+        .ekyc-area { display: flex; flex-direction: column; align-items: flex-end; width: 120px; }
+        .ekyc-img { width: 75px; height: 30px; object-fit: contain; margin-bottom: 5px; }
+
+        /* -------------------------------------------
+           ID CARD COMPONENT
+           ------------------------------------------- */
+        #id-card-container { display: none; width: 100%; margin-top: 20px; }
+        
+        .id-card {
+            width: 300px; background: #fff; border: 2px solid #111; border-radius: 12px;
+            overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.25); display: flex; flex-direction: column;
+            align-items: center; font-family: Arial, sans-serif; margin: 0 auto;
+            position: relative; padding-bottom: 25px;
+        }
+
+        .id-title-bar {
+            width: 100%; background: linear-gradient(90deg, #b71c1c, #d32f2f, #b71c1c); color: white; text-align: center;
+            font-size: 22px; font-weight: 900; padding: 12px 0; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 15px; border-bottom: 3px solid #8e0000;
+        }
+
+        .id-photo {
+            width: 130px; height: 130px; margin-bottom: 20px; border: 4px solid #d32f2f;
+            border-radius: 10px; overflow: hidden; background: #fff; display: flex;
+            justify-content: center; align-items: center; box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+        .id-photo img { width: 100%; height: 100%; object-fit: contain; display: none; padding: 10px; box-sizing: border-box;}
+
+        .id-qr {
+            width: 100px; height: 100px; margin-bottom: 20px; padding: 5px; background: #fff;
+            border: 2px solid #ddd; border-radius: 8px;
+        }
+        
+        .id-permit {
+            font-size: 18px; font-weight: bold; color: #d32f2f; letter-spacing: 1px;
+            background: #fdf2f2; padding: 8px 20px; border-radius: 6px; border: 2px dashed #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('copy', event => { event.preventDefault(); alert("Copying disabled."); });
+    </script>
+
+    <!-- Animated Preloader -->
+    <div id="preloader">
+        <img src="https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png" class="preloader-img" alt="Loading...">
+        <div class="preloader-text">Loading 3D Interface...</div>
+    </div>
+
+    <!-- MAIN INPUT SECTION: Single Box containing Image & Form -->
+    <div class="glass-panel main-dual-box" id="input-section">
+        <!-- Image Half (Behaves as a Centered Logo Area) -->
+        <div class="image-half">
+            <!-- Ensure your image source here -->
+            <img src="https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png" alt="Yatra Logo">
+            <div class="image-overlay-text">Shri Amarnathji Yatra</div>
+        </div>
+
+        <!-- Form Half -->
+        <div class="form-half">
+            <div class="form-header">
+                <h2>Yatra Registration</h2>
+            </div>
+            <form id="permitForm">
+                <div class="row">
+                    <div class="form-group">
+                        <label>ID Number (12 Digits)</label>
+                        <input type="text" id="inpAadhaar" maxlength="12" placeholder="e.g. 0000 0000 0000" required>
+                        <i id="aadhaarStatus" class="status-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Permit No</label>
+                        <input type="text" id="inpPermitNo" readonly required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="inpName" placeholder="e.g. Odedra Ketan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DOB (Select Date)</label>
+                        <input type="date" id="inpDob" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select id="inpGender">
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Blood Group</label>
+                        <select id="inpBg" required>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Spouse / Father's Name</label>
+                    <input type="text" id="inpFather" placeholder="S/O: Rajubhai" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Full Address</label>
+                    <input type="text" id="inpAddress" placeholder="Dharampur Garbi Chowk" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Emergency Contact No.</label>
+                    <input type="text" id="inpEmergency" placeholder="6359504950" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Photo (Passport Size)</label>
+                    <input type="file" id="inpPhoto" accept="image/*" required>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-primary">Generate Permit & Card</button>
+                <div id="loader">Processing Details, please wait...</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- RESULT SECTION: Separate Boxes for Permit Table and Actions (ID Card) -->
+    <div id="output-section" class="output-layout">
+        
+        <!-- Permit Box -->
+        <div class="glass-panel permit-box">
+            <h3 style="margin-top: 0; margin-bottom: 25px; color: #333; text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 10px;">Official Permit</h3>
+            <div class="permit-wrapper" id="permit-wrapper">
+                <table class="permit-table">
+                    <tr>
+                        <td colspan="2">
+                            <div class="header-row">
+                                <span>Reporting Date at <span id="outGateName"></span></span>
+                                <span id="outDate"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="logo-qr-row">
+                                <img id="outBoardLogo" class="logo-box-img" src="" crossorigin="anonymous" alt="Board Logo">
+                                <div class="center-text">
+                                    <h3>Shri Amarnathji Yatra</h3>
+                                    <h3>YATRA PERMIT</h3>
+                                    <h4 id="outPermitNo"></h4>
+                                </div>
+                                <div class="qr-box" id="qrcode"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="note-row">
+                            TO BE USED BY YATRI FOR OBTAINING MOBILE CONNECTION, IF REQUIRED
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="photo-row">
+                                <span class="route-text" id="outRouteText">PAHALGAM</span>
+                                <div class="photo-box">
+                                    <img id="outPhoto" src="" alt="Yatri Photo">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-size: 16px;">
+                            Full Name : <strong id="outName"></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="aadhaar-box">
+                                <img id="outAadhaarLogo" src="" class="aadhaar-logo" crossorigin="anonymous" alt="ID Icon">
+                                <span class="aadhaar-text" id="outAadhaar"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="details-inline">
+                                <span>Gender : <strong id="outGender"></strong></span>
+                                <span>DOB : <strong id="outDob"></strong></span>
+                                <span>BG: <strong id="outBg"></strong></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Spouse / Father : <span id="outFather"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="min-height: 40px;">
+                            Address : <span id="outAddress"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            In case of emergency, please contact:<br>
+                            <span id="outEmergency"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-bottom: 12px;">
+                            <div class="footer-row">
+                                <div class="signature-area">
+                                    <img id="outSigImg" class="sig-img" src="" crossorigin="anonymous" alt="Signature Seal">
+                                    <div class="signature">Signature & Seal of<br>Registering Officer</div>
+                                </div>
+                                <img id="outStamp" class="stamp-img" src="" crossorigin="anonymous" alt="Stamp Badge">
+                                <div class="ekyc-area">
+                                    <img id="outEkycImg" class="ekyc-img" src="" crossorigin="anonymous" alt="eKYC Badge">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button id="downloadPdfBtn" class="btn-success" style="margin-top: 25px;"><i class="fa-solid fa-file-pdf"></i> Save Permit as PDF</button>
+        </div>
+
+        <!-- Action Box / ID Card Box -->
+        <div class="glass-panel action-box">
+            <h3 style="margin-top: 0; color: #333; margin-bottom: 20px;">Actions & ID Card</h3>
+            <button id="viewCardBtn" class="btn-info"><i class="fa-solid fa-id-card"></i> View ID Card</button> 
+            <button onclick="location.reload()" class="btn-secondary"><i class="fa-solid fa-rotate-right"></i> Create New</button>
+
+            <!-- ID Card Component -->
+            <div id="id-card-container">
+                <div class="id-card" id="id-card-wrapper">
+                    <div class="id-title-bar">YATRA CARD</div>
+                    <div class="id-photo">
+                        <img id="idCardPhoto" src="" crossorigin="anonymous" alt="Yatra Symbol">
+                    </div>
+                    <div class="id-qr" id="idCardQr"></div>
+                    <div class="id-permit">Permit No: <span id="idCardPermitNo"></span></div>
+                </div>
+                <button id="downloadCardJpgBtn" class="btn-success" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-image"></i> Save ID Card JPG</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let photoDataUrl = "";
+        
+        // =========================================================================
+        // IMAGE CONFIGURATIONS 
+        // =========================================================================
+        let shrineBoardLogoUrl = "https://jiotvimages.cdn.jio.com/dare_images/images/channel/bfab6fcaa84559d51ce2e2efd0ecd458.png"; 
+        let stampImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThA7WtA2vHE_J4XmHqVdfh4KThFfEfST25k30eyoxUMnbVMZksePXOuK9f&s=10"; 
+        let signatureImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/af/Ryan-Signature.png"; 
+        let ekycBadgeImageUrl = "https://5.imimg.com/data5/SELLER/Default/2025/7/531030055/QC/YF/WL/39702676/e-kyc-500x500.png"; 
+        let aadhaarIconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/3840px-Aadhaar.svg.png";
+        let fixedCardImageUrl = "https://play-lh.googleusercontent.com/v1IU9UtgF4PFamfKmIi6Mizn89bb0ZiVt7vmocjATPLzQnW7T86XRVdYVxZift67Rq4pe4KCk23OxyozB4SiOg"; 
+        // =========================================================================
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 1000); 
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const minDigits = 100000;
+            const maxDigits = 999990;
+            const randomID = Math.floor(minDigits + Math.random() * (maxDigits - minDigits));
+            document.getElementById('inpPermitNo').value = "PP" + randomID;
+        });
+
+        const aadhaarInput = document.getElementById('inpAadhaar');
+        const aadhaarStatus = document.getElementById('aadhaarStatus');
+
+        aadhaarInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, ''); 
+            if (this.value.length === 12) {
+                aadhaarStatus.className = 'fa-solid fa-spinner fa-spin status-icon loading';
+                aadhaarStatus.style.display = 'block';
+                setTimeout(() => { aadhaarStatus.className = 'fa-solid fa-check-circle status-icon success'; }, 800);
+            } else {
+                aadhaarStatus.style.display = 'none';
+                aadhaarStatus.className = 'status-icon';
+            }
+        });
+
+        document.getElementById('inpPhoto').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) { photoDataUrl = e.target.result; }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('permitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(document.getElementById('inpAadhaar').value.length !== 12) {
+                alert("Please enter exactly 12 digits for ID."); return;
+            }
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+            setTimeout(() => { generatePermit(); }, 1500);
+        });
+
+        function formatDate(dateStr) {
+            if(!dateStr) return "";
+            const d = new Date(dateStr);
+            const days = String(d.getDate()).padStart(2, '0');
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            return `${days}-${months[d.getMonth()]}-${d.getFullYear()}`;
+        }
+
+        function getRandomReportingDate() {
+            const start = new Date(2026, 7, 8); 
+            const end = new Date(2026, 9, 10);  
+            const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+            const days = String(date.getDate()).padStart(2, '0');
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            return `${days} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        function generatePermit() {
+            const gates = ["CHANDANWARI GATE", "DOMEL GATE"];
+            const randomGate = gates[Math.floor(Math.random() * gates.length)];
+            const randomDate = getRandomReportingDate();
+
+            const permitNo = document.getElementById('inpPermitNo').value;
+            const name = document.getElementById('inpName').value;
+            const gender = document.getElementById('inpGender').value;
+            const dob = formatDate(document.getElementById('inpDob').value); 
+            const bg = document.getElementById('inpBg').value;
+            const father = document.getElementById('inpFather').value;
+            const address = document.getElementById('inpAddress').value;
+            const emergency = document.getElementById('inpEmergency').value;
+            const aadhaar = document.getElementById('inpAadhaar').value;
+
+            const formattedAadhaar = aadhaar.replace(/(\d{4})/g, '$1 ').trim();
+
+            document.getElementById('outGateName').innerText = randomGate;
+            
+            let routeName = "";
+            if (randomGate === "CHANDANWARI GATE") {
+                routeName = "PAHALGAM";
+            } else if (randomGate === "DOMEL GATE") {
+                routeName = "BALTAL";
+            }
+            document.getElementById('outRouteText').innerText = routeName;
+
+            document.getElementById('outDate').innerText = randomDate;
+            document.getElementById('outPermitNo').innerText = "Permit No : " + permitNo;
+            document.getElementById('outName').innerText = name;
+            document.getElementById('outAadhaar').innerText = formattedAadhaar;
+            document.getElementById('outGender').innerText = gender;
+            document.getElementById('outDob').innerText = dob;
+            document.getElementById('outBg').innerText = bg;
+            document.getElementById('outFather').innerText = father;
+            document.getElementById('outAddress').innerText = father + " " + address;
+            document.getElementById('outEmergency').innerText = father + " (" + emergency + ")";
+
+            // ID Card update
+            document.getElementById('idCardPermitNo').innerText = permitNo;
+
+            if (photoDataUrl) {
+                const photoImg = document.getElementById('outPhoto');
+                photoImg.src = photoDataUrl;
+                photoImg.style.display = 'block';
+            }
+
+            if(fixedCardImageUrl.trim() !== "") {
+                const idPhotoImg = document.getElementById('idCardPhoto');
+                idPhotoImg.src = fixedCardImageUrl;
+                idPhotoImg.style.display = 'block';
+            }
+
+            if (shrineBoardLogoUrl.trim() !== "") document.getElementById('outBoardLogo').src = shrineBoardLogoUrl;
+            if (signatureImageUrl.trim() !== "") document.getElementById('outSigImg').src = signatureImageUrl;
+            if (ekycBadgeImageUrl.trim() !== "") document.getElementById('outEkycImg').src = ekycBadgeImageUrl;
+            if (stampImageUrl.trim() !== "") {
+                const stampImg = document.getElementById('outStamp');
+                stampImg.src = stampImageUrl; stampImg.style.display = 'block';
+            }
+            if (aadhaarIconUrl.trim() !== "") document.getElementById('outAadhaarLogo').src = aadhaarIconUrl;
+
+            const qrData = `ID: ${permitNo} | Name: ${name} | UID: ****${aadhaar.slice(-4)}`;
+            document.getElementById('qrcode').innerHTML = ""; 
+            new QRCode(document.getElementById("qrcode"), { text: qrData, width: 65, height: 65, colorDark: "#000", colorLight: "#fff" });
+
+            document.getElementById('idCardQr').innerHTML = ""; 
+            new QRCode(document.getElementById("idCardQr"), { text: qrData, width: 100, height: 100, colorDark: "#000", colorLight: "#fff" });
+
+            // Swap Layouts
+            document.getElementById('input-section').style.display = 'none';
+            document.getElementById('output-section').style.display = 'flex';
+        }
+
+        document.getElementById('viewCardBtn').addEventListener('click', function() {
+            const cardContainer = document.getElementById('id-card-container');
+            if (cardContainer.style.display === 'none' || cardContainer.style.display === '') {
+                cardContainer.style.display = 'block';
+                this.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Hide ID Card';
+                this.classList.replace('btn-info', 'btn-secondary');
+            } else {
+                cardContainer.style.display = 'none';
+                this.innerHTML = '<i class="fa-solid fa-id-card"></i> View ID Card';
+                this.classList.replace('btn-secondary', 'btn-info');
+            }
+        });
+
+        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+            window.scrollTo(0,0); 
+            const element = document.getElementById('permit-wrapper');
+            const opt = {
+                margin:       [0.2, 0.2, 0.2, 0.2], 
+                filename:     'Yatra_Permit_Document.pdf',
+                image:        { type: 'jpeg', quality: 1.0 },
+                html2canvas:  { scale: 2, useCORS: true, allowTaint: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        });
+
+        document.getElementById('downloadCardJpgBtn').addEventListener('click', function() {
+            window.scrollTo(0,0); 
+            const cardElement = document.getElementById('id-card-wrapper');
+            html2canvas(cardElement, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: "#ffffff" }).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/jpeg', 1.0);
+                link.download = 'Yatra_ID_Card.jpg';
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
