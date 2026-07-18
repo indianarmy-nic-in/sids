@@ -3180,8 +3180,7 @@
 <!-- SIDS Premium Pricing Section End -->
 
 
-    
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -3254,6 +3253,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-width: 0; /* Prevents flex children from breaking boundaries */
         }
 
         .office-title {
@@ -3261,12 +3261,18 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .coordinator-text {
             font-size: 0.95rem;
             opacity: 0.9;
             margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* Click Here Animated Button */
@@ -3274,16 +3280,23 @@
             background: #ffffff;
             color: #003399;
             border: none;
-            padding: 8px 16px;
-            font-size: 0.9rem;
+            padding: 10px 20px;
+            font-size: 0.95rem;
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
             align-self: flex-start;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            
+            /* Text alignment & spill protection fixed */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap; 
+            max-width: 100%;
         }
 
         /* Button Hover Effects */
@@ -3328,6 +3341,24 @@
         @media (min-width: 600px) and (max-width: 991px) {
             .office-card {
                 flex: 0 0 50%;
+            }
+        }
+
+        /* Specific Mobile Optimizations for the Button text wrap */
+        @media (max-width: 480px) {
+            .info-side {
+                padding: 15px; /* Compact padding for small screens */
+            }
+            .click-btn {
+                padding: 8px 14px; /* Perfectly scales button size */
+                font-size: 0.85rem;  /* Keeps 'Click Here' locked inside the boundaries */
+                width: auto;
+            }
+            .office-title {
+                font-size: 1.1rem;
+            }
+            .coordinator-text {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -3448,7 +3479,6 @@
         let index = 0;
 
         function getVisibleCards() {
-            // Check desktop, tablet or mobile setup
             if (window.innerWidth >= 992) return 3;
             if (window.innerWidth >= 600) return 2;
             return 1;
@@ -3459,9 +3489,7 @@
                 const totalCards = 6;
                 const visibleCards = getVisibleCards();
                 
-                // Logic to switch slots perfectly
                 if (visibleCards === 3) {
-                    // For desktop, toggles between first 3 and next 3 smoothly
                     index = (index === 0) ? 3 : 0;
                 } else if (visibleCards === 2) {
                     index = (index >= 4) ? 0 : index + 2;
@@ -3469,21 +3497,19 @@
                     index = (index >= 5) ? 0 : index + 1;
                 }
 
-                // Smooth CSS translation step
                 const percentageMove = -(index * (100 / visibleCards));
                 track.style.transform = `translateX(${percentageMove}%)`;
-            }, 4000); // Triggered exactly every 4 seconds
+            }, 4000); 
         }
 
-        // Initialize slider on load
         window.onload = startAutoSlider;
         
-        // Reset positioning if viewport size resets mid-browsing
         window.onresize = () => {
             track.style.transform = 'translateX(0%)';
             index = 0;
         };
     </script>
 </body>
-</html>
+</html>   
+
    
