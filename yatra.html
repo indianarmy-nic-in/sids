@@ -1,19 +1,27 @@
-<!-- Fully Updated Responsive SIDS Navbar Start -->
+<!-- Edge-to-Edge Premium SIDS Navbar with Animated Flag Start -->
 <div class="mani-nav-full-width">
   <style>
     /* Google Fonts Integration */
-    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght=400;600;700;800&display=swap');
 
-    /* Reset and Full Width Outer Setup */
+    /* --- THE ULTIMATE TOP & SIDE FIX: Fixed positioning at absolute zero --- */
     .mani-nav-full-width {
-      width: 100% !important;
-      left: 0 !important;
-      right: 0 !important;
+      position: fixed !important; /* Screen ke top par lock karne ke liye */
+      top: 0 !important;          /* Zero space from top border */
+      left: 0 !important;         /* Zero space from left border */
+      width: 100vw !important;    /* Total edge-to-edge screen width */
+      margin: 0 !important;       /* Eliminates any inherited theme margins */
+      padding: 0 !important;      /* Eliminates any inherited theme paddings */
       background-color: #1e3a8a;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      position: relative;
-      z-index: 9999;
+      z-index: 99999;             /* Website ke baaki content ke upar rakhne ke liye */
+    }
+
+    /* Target global HTML/Body margins directly to ensure zero gaps */
+    html, body {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
     }
 
     .mani-navbar {
@@ -32,7 +40,7 @@
       box-sizing: border-box;
     }
 
-    /* Logo Styling */
+    /* --- LOGO & INDIAN FLAG ARCHITECTURE --- */
     .mani-nav-logo {
       text-decoration: none !important;
       white-space: nowrap;
@@ -66,7 +74,7 @@
       border-radius: 50%;
     }
 
-    /* Shiny Light Glow Animation */
+    /* Gleam Effect on Logo Icon */
     .mani-logo-flip-box::after {
       content: '';
       position: absolute;
@@ -76,25 +84,64 @@
       height: 100%;
       background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
       transform: skewX(-25deg);
-      animation: shinyGleamEffect 4s ease-in-out infinite;
+      animation: m-shinyGleam 4s ease-in-out infinite;
     }
 
-    @keyframes shinyGleamEffect {
+    @keyframes m-shinyGleam {
       0% { left: -150%; }
       30%, 100% { left: 150%; }
     }
 
-    .mani-slide-text-container {
-      overflow: hidden;
-      display: inline-block;
-      vertical-align: middle;
-    }
-
+    /* Brand Group Layout with Flag on Top */
     .mani-logo-text-group {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      position: relative;
+    }
+
+    /* Indian Flag Animation Layout */
+    .mani-flag-container {
+      display: flex;
+      gap: 1px;
+      width: 18px;
+      height: 11px;
+      margin-bottom: 2px;
+      opacity: 0;
+      transform: translateY(-8px) scale(0.7);
+      animation: flagEntryAnimation 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation-delay: 0.4s;
+    }
+
+    .mani-flag-stripe {
+      width: 100%;
+      height: 3.6px;
+    }
+    .m-saffron { background-color: #FF9933; }
+    .m-white { 
+      background-color: #FFFFFF; 
+      position: relative; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+    }
+    /* Ashoka Chakra Center Dot */
+    .m-white::after {
+      content: '';
+      width: 2.5px;
+      height: 2.5px;
+      background-color: #000080;
+      border-radius: 50%;
+      display: block;
+    }
+    .m-green { background-color: #138808; }
+
+    @keyframes flagEntryAnimation {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .mani-main-brand {
@@ -106,31 +153,26 @@
       align-items: center;
     }
 
-    .mani-first-word {
-      margin-right: 6px;
-    }
-
-    .mani-logo-highlight {
-      color: #f17329;
-    }
+    .mani-first-word { margin-right: 6px; }
+    .mani-logo-highlight { color: #f17329; }
 
     .mani-sub-brand {
       font-size: 9px;
       font-weight: 600;
       color: #e2e8f0;
       letter-spacing: 1.5px;
-      margin-top: 2px;
+      margin-top: 1px;
       line-height: 1;
       text-transform: uppercase;
     }
 
-    /* --- NAVIGATION MENU LINKS (DESKTOP) --- */
+    /* --- RIGHT ALIGNED NAVIGATION MENU (DESKTOP) --- */
     .mani-nav-menu {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       list-style: none;
-      margin: 0;
+      margin: 0 0 0 auto; /* Pushes the menu items complete right side close to CTA */
       padding: 0;
     }
 
@@ -142,15 +184,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: color 0.3s ease;
-      padding: 8px 4px;
+      padding: 8px 2px;
       position: relative;
     }
 
-    .mani-nav-link:hover {
-      color: #f17329 !important;
-    }
+    .mani-nav-link:hover { color: #f17329 !important; }
 
-    /* Hover underline effect */
     .mani-nav-link::after {
       content: '';
       position: absolute;
@@ -162,18 +201,17 @@
       transition: width 0.3s ease;
     }
 
-    .mani-nav-link:hover::after {
-      width: 100%;
-    }
+    .mani-nav-link:hover::after { width: 100%; }
 
-    /* Actions Right Area */
+    /* Right Controls Hub */
     .mani-nav-actions {
       display: flex;
       align-items: center;
       gap: 15px;
+      margin-left: 25px; /* Spacing between right menu links and Hire Us */
     }
 
-    /* Premium Mail Action CTA Button */
+    /* Premium Action CTA Button */
     .mani-nav-cta-btn {
       background: #f17329;
       color: #ffffff !important;
@@ -195,7 +233,6 @@
       background: #ffffff;
       color: #1e3a8a !important;
       transform: translateY(-1.5px);
-      box-shadow: 0 6px 14px rgba(255, 255, 255, 0.2);
     }
 
     @keyframes buttonPulseGlow {
@@ -203,7 +240,14 @@
       50% { transform: scale(1.03); box-shadow: 0 4px 15px rgba(241, 115, 41, 0.45); }
     }
 
-    /* Mobile Hamburger Menu Icon Button */
+    /* Hidden element inside desktop list, only works inside mobile menu container */
+    .mani-mobile-only-item {
+      display: none;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    /* Mobile Hamburger Trigger */
     .mani-mobile-toggle-btn {
       display: none;
       background: transparent;
@@ -224,32 +268,35 @@
       transition: all 0.3s ease;
     }
 
-    /* Hamburger Animation to 'X' icon */
-    .mani-mobile-toggle-btn.open span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 5px);
-    }
-    .mani-mobile-toggle-btn.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .mani-mobile-toggle-btn.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -5px);
-    }
+    /* Hamburger to X transformation code */
+    .mani-mobile-toggle-btn.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 5px); }
+    .mani-mobile-toggle-btn.open span:nth-child(2) { opacity: 0; }
+    .mani-mobile-toggle-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -5px); }
 
-    /* --- RESPONSIVE MATRIX --- */
+    /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
     @media (max-width: 992px) {
+      .mani-nav-actions .mani-nav-cta-btn {
+        display: none; /* Desktop position button hidden inside main row */
+      }
+
+      .mani-mobile-only-item {
+        display: block; /* Turns visible inside sidebar menu drawer */
+      }
+
       .mani-nav-menu {
         position: fixed;
         top: 0;
         right: -100%;
         width: 280px;
         height: 100vh;
-        background-color: #11255a; /* Slightly darker shade for mobile drawer */
+        background-color: #11255a;
         flex-direction: column;
         align-items: flex-start;
-        padding: 90px 30px 30px 30px;
-        gap: 25px;
+        padding: 95px 30px 30px 30px;
+        gap: 22px;
         transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        margin: 0;
       }
 
       .mani-nav-menu.active {
@@ -267,6 +314,15 @@
       .mani-mobile-toggle-btn {
         display: flex;
       }
+
+      .mani-mobile-only-item .mani-nav-cta-btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+        animation: none;
+      }
     }
 
     @media (max-width: 480px) {
@@ -277,16 +333,12 @@
       .mani-logo-flip-box { width: 36px; height: 36px; }
       .mani-main-brand { font-size: 16px; }
       .mani-sub-brand { font-size: 8px; letter-spacing: 1px; }
-      .mani-nav-cta-btn {
-        padding: 8px 14px;
-        font-size: 11px;
-        animation: none;
-      }
+      .mani-flag-container { width: 16px; height: 10px; }
     }
   </style>
 
   <nav class='mani-navbar'>
-    <!-- Logo Zone -->
+    <!-- Logo & Animated Flag Zone -->
     <a class='mani-nav-logo' href='/'>
       <div class='mani-logo-flex-wrapper'>
         <div class='mani-logo-flip-box'>
@@ -294,6 +346,12 @@
         </div>
         <div class='mani-slide-text-container'>
           <div class='mani-logo-text-group'>
+            <!-- Pure HTML CSS Tricolor Flag Architecture -->
+            <div class="mani-flag-container">
+              <div class="mani-flag-stripe m-saffron"></div>
+              <div class="mani-flag-stripe m-white"></div>
+              <div class="mani-flag-stripe m-green"></div>
+            </div>
             <div class='mani-main-brand'>
               <span class='mani-first-word'>SIDS</span><span class='mani-logo-highlight'>INDIA</span>
             </div>
@@ -303,23 +361,29 @@
       </div>
     </a>
 
-    <!-- Responsive Navigation Links (Same for Desktop & Mobile Sidebar) -->
+    <!-- Navigation Menu Links Container -->
     <ul class='mani-nav-menu'>
       <li><a class='mani-nav-link' href='/'>Home</a></li>
       <li><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
       <li><a class='mani-nav-link' href='/p/about-sids.html'>About SIDS</a></li>
       <li><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
       <li><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
+      
+      <!-- Inside Mobile View: This displays right under Contact Us inside the toggle tray -->
+      <li class="mani-mobile-only-item">
+        <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
+          <span>Hire Us</span>
+        </a>
+      </li>
     </ul>
 
-    <!-- Action Button Tray & Mobile Trigger -->
+    <!-- Actions Tray for Desktop View Layout -->
     <div class='mani-nav-actions'>
-      <!-- Updated Mailto targeting infosidsmathura@gmail.com directly -->
-      <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.%20Could%20you%20please%20provide%20detailed%20information%3F'>
+      <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
         <span>Hire Us</span>
       </a>
 
-      <!-- Hamburger button -->
+      <!-- Hamburger Button Component -->
       <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
         <span></span>
         <span></span>
@@ -328,7 +392,7 @@
     </div>
   </nav>
 
-  <!-- Script for Mobile Menu Toggle Functionality -->
+  <!-- Mobile Toggle Trigger Core Logic -->
   <script>
     (function() {
       const toggleBtn = document.querySelector('.mani-mobile-toggle-btn');
@@ -340,7 +404,6 @@
           navMenu.classList.toggle('active');
         });
 
-        // Close sidebar drawer immediately if any internal menu link is clicked
         const navLinks = document.querySelectorAll('.mani-nav-link');
         navLinks.forEach(link => {
           link.addEventListener('click', () => {
@@ -352,8 +415,7 @@
     })();
   </script>
 </div>
-<!-- Fully Updated Responsive SIDS Navbar End -->
-
+<!-- Edge-to-Edge Premium SIDS Navbar with Animated Flag End -->
 
 
 
