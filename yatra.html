@@ -2781,6 +2781,405 @@
 <!-- Faculty & Leadership Slider Section End -->
 
 
+
+
+<!-- SIDS Premium Pricing Section Start -->
+<div class="sids-pricing-wrapper">
+  <style>
+    /* Google Fonts & Reset */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+
+    .sids-pricing-wrapper {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 60px 20px;
+      background-color: #f8fafc;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .sids-pricing-wrapper * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* --- SECTION HEADER --- */
+    .pricing-header-zone {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+    }
+
+    .pricing-main-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 15px;
+    }
+
+    .pricing-sub-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* --- PRICING GRID ARCHITECTURE --- */
+    .sids-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* Column Wrapper to hold Top & Bottom Boxes separate like image */
+    .pricing-column-group {
+      display: flex;
+      flex-direction: column;
+      gap: 25px; /* Separation space between price card and feature card */
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .pricing-column-group:hover {
+      transform: translateY(-10px);
+    }
+
+    /* --- MAIN PRICE CARD (TOP BOX) --- */
+    .price-main-card {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      position: relative;
+      text-align: center;
+      padding-bottom: 30px;
+    }
+
+    /* Plan Banner Gradients */
+    .plan-gradient-banner {
+      padding: 40px 20px 60px 20px;
+      position: relative;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    /* Custom Wave Shape at the bottom of gradient */
+    .plan-gradient-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      background: #ffffff;
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+
+    /* Gradient Variants precisely matching image */
+    .bg-base-gradient {
+      background: linear-gradient(135deg, #7c3aed 0%, #ef4444 100%);
+    }
+    .bg-standard-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #f97316 100%);
+    }
+    .bg-premium-gradient {
+      background: linear-gradient(135deg, #dc2626 0%, #f97316 100%);
+    }
+
+    .plan-name {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .plan-tagline {
+      font-size: 12px;
+      opacity: 0.7;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    /* Price tag typography */
+    .plan-price-row {
+      font-size: 32px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .plan-duration {
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    /* Top Right Green Star Tag */
+    .star-badge {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #22c55e;
+      color: #ffffff;
+      width: 26px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+      z-index: 2;
+    }
+
+    /* GET STARTED CTA BUTTON */
+    .plan-cta-btn {
+      background: #ff7a45;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 14px 40px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-top: -25px; /* Pulls button halfway into the gradient wave */
+      position: relative;
+      z-index: 5;
+      box-shadow: 0 6px 20px rgba(255, 122, 69, 0.4);
+      transition: all 0.3s ease;
+      border: 3px solid #ffffff;
+    }
+
+    .plan-cta-btn:hover {
+      background: #e05e26;
+      transform: scale(1.04);
+      box-shadow: 0 8px 25px rgba(255, 122, 69, 0.6);
+    }
+
+    .check-below-indicator {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #0ea5e9;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .check-below-indicator span {
+      animation: bounceArrow 2s infinite;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    /* --- FEATURES CARD (BOTTOM BOX) --- */
+    .features-standalone-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-item-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .feature-item-row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* SVG Vector Icons styling to perfectly replicate image */
+    .feature-icon-box {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #1e293b;
+    }
+
+    /* --- RESPONSIVE ADAPTATION MATRIX --- */
+    @media (max-width: 992px) {
+      .sids-pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .sids-pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+      .pricing-main-title {
+        font-size: 28px;
+      }
+      .price-main-card {
+        padding-bottom: 25px;
+      }
+    }
+  </style>
+
+  <!-- Section Title Area -->
+  <div class="pricing-header-zone">
+    <h2 class="pricing-main-title">Our Pricing Plans</h2>
+    <p class="pricing-sub-desc">
+      Digital Folks has reasonable pricing plans and prices that are pocket-friendly to assist you in choosing one that meets your requirements and budget. If you don't know which package to choose, please don't worry our team will assist you.
+    </p>
+  </div>
+
+  <!-- Main Grid Box -->
+  <div class="sids-pricing-grid">
+    
+    <!-- 1. BASE PLAN COLUMN -->
+    <div class="pricing-column-group">
+      <!-- Top Card -->
+      <div class="price-main-card">
+        <div class="star-badge">★</div>
+        <div class="plan-gradient-banner bg-base-gradient">
+          <h3 class="plan-name">Base Plan</h3>
+          <p class="plan-tagline">Best for Small Business</p>
+          <div class="plan-price-row">Rs. 61,285<span class="plan-duration"> / mo</span></div>
+        </div>
+        <a href="#" class="plan-cta-btn">Get Started</a>
+        <div class="check-below-indicator"><span>↓</span> Check Below!</div>
+      </div>
+      <!-- Bottom Card -->
+      <div class="features-standalone-card">
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg></div>
+          <div class="feature-text">Website Development</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 18.75h12" /></svg></div>
+          <div class="feature-text">Website Design</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></div>
+          <div class="feature-text">Google My Business (GMB)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A8.959 8.959 0 0 1 3 12c0-.778.099-1.533.284-2.253" /></svg></div>
+          <div class="feature-text">Search Engine Optimization (SEO)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25M19.5 3h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 5.25 18h15a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 19.5 3Z" /></svg></div>
+          <div class="feature-text">Social Media Marketing (SMM)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. STANDARD PLAN COLUMN -->
+    <div class="pricing-column-group">
+      <!-- Top Card -->
+      <div class="price-main-card">
+        <div class="star-badge">★</div>
+        <div class="plan-gradient-banner bg-standard-gradient">
+          <h3 class="plan-name">Standard Plan</h3>
+          <p class="plan-tagline">Best for Medium Size Business</p>
+          <div class="plan-price-row">Rs. 99,485<span class="plan-duration"> / mo</span></div>
+        </div>
+        <a href="#" class="plan-cta-btn">Get Started</a>
+        <div class="check-below-indicator"><span>↓</span> Check Below!</div>
+      </div>
+      <!-- Bottom Card -->
+      <div class="features-standalone-card">
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg></div>
+          <div class="feature-text">Website Development</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" /></svg></div>
+          <div class="feature-text">Website Design</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></div>
+          <div class="feature-text">Google My Business (GMB)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A8.959 8.959 0 0 1 3 12c0-.778.099-1.533.284-2.253" /></svg></div>
+          <div class="feature-text">Search Engine Optimization (SEO)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25M19.5 3h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 5.25 18h15a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 19.5 3Z" /></svg></div>
+          <div class="feature-text">Social Media Marketing (SMM)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PREMIUM PLAN COLUMN -->
+    <div class="pricing-column-group">
+      <!-- Top Card -->
+      <div class="price-main-card">
+        <div class="star-badge">★</div>
+        <div class="plan-gradient-banner bg-premium-gradient">
+          <h3 class="plan-name">Premium Plan</h3>
+          <p class="plan-tagline">Best for Large Scale Business</p>
+          <div class="plan-price-row">Rs. 1,55,285<span class="plan-duration"> / mo</span></div>
+        </div>
+        <a href="#" class="plan-cta-btn">Get Started</a>
+        <div class="check-below-indicator"><span>↓</span> Check Below!</div>
+      </div>
+      <!-- Bottom Card -->
+      <div class="features-standalone-card">
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg></div>
+          <div class="feature-text">Website Development</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" /></svg></div>
+          <div class="feature-text">Website Design</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></div>
+          <div class="feature-text">Google My Business (GMB)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A8.959 8.959 0 0 1 3 12c0-.778.099-1.533.284-2.253" /></svg></div>
+          <div class="feature-text">Search Engine Optimization (SEO)</div>
+        </div>
+        <div class="feature-item-row">
+          <div class="feature-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25M19.5 3h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 5.25 18h15a2.25 2.25 0 0 0 2.25-2.25V5.25A2.25 2.25 0 0 0 19.5 3Z" /></svg></div>
+          <div class="feature-text">Social Media Marketing (SMM)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Optional Animation Tracker (Saves state or captures clicks cleanly) -->
+  <script>
+    document.querySelectorAll('.plan-cta-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Prevent default action for demo purpose if link is empty
+        if(this.getAttribute('href') === '#') {
+          e.preventDefault();
+          const targetedPlan = this.closest('.price-main-card').querySelector('.plan-name').innerText;
+          console.log('Selected Target Plan: ' + targetedPlan);
+          alert('Thank you for selecting the ' + targetedPlan + '! Our team will connect with you shorty.');
+        }
+      });
+    });
+  </script>
+</div>
+<!-- SIDS Premium Pricing Section End -->
+
+
     
     
    
