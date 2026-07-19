@@ -2,7 +2,6 @@
 <style>
   /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
   html, body {
-    /* Mobile me pinch-to-zoom aur double-tap-zoom ko completely disable karne ke liye CSS property */
     touch-action: none !important; 
     touch-action: pan-x pan-y !important; /* Sirf scroll karne dega, zoom nahi */
     
@@ -27,14 +26,12 @@
     -moz-user-select: text !important;
     -ms-user-select: text !important;
     user-select: text !important;
-    touch-action: auto !important; /* Form fields par default touch action allowed rahega */
+    touch-action: auto !important; 
   }
 </style>
 
 <script>
   (function() {
-    // 1. HIGH-PRIORITY VIEWPORT FORCING
-    // Yeh meta tag browser ko batata hai ki screen ka zoom level 1.0 par lock rahe
     let viewportMeta = document.querySelector('meta[name="viewport"]');
     if (!viewportMeta) {
       viewportMeta = document.createElement('meta');
@@ -43,25 +40,21 @@
     }
     viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no";
 
-    // 2. JAVASCRIPT TOUCH-GESTURE CORES (CRITICAL FOR MOBILE ZOOM LOCK)
-    // Jab koi do ungliyon (2 fingers) se pinch karne ki koshish karega, ye use block karega
     document.addEventListener('touchstart', function(event) {
       if (event.touches.length > 1) {
-        event.preventDefault(); // Multi-touch zoom block
+        event.preventDefault(); 
       }
     }, { passive: false });
 
-    // Double tap karke zoom karne ki koshish ko block karne ke liye
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function(event) {
       const now = (new Date()).getTime();
       if (now - lastTouchEnd <= 300) {
-        event.preventDefault(); // 300ms ke andar double tap block
+        event.preventDefault(); 
       }
       lastTouchEnd = now;
     }, { passive: false });
 
-    // 3. DESKTOP VIEW ZOOM DISABLE (Ctrl + Wheel & Keys)
     window.addEventListener('wheel', function(e) {
       if (e.ctrlKey) {
         e.preventDefault();
@@ -77,7 +70,6 @@
       }
     });
 
-    // 4. SILENT RIGHT-CLICK & COPY DISABLE
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
@@ -93,54 +85,38 @@
 </script>
 <!-- SIDS Strict Mobile Anti-Zoom & Protection Section End -->
 
-
-
 <!-- SEO Meta Tags, Favicon, and Title Setup Start -->
-<!-- 1. Website Title -->
 <title>SIDS INDIA | Creative Hub - Website Design & Development</title>
-
-<!-- 2. Standard Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="SIDS Experts" />
-
-<!-- 3. Short Search Engine Description (Max 160 Characters) -->
 <meta name="description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
-
-<!-- 4. Keywords for Search Indexing -->
 <meta name="keywords" content="SIDS INDIA, SIDS Experts, Creative Hub, Website Design, Web Development, Custom UI, Professional Web Agency" />
 
-<!-- 5. Favicon Link Setup (Icon in Browser Tab) -->
 <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 
-<!-- 6. Social Media Optimization (Open Graph Meta Tags for Facebook/WhatsApp/LinkedIn) -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
 <meta property="og:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
 <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 
-<!-- 7. Twitter Card Optimization -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
 <meta name="twitter:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
 <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 <!-- SEO Meta Tags, Favicon, and Title Setup End -->
 
-
-
 <!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip Start -->
 <div class="mani-nav-full-width">
   <style>
-    /* Google Fonts Integration */
     @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght=400;600;700;800&display=swap');
 
-    /* --- FIXED TOP & SIDE LAYOUT --- */
     .mani-nav-full-width {
       position: fixed !important;
       top: 0 !important;          
-      left: 0 !important;         
+      left: 0 !important;          
       width: 100vw !important;    
       margin: 0 !important;       
       padding: 0 !important;      
@@ -171,7 +147,6 @@
       box-sizing: border-box;
     }
 
-    /* --- LOGO WRAPPER AND ARCHITECTURE --- */
     .mani-logo-flex-wrapper {
       display: flex;
       align-items: center;
@@ -179,14 +154,12 @@
       height: 100%;
     }
 
-    /* ONLY Logo Icon has Hyperlink now */
     .mani-nav-logo-link {
       text-decoration: none !important;
       display: inline-block;
       flex-shrink: 0;
     }
 
-    /* Slow Flip Animation + Border Layout */
     .mani-logo-flip-box {
       width: 44px;
       height: 44px;
@@ -209,14 +182,12 @@
       border-radius: 50%;
     }
 
-    /* 3D Slow Flip Logic - Turns, flips, and stays straight */
     @keyframes m-slowFlip {
       0%, 70% { transform: rotateY(0deg); }
       85% { transform: rotateY(360deg); }
       100% { transform: rotateY(360deg); }
     }
 
-    /* Premium Gleam Reflection Effect on Logo Icon */
     .mani-logo-flip-box::after {
       content: '';
       position: absolute;
@@ -234,9 +205,8 @@
       30%, 100% { left: 150%; }
     }
 
-    /* --- BRAND TEXT ZONE (NO HYPERLINK) --- */
     .mani-slide-text-container {
-      overflow: hidden; /* Clips the sliding text window */
+      overflow: hidden;
       padding: 5px 0;
     }
 
@@ -246,11 +216,9 @@
       justify-content: center;
       align-items: flex-start;
       position: relative;
-      /* Fast slide in from left, holds 4s, slides back left */
       animation: textSlideInOut 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
     }
 
-    /* 5-second total animation sequence (fast slide in, 4s view, fast slide out) */
     @keyframes textSlideInOut {
       0% { transform: translateX(-105%); opacity: 0; }
       8% { transform: translateX(0); opacity: 1; }
@@ -282,7 +250,6 @@
       user-select: none;
     }
 
-    /* --- RIGHT ALIGNED NAVIGATION MENU (DESKTOP) --- */
     .mani-nav-menu {
       display: flex;
       align-items: center;
@@ -305,7 +272,6 @@
     }
 
     .mani-nav-link:hover { color: #f17329 !important; }
-
     .mani-nav-link::after {
       content: '';
       position: absolute;
@@ -316,10 +282,8 @@
       background-color: #f17329;
       transition: width 0.3s ease;
     }
-
     .mani-nav-link:hover::after { width: 100%; }
 
-    /* Right Controls Hub */
     .mani-nav-actions {
       display: flex;
       align-items: center;
@@ -327,7 +291,6 @@
       margin-left: 25px;
     }
 
-    /* Premium Action CTA Button */
     .mani-nav-cta-btn {
       background: #f17329;
       color: #ffffff !important;
@@ -362,7 +325,6 @@
       margin-top: 15px;
     }
 
-    /* Mobile Hamburger Trigger */
     .mani-mobile-toggle-btn {
       display: none;
       background: transparent;
@@ -387,20 +349,10 @@
     .mani-mobile-toggle-btn.open span:nth-child(2) { opacity: 0; }
     .mani-mobile-toggle-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -5px); }
 
-    /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
     @media (max-width: 992px) {
-      .mani-navbar {
-        padding: 0 35px; /* Shifting layout slightly inwards from absolute corners */
-      }
-
-      .mani-nav-actions .mani-nav-cta-btn {
-        display: none;
-      }
-
-      .mani-mobile-only-item {
-        display: block;
-      }
-
+      .mani-navbar { padding: 0 35px; }
+      .mani-nav-actions .mani-nav-cta-btn { display: none; }
+      .mani-mobile-only-item { display: block; }
       .mani-nav-menu {
         position: fixed;
         top: 0;
@@ -416,11 +368,7 @@
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
         margin: 0;
       }
-
-      .mani-nav-menu.active {
-        right: 0;
-      }
-
+      .mani-nav-menu.active { right: 0; }
       .mani-nav-link {
         font-size: 16px;
         width: 100%;
@@ -428,11 +376,7 @@
         border-bottom: 1px solid rgba(255,255,255,0.05);
         padding-bottom: 10px;
       }
-
-      .mani-mobile-toggle-btn {
-        display: flex;
-      }
-
+      .mani-mobile-toggle-btn { display: flex; }
       .mani-mobile-only-item .mani-nav-cta-btn {
         display: block;
         text-align: center;
@@ -444,10 +388,7 @@
     }
 
     @media (max-width: 480px) {
-      .mani-navbar {
-        height: 65px;
-        padding: 0 24px; /* Perfectly aligned space away from the sharp edges */
-      }
+      .mani-navbar { height: 65px; padding: 0 24px; }
       .mani-logo-flip-box { width: 38px; height: 38px; }
       .mani-main-brand { font-size: 16px; }
       .mani-sub-brand { font-size: 8px; letter-spacing: 1px; }
@@ -455,16 +396,12 @@
   </style>
 
   <nav class='mani-navbar'>
-    <!-- Logo Zone with Separate Active Elements -->
     <div class='mani-logo-flex-wrapper'>
-      <!-- Hyperlink locked ONLY to the flipping graphic box icon -->
       <a class='mani-nav-logo-link' href='/'>
         <div class='mani-logo-flip-box'>
           <img alt='Logo' class='mani-logo-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
         </div>
       </a>
-
-      <!-- Plain Text Brand Container (No Links) with Slide Animations -->
       <div class='mani-slide-text-container'>
         <div class='mani-logo-text-group'>
           <div class='mani-main-brand'>
@@ -475,15 +412,12 @@
       </div>
     </div>
 
-    <!-- Navigation Menu Links Container -->
     <ul class='mani-nav-menu'>
       <li><a class='mani-nav-link' href='/'>Home</a></li>
       <li><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
       <li><a class='mani-nav-link' href='/p/about-sids.html'>About SIDS</a></li>
       <li><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
       <li><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
-      
-      <!-- Inside Mobile View Links -->
       <li class="mani-mobile-only-item">
         <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
           <span>Hire Us</span>
@@ -491,13 +425,10 @@
       </li>
     </ul>
 
-    <!-- Actions Tray Layout -->
     <div class='mani-nav-actions'>
       <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
         <span>Hire Us</span>
       </a>
-
-      <!-- Hamburger Button Component -->
       <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
         <span></span>
         <span></span>
@@ -506,7 +437,6 @@
     </div>
   </nav>
 
-  <!-- Mobile Toggle Trigger Core Logic -->
   <script>
     (function() {
       const toggleBtn = document.querySelector('.mani-mobile-toggle-btn');
@@ -531,8 +461,6 @@
 </div>
 <!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip End -->
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -540,7 +468,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our CEO Message with Premium Header</title>
     <style>
-        /* --- Core Reset & Styling --- */
         * {
             margin: 0;
             padding: 0;
@@ -555,14 +482,14 @@
             overflow-x: hidden;
         }
 
-        /* --- 1. FULL WIDTH HEADER SECTION --- */
+        /* --- 1. FULL WIDTH HEADER SECTION WITH FIXED NAVBAR FIX --- */
         .ceo-hero-header {
             width: 100%;
-            height: 250px; /* Desktop height for header */
-            /* Aap niche di gayi image URL ko apni pasand ki kisi bhi badi image se badal sakte hain */
+            height: 250px; 
+            margin-top: 75px; /* Navbar ke neeche push karne ke liye (Desktop) */
             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://wallpapercave.com/wp/wp15976931.jpg');
-            background-size: cover; /* Image kitni bhi badi ho, poore section ko corner-to-corner cover karegi */
-            background-position: center; /* Image hamesha center me aligned rahegi */
+            background-size: cover; 
+            background-position: center; 
             background-repeat: no-repeat;
             display: flex;
             justify-content: center;
@@ -573,10 +500,10 @@
         .ceo-hero-title {
             color: #ffffff;
             font-size: 42px;
-            font-weight: 800; /* Extra Bold */
+            font-weight: 800; 
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5); /* Text readability enhancement */
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5); 
             text-align: center;
             padding: 0 20px;
         }
@@ -591,7 +518,6 @@
             padding: 0 20px;
         }
 
-        /* --- Heading Style Inside Content --- */
         .ceo-heading {
             font-size: 32px;
             font-weight: 800;
@@ -601,33 +527,42 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Content Wrapper (Handles Text Floating) --- */
         .ceo-content-wrapper {
             width: 100%;
             display: block;
         }
 
-        /* --- Right-Aligned Image Card (Desktop) --- */
+        /* --- STABLE AUTO-SCALING PROFILE IMAGE FRAME (DESKTOP) --- */
         .ceo-image-card {
             float: right;
-            width: 260px;
-            margin-left: 25px;
+            width: 180px;         /* Symmetrical width block */
+            height: 180px;        /* Fixed height constraint */
+            margin-left: 30px;
             margin-bottom: 20px;
             background: #ffffff;
-            border: 2px solid #1a2a40;
+            border: 3px solid #1e3a8a; /* Theme base matching solid border */
+            border-radius: 12px;  /* Smooth round format */
             padding: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); /* Soft colored reflection */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;     /* Image border layout se bahar leak nahi hogi */
+            transition: transform 0.3s ease;
+        }
+
+        .ceo-image-card:hover {
+            transform: translateY(-5px);
         }
 
         .ceo-image-card img {
-            width: 100%;
-            height: auto;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;    /* Kitni bhi badi image ho, perfect ratio me lock ho jayegi */
+            border-radius: 8px; 
             display: block;
-            object-fit: cover;
         }
 
-        /* --- Corporate Text Paragraphs --- */
         .ceo-text-p {
             font-size: 15px;
             line-height: 1.7;
@@ -636,15 +571,15 @@
             text-align: justify;
         }
 
-        /* --- Shaded Quote Box (Bottom Left) --- */
         .ceo-quote-box {
             display: inline-block;
             background-color: #f4f5f7;
             border-radius: 4px;
             padding: 15px 25px;
             margin-top: 25px;
-            max-width: 450px;
+            max-width: 550px;
             clear: both;
+            border-left: 4px solid #f17329; /* Elegant orange left bar element */
         }
 
         .ceo-quote-text {
@@ -655,14 +590,12 @@
             text-align: left;
         }
 
-        /* --- Author Signature Section (Below Image) --- */
         .ceo-signature-block {
             float: right;
             clear: right;
-            width: 260px;
+            width: 180px;
             text-align: center;
             margin-top: 15px;
-            padding-right: 6px;
         }
 
         .ceo-name {
@@ -671,7 +604,6 @@
             color: #000000;
         }
 
-        /* Clearfix utility to reset floated elements naturally */
         .ceo-content-wrapper::after {
             content: "";
             clear: both;
@@ -680,9 +612,9 @@
 
         /* ================= MOBILE VIEW RESPONSIVENESS ================= */
         @media (max-width: 768px) {
-            /* Header adjustments for smaller screens */
             .ceo-hero-header {
-                height: 180px; /* Reduced height for mobile view */
+                height: 180px; 
+                margin-top: 65px; /* Mobile navigation framework adjustment */
                 margin-bottom: 25px;
             }
 
@@ -692,7 +624,7 @@
             }
 
             .ceo-message-container {
-                padding: 0 16px; /* Touch friendly corner spaces */
+                padding: 0 16px; 
             }
 
             .ceo-heading {
@@ -707,12 +639,11 @@
                 align-items: center;
             }
 
-            /* Image centers and stacks over text cleanly */
             .ceo-image-card {
                 float: none;
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto 25px auto;
+                width: 160px;     /* Mobile display scaling block */
+                height: 160px;
+                margin: 0 auto 20px auto;
                 order: 1;
             }
 
@@ -728,7 +659,7 @@
                 clear: none;
                 width: 100%;
                 text-align: center;
-                margin: 10px 0 20px 0;
+                margin: 5px 0 25px 0;
                 order: 3;
             }
 
@@ -748,7 +679,7 @@
 </head>
 <body>
 
-    <!-- 1. Full Width Header (Corner to Corner) -->
+    <!-- 1. Full Width Header -->
     <header class="ceo-hero-header">
         <h1 class="ceo-hero-title">Our CEO</h1>
     </header>
@@ -795,29 +726,15 @@
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Edge-to-Edge Premium SIDS Footer Start -->
 <div class="mani-footer-full-width">
   <style>
-    /* --- FOOTER MAIN CONTAINER --- */
     .mani-footer-full-width {
       width: 100vw !important;    
       margin: 0 !important;       
       padding: 0 !important;      
-      background-color: #1e3a8a; /* Navbar se bilkul match karta hua deep blue color */
-      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* Halka top shadow smooth look ke liye */
+      background-color: #1e3a8a; 
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); 
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       position: relative;
       left: 50%;
@@ -830,17 +747,16 @@
     .mani-footer-container {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 20px 24px; /* Mobile aur desktop dono par safe padding */
+      padding: 20px 24px; 
       display: flex;
       align-items: center;
-      justify-content: center; /* Text ko center me rakhne ke liye */
+      justify-content: center; 
       text-align: center;
       min-height: 60px;
       box-sizing: border-box;
       width: 100%;
     }
 
-    /* --- FOOTER TEXT STYLE --- */
     .mani-footer-text {
       color: #ffffff !important;
       font-size: 14px;
@@ -851,7 +767,6 @@
       user-select: none;
     }
 
-    /* SIDS EXPERTS ke liye ek pyara sa orange highlight text effect */
     .mani-footer-highlight {
       color: #f17329;
       font-weight: 700;
@@ -862,14 +777,13 @@
       color: #ffffff;
     }
 
-    /* --- RESPONSIVE MOBILE ADJUSTMENT --- */
     @media (max-width: 768px) {
       .mani-footer-container {
         padding: 15px 20px;
         min-height: 50px;
       }
       .mani-footer-text {
-        font-size: 12px; /* Choti screens par text clear aur readable rahega */
+        font-size: 12px; 
         letter-spacing: 0.3px;
       }
     }
