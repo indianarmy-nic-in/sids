@@ -1,37 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>404 - Page Not Found</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive 404 Image</title>
+
 <style>
-body{
+*{
     margin:0;
-    background:#0f172a;
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#ffffff;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    font-family:Arial;
-    text-align:center;
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
 }
-a{
-    padding:12px 25px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
+
+/* Main Container */
+.image-box{
+    width:100%;
+    max-width:1600px;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Image */
+.image-box img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    user-select:none;
+    pointer-events:none;
+}
+
+/* Desktop */
+@media (min-width:992px){
+
+.image-box{
+    width:90%;
+}
+
+.image-box img{
+    max-height:90vh;
+}
+
+}
+
+/* Tablet */
+@media (max-width:991px){
+
+.image-box{
+    width:95%;
+    padding:10px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+body{
+    padding:0;
+}
+
+.image-box{
+    width:100%;
+    padding:5px;
+}
+
+.image-box img{
+    width:100%;
+    height:auto;
+}
+
 }
 </style>
+
 </head>
 <body>
 
-<div>
-    <h1>404</h1>
-    <h2>Page Not Found</h2>
-    <p>Sorry, this page doesn't exist.</p>
-    <a href="/">Go to Home</a>
+<div class="image-box">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtDPBEpnnmNcK0G05Bl2EuTYQnd_ru9jMrMEe_xmvGq0lAe9aRnKY-2juuSja5ohCErt_as9REZ6XOB-eN7fYl6fyOphcJeyUOBo7l3uFQnUjftNEuofuOoAD5L4wWLrDVdpz0T5TK745-uVfcOplotCtVYT9NRtk-u_6pNSfqfFBAlv2LlVVzpyJ9dsPk/s1035/AB6FEB9B-DA07-4FE1-AA5E-D9E359DB4E55.png" alt="404 Page">
 </div>
+
+<script>
+
+// Right Click Disable
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Drag Disable
+document.querySelector("img").ondragstart = () => false;
+
+// Select Disable
+document.onselectstart = () => false;
+
+</script>
 
 </body>
 </html>
+
+
