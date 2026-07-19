@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- 1. Website Title -->
-    <title>SIDS INDIA | Creative Hub - Website Design & Development</title>
+    <title>SIDS INDIA - Services</title>
 
     <!-- 2. Standard Meta Tags -->
     <meta charset="UTF-8" />
@@ -545,10 +545,115 @@
         </nav>
     </div>
     <!-- NAVBAR END -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIDS Services</title>
+    <style>
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* ================= FIXED HEADER CONTAINER (Edge-to-Edge) ================= */
+        .header-container {
+            width: 100vw;            /* Browser ke dono corners ko touch karega */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 450px;           /* Desktop ke liye premium height */
+            background-color: #0f172a; 
+            overflow: hidden;
+        }
+
+        /* Picture and Img responsive behavior */
+        .header-container picture,
+        .header-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .header-container img {
+            object-fit: cover;       /* Image ko kharab/stretch hone se bachata hai */
+            object-position: center; /* Main content center me rahega */
+        }
+
+        /* Content Layout Styling */
+        .main-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: #1e293b;
+            margin: 40px auto 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        /* ================= RESPONSIVE MEDIA BREAKPOINTS ================= */
+        
+        /* Tablets View */
+        @media (max-width: 1024px) {
+            .header-container {
+                height: 320px;       /* Height automatically balances down */
+            }
+            .main-title {
+                font-size: 30px;
+                margin: 30px auto 15px;
+            }
+        }
+
+        /* Pure Mobile View (Mobiles ke liye perfect adjustments) */
+        @media (max-width: 640px) {
+            .header-container {
+                height: 220px;       /* Mobile viewport ke hisab se safe box height */
+            }
+            .main-title {
+                font-size: 24px;
+                margin: 25px auto 10px;
+            }
+            .services-container {
+                padding: 0 15px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
 
     <!-- MAIN CONTENT START -->
+    <!-- Full Width Corner-to-Corner Responsive Header Section -->
     <header class="header-container">
-        <img src="https://via.placeholder.com/1600x400/1a252f/ffffff?text=SIDS+SERVICES+BANNER" alt="SIDS Services Header">
+        <picture>
+            <!-- Jab screen 640px ya usse choti hogi, toh yeh MOBILE wali image load hogi -->
+            <source media="(max-width: 640px)" srcset="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb0iqRvp2YnFESNnPJfoXbQF8Qii8fxsCMhOOo5u2RrxKSKwgX0mmZ4Vg&s=10">
+            
+            <!-- Default / Jab screen 641px ya badi hogi (Desktop/Laptop), toh yeh image load hogi -->
+            <img src="https://digitalprworld.com/wp-content/uploads/2019/09/digital-marketing-for-small-business-india.jpg" alt="SIDS Services Header">
+        </picture>
     </header>
 
     <h1 class="main-title">SIDS SERVICES</h1>
@@ -558,6 +663,295 @@
             <!-- JavaScript will insert boxes here dynamically -->
         </div>
     </main>
+
+</body>
+</html>
+    
+    
+    
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Speciality Section</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            padding: 60px 20px;
+        }
+
+        /* Container styling */
+        .speciality-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Heading Styling */
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Three dashed/segmented lines below heading as seen in screenshot */
+        .title-underline {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 40px;
+        }
+
+        .title-underline span {
+            width: 25px;
+            height: 3px;
+            background-color: #f5b041;
+            border-radius: 2px;
+        }
+
+        /* Dynamic Grid Container for Desktop */
+        .speciality-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Base Card Styling */
+        .speciality-card {
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            position: relative;
+        }
+
+        .speciality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Card Image Wrapper */
+        .card-image-box {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .card-image-box img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Card Text Styling */
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.15); /* Subtitle backdrop */
+        }
+
+        /* ================= COLOR & HEIGHT VARIATIONS (As per Screenshot) ================= */
+        
+        /* Column 1 Cards */
+        .card-branding { 
+            background-color: #fbad4c; 
+            height: 280px;
+        }
+        .card-sem { 
+            background-color: #2351ba; 
+            height: 360px;
+        }
+
+        /* Column 2 Cards */
+        .card-digital { 
+            background-color: #26b99a; 
+            height: 340px;
+        }
+        .card-paid { 
+            background-color: #f05464; 
+            height: 360px;
+        }
+
+        /* Column 3 Cards */
+        .card-mobile { 
+            background-color: #000000; 
+            height: 340px;
+        }
+        .card-seo { 
+            background-color: #b905f0; 
+            height: 360px;
+        }
+
+        /* Column 4 Cards */
+        .card-online { 
+            background-color: #3b82f6; 
+            height: 340px;
+        }
+        .card-smm { 
+            background-color: #fbc658; 
+            height: 360px;
+        }
+
+        /* Specific text override for dark backgrounds if needed */
+        .card-mobile .card-title {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ================= RESPONSIVE MEDIA QUERIES ================= */
+
+        /* Tablets View (1024px down to 768px) */
+        @media (max-width: 1024px) {
+            .speciality-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .speciality-card {
+                height: 320px; /* Tablet standard equalized height */
+            }
+        }
+
+        /* Mobile View (767px down to 480px) */
+        @media (max-width: 767px) {
+            body {
+                padding: 40px 15px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .speciality-grid {
+                grid-template-columns: 1fr; /* Pure single column on mobile */
+                gap: 16px;
+            }
+            .speciality-card {
+                height: auto; /* Content ke hisab se scroll adjustment */
+                min-height: 260px;
+            }
+            .card-title {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="speciality-section">
+    <!-- Heading -->
+    <h2 class="section-title">Our Speciality</h2>
+    <div class="title-underline">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="speciality-grid">
+        
+        <!-- Column 1 -->
+        <div class="speciality-card card-branding">
+            <div class="card-image-box">
+                <!-- Replace with your actual vector/image URL -->
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/brand-marketing-campaign-illustration-svg-download-png-5715511.png" alt="Branding">
+            </div>
+            <div class="card-title">Branding</div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="speciality-card card-digital">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/digital-marketing.png" alt="Digital Marketing">
+            </div>
+            <div class="card-title">Digital Marketing</div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="speciality-card card-mobile">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/mobile-marketing.png" alt="Mobile Marketing">
+            </div>
+            <div class="card-title">Mobile Marketing</div>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="speciality-card card-online">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/online-marketing.png" alt="Online Marketing">
+            </div>
+            <div class="card-title">Online Marketing</div>
+        </div>
+
+        <!-- Row 2 / Continuations -->
+        <!-- Column 1 Below -->
+        <div class="speciality-card card-sem">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/search-engine-marketing.png" alt="Search Engine Marketing">
+            </div>
+            <div class="card-title">Search Engine Marketing</div>
+        </div>
+
+        <!-- Column 2 Below -->
+        <div class="speciality-card card-paid">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/paid-marketing.png" alt="Paid Marketing">
+            </div>
+            <div class="card-title">Paid Marketing</div>
+        </div>
+
+        <!-- Column 3 Below -->
+        <div class="speciality-card card-seo">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/seo.png" alt="Search Engine Optimization">
+            </div>
+            <div class="card-title">Search Engine Optimization</div>
+        </div>
+
+        <!-- Column 4 Below -->
+        <div class="speciality-card card-smm">
+            <div class="card-image-box">
+                <img src="https://www.digitalmarketingking.in/img/home/smo.png" alt="Social Media Marketing">
+            </div>
+            <div class="card-title">Social Media Marketing</div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- MAIN CONTENT END -->
 
     <!-- FOOTER START -->
@@ -654,3 +1048,7 @@
     </script>
 </body>
 </html>
+
+
+
+
