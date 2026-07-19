@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Profile - Full Background Desktop Layout</title>
+    <style>
+        /* --- Reset & Core Layout --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* --- Full Layout Container --- */
+        .ceo-hybrid-container {
+            width: 100%;
+            position: relative;
+            display: flex;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: containerFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            
+            /* Desktop View Default: 500px Fixed Height Section */
+            height: 500px;
+            background-image: url('https://wallpapercave.com/wp/wp15976931.jpg');
+            background-size: cover; /* Image bina stretch hue background me set hogi */
+            background-position: center left; /* Image ka main focal point left me rahega */
+            background-repeat: no-repeat;
+            justify-content: flex-end; /* Text box ko right side me push karne ke liye */
+            align-items: center;
+            padding: 0;
+        }
+
+        /* Mobile Image Fallback Element (Hidden on Desktop) */
+        .ceo-mobile-image {
+            display: none;
+        }
+
+        /* --- Right Side Green Content Section (Desktop Overlaid Box) --- */
+        .ceo-text-frame {
+            width: 45%; /* Desktop par text box screen ki 45% width lega */
+            height: 100%;
+            background-color: rgba(25, 84, 52, 0.95); /* Semi-transparent premium deep green */
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            backdrop-filter: blur(5px); /* Premium premium glass effect background ke sath */
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+        }
+
+        /* Fixed container ke andar text scrollbar */
+        .ceo-scroll-box {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        /* Scrollbar Styling */
+        .ceo-scroll-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .ceo-scroll-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .ceo-scroll-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        /* --- Typography Hierarchy --- */
+        .ceo-main-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .ceo-post-title {
+            font-size: 14px;
+            color: #f17329; /* SIDS Accent Orange */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .ceo-para-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .ceo-para-content:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ================= LOAD ANIMATIONS ================= */
+        @keyframes containerFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ================= HYBRID RESPONSIVE MEDIA FOR MOBILE ================= */
+        @media (max-width: 992px) {
+            .ceo-hybrid-container {
+                height: auto;
+                background-image: none; /* Mobile par background image remove ho jayegi */
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+            }
+
+            /* Mobile image block activate hoga taaki photo na kate */
+            .ceo-mobile-image {
+                display: block;
+                width: 100%;
+                background-color: transparent;
+            }
+
+            .ceo-mobile-image img {
+                width: 100%;
+                height: auto;
+                object-fit: contain; /* Mobile me bina kate edge-to-edge full width aayegi */
+                display: block;
+            }
+
+            .ceo-text-frame {
+                width: 100%;
+                height: auto; /* Mobile par text automatic adjust hoga */
+                padding: 40px 24px;
+                background-color: #195434; /* Mobile par solid background */
+                backdrop-filter: none;
+                box-shadow: none;
+            }
+
+            .ceo-scroll-box {
+                height: auto;
+                overflow-y: visible; /* Mobile me inner scrollbar remove */
+                padding-right: 0;
+            }
+
+            .ceo-main-name {
+                font-size: 24px;
+            }
+
+            .ceo-para-content {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ceo-text-frame {
+                padding: 35px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Section Container with Desktop Background Image -->
+    <div class="ceo-hybrid-container">
+        
+        <!-- Part 1: Mobile Explicit Image Frame (Desktop par automatically hidden rahega) -->
+        <div class="ceo-mobile-image">
+            <img src="https://wallpapercave.com/wp/wp15976931.jpg" alt="Dr. Anup Kumar Gupta">
+        </div>
+
+        <!-- Part 2: Overlaid Green Content Block (Right aligned on Desktop, Bottom stacked on Mobile) -->
+        <div class="ceo-text-frame">
+            <div class="ceo-scroll-box">
+                <h2 class="ceo-main-name">Dr. Anup Kumar Gupta</h2>
+                <span class="ceo-post-title">Chief Executive Officer</span>
+                
+                <p class="ceo-para-content">
+                    Dr. Anup Kumar Gupta has been associated with GLA since its inception in 1998 and has been decisively instrumental in the establishment of the University in 2010, and thereafter in the successful introduction of so many new courses and degree programs at regular intervals.
+                </p>
+                
+                <p class="ceo-para-content">
+                    Having completed his M.A., M.Phil., and Ph.D. in English, and MBA, Dr. Gupta did his Executive MBA from IIT Bombay in 2012. He was the overall topper of the Batch. His keen interest as educator took him to Michigan State University, USA to earn graduate degree in Higher Education Administration. Six students have done their Ph.D. under his guidance.
+                </p>
+                
+                <p class="ceo-para-content">
+                    Computer savvy and well networked; Dr. Gupta has effective communication and presentation skills. He is proactive in solving problems. He understands national, international and cross-cultural sensitivities. He has expert interviewing skills in hiring of personnel at higher level.
+                </p>
+                
+                <p class="ceo-para-content">
+                    Having complete knowledge of rules and regulations related to AICTE, UGC, NIRF, NAAC, etc. helps him in organizational development at national level. With his continuous involvement and participation at international seminars and conferences, he brings a highly futuristic vision to digital education and strategic management.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
