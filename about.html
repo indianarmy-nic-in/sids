@@ -1,208 +1,452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Profile - Full Background Desktop Layout</title>
+    <title>About Us - SIDS Digital Marketing Agency (3D FontAwesome)</title>
+    <!-- Font Awesome Kit Integration for Smooth Icons Loading -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- Reset & Core Layout --- */
+        /* --- RESET & BASE STYLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f6f9;
-            width: 100%;
+            background-color: #ffffff; /* पीछे का बैकग्राउंड पूरी तरह सफ़ेद */
+            color: #333333;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Full Layout Container --- */
-        .ceo-hybrid-container {
-            width: 100%;
+        /* --- FULL-WIDTH HERO HEADER SECTION --- */
+        .hero-header {
             position: relative;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920') no-repeat center center;
+            background-size: cover;
             display: flex;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: containerFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            
-            /* Desktop View Default: 500px Fixed Height Section */
-            height: 500px;
-            background-image: url('https://wallpapercave.com/wp/wp15976931.jpg');
-            background-size: cover; /* Image bina stretch hue background me set hogi */
-            background-position: center left; /* Image ka main focal point left me rahega */
-            background-repeat: no-repeat;
-            justify-content: flex-end; /* Text box ko right side me push karne ke liye */
-            align-items: center;
-            padding: 0;
-        }
-
-        /* Mobile Image Fallback Element (Hidden on Desktop) */
-        .ceo-mobile-image {
-            display: none;
-        }
-
-        /* --- Right Side Green Content Section (Desktop Overlaid Box) --- */
-        .ceo-text-frame {
-            width: 45%; /* Desktop par text box screen ki 45% width lega */
-            height: 100%;
-            background-color: rgba(25, 84, 52, 0.95); /* Semi-transparent premium deep green */
-            color: #ffffff;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            backdrop-filter: blur(5px); /* Premium premium glass effect background ke sath */
-            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Fixed container ke andar text scrollbar */
-        .ceo-scroll-box {
-            height: 100%;
-            overflow-y: auto;
-            padding-right: 15px;
-        }
-
-        /* Scrollbar Styling */
-        .ceo-scroll-box::-webkit-scrollbar {
-            width: 6px;
-        }
-        .ceo-scroll-box::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-        .ceo-scroll-box::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-        }
-
-        /* --- Typography Hierarchy --- */
-        .ceo-main-name {
-            font-size: 28px;
-            font-weight: 800;
+        .hero-title {
             color: #ffffff;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
-
-        .ceo-post-title {
-            font-size: 14px;
-            color: #f17329; /* SIDS Accent Orange */
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-            display: block;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            animation: pulse 3s infinite alternate;
         }
 
-        .ceo-para-content {
-            font-size: 15px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 18px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* --- CONTAINER CONTROL --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* --- 3D INTERACTIVE CARDS & SECTIONS --- */
+        section {
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        section:hover {
+            transform: perspective(1000px) translateY(-8px) rotateX(0deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        /* --- मुख्य सेक्शन्स के रंग-बिरंगे बैकग्राउंड --- */
+        #about { background: #0056b3; color: #ffffff; }
+        #journey { background: #e63946; color: #ffffff; }
+        #who-we-are { background: #ffc107; color: #111111; }
+        #services { background: #f8f9fa; color: #333333; border: 1px solid #e2e8f0; }
+        #vision-mission { background: #2a9d8f; color: #ffffff; }
+        #process { background: #4a4e69; color: #ffffff; }
+        #industries { background: #f4a261; color: #111111; }
+        #commitment { background: #1d3557; color: #ffffff; }
+
+        /* हेडिंग और टाइटल्स */
+        #about h2, #journey h2, #vision-mission h2, #process h2, #commitment h2 { color: #ffffff; }
+        #who-we-are h2, #industries h2 { color: #111111; }
+        #services h2 { color: #0056b3; }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            margin-top: 15px;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
             text-align: justify;
         }
 
-        .ceo-para-content:last-child {
-            margin-bottom: 0;
+        .txt-light { color: #f1f3f5; }
+        .txt-dark { color: #2b2b2b; }
+
+        /* --- ICON ANIMATION CODES --- */
+        h2 i, h3 i {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* ================= LOAD ANIMATIONS ================= */
-        @keyframes containerFadeIn {
-            to { opacity: 1; transform: translateY(0); }
+        /* माउस ले जाने पर हेडिंग वाले आइकॉन ३D रोटेट होंगे */
+        section:hover h2 i {
+            transform: scale(1.2) rotate(360deg);
         }
 
-        /* ================= HYBRID RESPONSIVE MEDIA FOR MOBILE ================= */
-        @media (max-width: 992px) {
-            .ceo-hybrid-container {
-                height: auto;
-                background-image: none; /* Mobile par background image remove ho jayegi */
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: stretch;
-            }
-
-            /* Mobile image block activate hoga taaki photo na kate */
-            .ceo-mobile-image {
-                display: block;
-                width: 100%;
-                background-color: transparent;
-            }
-
-            .ceo-mobile-image img {
-                width: 100%;
-                height: auto;
-                object-fit: contain; /* Mobile me bina kate edge-to-edge full width aayegi */
-                display: block;
-            }
-
-            .ceo-text-frame {
-                width: 100%;
-                height: auto; /* Mobile par text automatic adjust hoga */
-                padding: 40px 24px;
-                background-color: #195434; /* Mobile par solid background */
-                backdrop-filter: none;
-                box-shadow: none;
-            }
-
-            .ceo-scroll-box {
-                height: auto;
-                overflow-y: visible; /* Mobile me inner scrollbar remove */
-                padding-right: 0;
-            }
-
-            .ceo-main-name {
-                font-size: 24px;
-            }
-
-            .ceo-para-content {
-                font-size: 15px;
-                line-height: 1.6;
-            }
+        .service-card:hover h3 i {
+            animation: bounceIcon 0.6s ease infinite alternate;
         }
 
-        @media (max-width: 480px) {
-            .ceo-text-frame {
-                padding: 35px 16px;
+        @keyframes bounceIcon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-6px); }
+        }
+
+        /* --- LAYOUT GRIDS --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- रंगे-बिरंगे 3D सर्विस कार्ड्स --- */
+        .service-card {
+            padding: 25px;
+            border-radius: 12px;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: perspective(1000px) rotateY(8deg) translateY(-8px);
+            box-shadow: -8px 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .sc-1 { background: #007bff; color: #ffffff; }
+        .sc-2 { background: #ffc107; color: #111111; }
+        .sc-3 { background: #28a745; color: #ffffff; }
+        .sc-4 { background: #dc3545; color: #ffffff; }
+        .sc-5 { background: #fd7e14; color: #ffffff; }
+        .sc-6 { background: #6f42c1; color: #ffffff; }
+        .sc-7 { background: #e83e8c; color: #ffffff; }
+        .sc-8 { background: #17a2b8; color: #ffffff; }
+
+        /* --- LIST STYLES & TAGS --- */
+        .list-style {
+            list-style: none;
+        }
+
+        .list-style li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .list-style li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* --- WORKING PROCESS FLOW --- */
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .process-step {
+            background: #ffffff;
+            color: #4a4e69;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .process-step:hover {
+            transform: scale(1.1);
+            background: #ffc107;
+            color: #111111;
+        }
+
+        /* --- INDUSTRIES TAGS --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #ffffff;
+            color: #f4a261;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag:hover {
+            background: #111111;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- HIGHLIGHT BOX WITHIN SECTIONS --- */
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 5px solid #ffffff;
+            padding: 22px;
+            font-style: italic;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .highlight-box i {
+            font-size: 1.5rem;
+            margin-top: 3px;
+        }
+
+        /* --- SMART RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero-header {
+                height: 250px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+            .container {
+                padding: 25px 15px;
+            }
+            section {
+                padding: 25px 20px;
+                transform: none !important;
+            }
+            section:hover {
+                transform: translateY(-4px) !important;
+            }
+            .service-card:hover {
+                transform: translateY(-5px) !important;
+            }
+            h2 {
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Section Container with Desktop Background Image -->
-    <div class="ceo-hybrid-container">
-        
-        <!-- Part 1: Mobile Explicit Image Frame (Desktop par automatically hidden rahega) -->
-        <div class="ceo-mobile-image">
-            <img src="https://wallpapercave.com/wp/wp15976931.jpg" alt="Dr. Anup Kumar Gupta">
+    <!-- HERO HEADER SECTION -->
+    <header class="hero-header">
+        <div class="hero-title">OUR CEO</div>
+    </header>
+
+    <div class="container">
+
+        <!-- ABOUT US (BLUE BOX / WHITE TEXT) -->
+        <section id="about">
+            <h2><i class="fa-solid fa-rocket"></i> About Us</h2>
+            <p><strong>Transforming Brands with Creativity, Strategy & Digital Excellence</strong></p>
+            <p class="txt-light">SIDS Digital Marketing Agency is a full-service digital marketing and creative branding agency committed to helping businesses establish a powerful online presence, generate quality leads, and achieve sustainable business growth. Since our inception, we have been delivering result-oriented digital solutions by combining innovation, creativity, technology, and data-driven strategies.</p>
+            <p class="txt-light">We believe that every business deserves a unique digital identity. Our team of experienced digital marketers, graphic designers, web developers, content creators, SEO specialists, branding experts, and social media strategists work together to create customized marketing solutions that deliver measurable results.</p>
+            <p class="txt-light">With a customer-first approach and commitment to excellence, we have successfully served educational institutions, startups, local businesses, corporate organizations, healthcare providers, real estate companies, e-commerce brands, hospitality businesses, and many other industries.</p>
+        </section>
+
+        <!-- JOURNEY & WHO WE ARE GRID -->
+        <div class="grid-2">
+            <!-- JOURNEY (RED BOX / WHITE TEXT) -->
+            <section id="journey">
+                <h2><i class="fa-solid fa-route"></i> Our Journey</h2>
+                <p class="txt-light">Founded with the vision of empowering businesses through digital transformation, SIDS Digital Marketing Agency has become a trusted name in digital branding and online marketing. From creating engaging social media campaigns to developing modern websites and executing high-performance advertising campaigns, we provide complete digital solutions under one roof.</p>
+                <p class="txt-light">Our focus has always been on innovation, transparency, creativity, and long-term client relationships. Every project we undertake is driven by research, strategic planning, and performance analysis to ensure maximum return on investment (ROI).</p>
+            </section>
+
+            <!-- WHO WE ARE (YELLOW BOX / BLACK TEXT) -->
+            <section id="who-we-are">
+                <h2><i class="fa-solid fa-users-gear"></i> Who We Are</h2>
+                <p class="txt-dark">We are a team of passionate professionals specializing in:</p>
+                <ul class="list-style" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                    <li><i class="fa-solid fa-bullseye"></i> Digital Marketing</li>
+                    <li><i class="fa-solid fa-share-nodes"></i> Social Media</li>
+                    <li><i class="fa-solid fa-magnifying-glass-chart"></i> SEO & SEM</li>
+                    <li><i class="fa-brands fa-meta"></i> Meta Ads</li>
+                    <li><i class="fa-solid fa-palette"></i> UI/UX Design</li>
+                    <li><i class="fa-solid fa-code"></i> Web Dev</li>
+                    <li><i class="fa-solid fa-pen-nib"></i> Content Writing</li>
+                    <li><i class="fa-solid fa-video"></i> Video Editing</li>
+                    <li><i class="fa-solid fa-briefcase"></i> Corporate Branding</li>
+                    <li><i class="fa-solid fa-cart-shopping"></i> E-commerce</li>
+                    <li><i class="fa-brands fa-whatsapp"></i> WhatsApp Blast</li>
+                    <li><i class="fa-solid fa-hashtag"></i> Influencer</li>
+                    <li><i class="fa-solid fa-star-half-stroke"></i> ORM Solutions</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> Consulting</li>
+                </ul>
+            </section>
         </div>
 
-        <!-- Part 2: Overlaid Green Content Block (Right aligned on Desktop, Bottom stacked on Mobile) -->
-        <div class="ceo-text-frame">
-            <div class="ceo-scroll-box">
-                <h2 class="ceo-main-name">Dr. Anup Kumar Gupta</h2>
-                <span class="ceo-post-title">Chief Executive Officer</span>
-                
-                <p class="ceo-para-content">
-                    Dr. Anup Kumar Gupta has been associated with GLA since its inception in 1998 and has been decisively instrumental in the establishment of the University in 2010, and thereafter in the successful introduction of so many new courses and degree programs at regular intervals.
-                </p>
-                
-                <p class="ceo-para-content">
-                    Having completed his M.A., M.Phil., and Ph.D. in English, and MBA, Dr. Gupta did his Executive MBA from IIT Bombay in 2012. He was the overall topper of the Batch. His keen interest as educator took him to Michigan State University, USA to earn graduate degree in Higher Education Administration. Six students have done their Ph.D. under his guidance.
-                </p>
-                
-                <p class="ceo-para-content">
-                    Computer savvy and well networked; Dr. Gupta has effective communication and presentation skills. He is proactive in solving problems. He understands national, international and cross-cultural sensitivities. He has expert interviewing skills in hiring of personnel at higher level.
-                </p>
-                
-                <p class="ceo-para-content">
-                    Having complete knowledge of rules and regulations related to AICTE, UGC, NIRF, NAAC, etc. helps him in organizational development at national level. With his continuous involvement and participation at international seminars and conferences, he brings a highly futuristic vision to digital education and strategic management.
-                </p>
+        <!-- WHAT WE DO (LIGHT SECTION WITH COLORFUL BOXES) -->
+        <section id="services">
+            <h2><i class="fa-solid fa-cubes"></i> What We Do (Our Core Services)</h2>
+            <p style="margin-bottom: 30px; color: #666;">We provide complete digital solutions that help businesses grow online.</p>
+            
+            <div class="services-grid">
+                <div class="service-card sc-1">
+                    <h3><i class="fa-solid fa-thumbs-up"></i> Social Media Marketing</h3>
+                    <p>Facebook, Instagram, LinkedIn, YouTube, Twitter (X) Marketing, Social Media & Community Management, Influencer Campaigns.</p>
+                </div>
+                <div class="service-card sc-2">
+                    <h3><i class="fa-solid fa-chart-line"></i> Search Engine Optimization</h3>
+                    <p>On-Page, Off-Page, Technical & Local SEO, Keyword Research, Website Audit, Link Building, Monthly Reporting.</p>
+                </div>
+                <div class="service-card sc-3">
+                    <h3><i class="fa-solid fa-arrow-trend-up"></i> Performance Marketing</h3>
+                    <p>Google Ads, Meta Ads, YouTube Ads, Display Advertising, Remarketing Campaigns, Conversion & ROI Optimization, Lead Generation.</p>
+                </div>
+                <div class="service-card sc-4">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Website Development</h3>
+                    <p>Business, Corporate, Educational & Portfolio Websites, E-Commerce Stores, Landing Pages, Custom Web Applications, Mobile Responsive Design.</p>
+                </div>
+                <div class="service-card sc-5">
+                    <h3><i class="fa-solid fa-bezier-curve"></i> Graphic Designing</h3>
+                    <p>Logo Design, Brand Identity, Social Media Creatives, Brochures, Flyers, Posters, Banners, Packaging Design.</p>
+                </div>
+                <div class="service-card sc-6">
+                    <h3><i class="fa-solid fa-clapperboard"></i> Video Production</h3>
+                    <p>Promotional Videos, Reels Editing, Motion Graphics, Product & Corporate Videos, YouTube Editing, AI Generated Videos.</p>
+                </div>
+                <div class="service-card sc-7">
+                    <h3><i class="fa-solid fa-gem"></i> Branding Solutions</h3>
+                    <p>Brand Strategy, Visual Identity, Brand Guidelines, Corporate Profile, Company Presentation, Product Branding & Positioning.</p>
+                </div>
+                <div class="service-card sc-8">
+                    <h3><i class="fa-solid fa-chart-pie"></i> Content & Growth</h3>
+                    <p>SEO Content, Blog Writing, Copywriting, Digital Consulting, CRM Integration, Marketing Automation, Conversion Funnel Design.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- VISION & MISSION (TEAL BOX / WHITE TEXT) -->
+        <section id="vision-mission">
+            <h2><i class="fa-solid fa-eye"></i> Our Vision & Mission</h2>
+            <div class="highlight-box">
+                <i class="fa-solid fa-quote-left"></i>
+                <div>
+                    <strong>Our Vision:</strong> "To become a leading global digital marketing agency by empowering businesses with innovative marketing strategies, cutting-edge technology, creative excellence, and data-driven solutions that create sustainable growth, strengthen brand value, and inspire digital transformation."
+                </div>
+            </div>
+            
+            <h3><i class="fa-solid fa-bullhorn"></i> Our Mission</h3>
+            <ul class="list-style">
+                <li><i class="fa-solid fa-circle-check"></i> To deliver high-quality digital marketing services that help businesses achieve measurable growth.</li>
+                <li><i class="fa-solid fa-circle-check"></i> To integrate modern technology, artificial intelligence, automation, and analytics into every marketing campaign.</li>
+                <li><i class="fa-solid fa-circle-check"></i> To build strong and long-lasting relationships based on trust, transparency, and performance.</li>
+                <li><i class="fa-solid fa-circle-check"></i> To provide affordable and result-oriented marketing solutions for startups, SMEs, and large enterprises.</li>
+            </ul>
+        </section>
+
+        <!-- WORKING PROCESS (DARK PURPLE BOX / WHITE TEXT) -->
+        <section id="process">
+            <h2><i class="fa-solid fa-gears"></i> Our Working Process</h2>
+            <div class="process-container">
+                <span class="process-step"><i class="fa-solid fa-comments"></i> 1. Business Consultation</span>
+                <span class="process-step"><i class="fa-solid fa-magnifying-glass"></i> 2. Market Research</span>
+                <span class="process-step"><i class="fa-solid fa-chart-simple"></i> 3. Competitor Analysis</span>
+                <span class="process-step"><i class="fa-solid fa-pen-to-square"></i> 4. Strategy Planning</span>
+                <span class="process-step"><i class="fa-solid fa-layer-group"></i> 5. Brand Development</span>
+                <span class="process-step"><i class="fa-solid fa-wand-magic-sparkles"></i> 6. Creative Design</span>
+                <span class="process-step"><i class="fa-solid fa-paper-plane"></i> 7. Campaign Launch</span>
+                <span class="process-step"><i class="fa-solid fa-desktop"></i> 8. Performance Monitoring</span>
+                <span class="process-step"><i class="fa-solid fa-sliders"></i> 9. Optimization</span>
+                <span class="process-step"><i class="fa-solid fa-file-invoice-dollar"></i> 10. Monthly Reporting</span>
+                <span class="process-step"><i class="fa-solid fa-arrow-up-right-dots"></i> 11. Growth Planning</span>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES WE SERVE (ORANGE BOX / BLACK TEXT) -->
+        <section id="industries">
+            <h2><i class="fa-solid fa-building-user"></i> Industries We Serve</h2>
+            <div class="tags-container">
+                <span class="tag"><i class="fa-solid fa-graduation-cap"></i> Educational Institutions</span>
+                <span class="tag"><i class="fa-solid fa-school"></i> Schools & Colleges</span>
+                <span class="tag"><i class="fa-solid fa-heart-pulse"></i> Healthcare (Hospitals)</span>
+                <span class="tag"><i class="fa-solid fa-house-chimney"></i> Real Estate</span>
+                <span class="tag"><i class="fa-solid fa-utensils"></i> Hotels & Restaurants</span>
+                <span class="tag"><i class="fa-solid fa-plane"></i> Travel & Tourism</span>
+                <span class="tag"><i class="fa-solid fa-bag-shopping"></i> E-Commerce & Retail</span>
+                <span class="tag"><i class="fa-solid fa-shirt"></i> Fashion & Lifestyle</span>
+                <span class="tag"><i class="fa-solid fa-industry"></i> Manufacturing</span>
+                <span class="tag"><i class="fa-solid fa-coins"></i> Finance & IT Companies</span>
+                <span class="tag"><i class="fa-solid fa-rocket"></i> Startups & Corporates</span>
+                <span class="tag"><i class="fa-solid fa-hand-holding-heart"></i> NGOs & Government</span>
+                <span class="tag"><i class="fa-solid fa-book-open"></i> Coaching Institutes</span>
+                <span class="tag"><i class="fa-solid fa-user-tie"></i> Personal Brands</span>
+            </div>
+        </section>
+
+        <!-- COMMITMENT & PROMISE (NAVY BLUE BOX / WHITE TEXT) -->
+        <section id="commitment">
+            <h2><i class="fa-solid fa-handshake-angle"></i> Our Commitment & Promise</h2>
+            <p class="txt-light">At SIDS Digital Marketing Agency, we are committed to delivering innovative digital marketing solutions that create real business value. Our focus is not only on increasing traffic but also on generating qualified leads, improving customer engagement, enhancing brand recognition, and maximizing business profitability.</p>
+            <p style="color: #ffc107; font-weight: bold; margin-top: 20px; font-style: italic; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-award"></i> "We don't just market businesses. We build brands, create opportunities, generate growth, and deliver measurable success through innovative digital marketing solutions."
+            </p>
+        </section>
 
     </div>
 
