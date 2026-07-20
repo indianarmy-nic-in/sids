@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Leaders Grid</title>
+    <style>
+        /* Basic Reset and Box Sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 1. Header Section - Fits perfectly around the image with text overlay */
+        .header-section {
+            width: 100%;
+            position: relative; /* Required for positioning text over image */
+            background: #fff;
+            overflow: hidden;
+            display: block;
+        }
+
+        /* The background image */
+        .header-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Black Shadow Overlay on the image */
+        .header-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust 0.5 for more/less shadow */
+            z-index: 1;
+        }
+
+        /* Container for text inside header */
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Perfectly centers the text */
+            text-align: center;
+            color: #ffffff; /* White text */
+            z-index: 2; /* Keeps text above the black shadow */
+            width: 90%; /* Prevents text from touching edges on mobile */
+            max-width: 800px;
+        }
+
+        /* Bold White Title over Image */
+        .header-content h1 {
+            font-size: 42px; /* Large size for desktop */
+            font-weight: 800; /* Extra bold */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Extra text shadow for clarity */
+        }
+
+        /* Subtitle over Image (Optional) */
+        .header-content p {
+            font-size: 18px;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* 2. Intro Content Below Header */
+        .intro-content {
+            max-width: 800px;
+            margin: 50px auto 10px auto; /* Increased top margin to give space from header */
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .intro-content h2 {
+            font-size: 28px;
+            color: #1a2e6b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .intro-content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* 3. Main Container for Profile Grid */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        /* 4. Team Grid Layout (3 Columns on Desktop) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* 5. Team Card Style */
+        .team-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Profile Photo */
+        .member-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Member Name (Dark Blue Background) */
+        .member-name {
+            background-color: #1a2e6b;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Role & Location Container */
+        .member-info {
+            padding: 15px 10px 20px 10px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: #555555;
+            font-weight: 500;
+        }
+
+        /* 3D Animated Button */
+        .btn-3d {
+            display: inline-block;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #1a2e6b;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 0 #007e33, 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.1s ease-in-out;
+        }
+
+        .btn-3d:hover {
+            background-color: #d9be0f;
+        }
+
+        .btn-3d:active {
+            box-shadow: 0 2px 0 #007e33, 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(3px);
+        }
+
+        /* =======================================================
+           Responsive Media Queries (Tablet & Mobile)
+           ======================================================= */
+        
+        /* Tablet View (Screens below 900px) */
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .header-content h1 {
+                font-size: 32px; /* Smaller text for tablets */
+            }
+        }
+
+        /* Mobile View (Screens below 600px) */
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 20px;
+            }
+            
+            /* Adjusting Header Text for Mobile */
+            .header-content h1 {
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
+            .header-content p {
+                font-size: 14px;
+            }
+
+            .intro-content {
+                margin-top: 30px;
+            }
+            .intro-content h2 {
+                font-size: 22px;
+            }
+            
+            .member-name {
+                font-size: 16px;
+            }
+            .btn-3d {
+                padding: 8px 18px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner Area -->
+    <div class="header-section">
+        <img src="https://wallpapercave.com/wp/wp15976934.jpg" alt="Header Banner">
+        
+        <!-- NEW: Text Overlay Content -->
+        <div class="header-content">
+            <h1>OUR LEADERSHIP TEAM</h1>
+        </div>
+    </div>
+
+    <!-- Intro Text Area -->
+    <div class="intro-content">
+        <h2>Our Provincial & Regional Leaders</h2>
+        <p>List of our respected leaders heading the organization across various states and cities. These representatives ensure development and smooth management in their respective regions.</p>
+    </div>
+
+    <!-- Leaders Grid Container -->
+    <div class="container">
+        <div class="team-grid">
+            
+            <!-- Card 1 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="team-card">
+                <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Bhupesh Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Manager NOIDA SIDS India</div>
+                    <button class="btn-3d">View Profile</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
