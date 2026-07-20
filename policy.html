@@ -1,3 +1,148 @@
+<!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
+<style>
+  /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
+  html, body {
+    /* Mobile me pinch-to-zoom aur double-tap-zoom ko completely disable karne ke liye CSS property */
+    touch-action: none !important; 
+    touch-action: pan-x pan-y !important; /* Sirf scroll karne dega, zoom nahi */
+    
+    -webkit-user-select: none !important;  
+    -moz-user-select: none !important;     
+    -ms-user-select: none !important;      
+    user-select: none !important;          
+    -webkit-touch-callout: none !important; 
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  }
+
+  /* --- 2. IMAGES PROTECTION --- */
+  img {
+    -webkit-user-drag: none !important;    
+    user-drag: none !important;
+    pointer-events: none !important;       
+  }
+
+  /* Forms ke andar typing me koi problem na ho, isliye exemption */
+  input, textarea, select {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    touch-action: auto !important; /* Form fields par default touch action allowed rahega */
+  }
+</style>
+
+<script>
+  (function() {
+    // 1. HIGH-PRIORITY VIEWPORT FORCING
+    // Yeh meta tag browser ko batata hai ki screen ka zoom level 1.0 par lock rahe
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.name = "viewport";
+      document.getElementsByTagName('head')[0].appendChild(viewportMeta);
+    }
+    viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no";
+
+    // 2. JAVASCRIPT TOUCH-GESTURE CORES (CRITICAL FOR MOBILE ZOOM LOCK)
+    // Jab koi do ungliyon (2 fingers) se pinch karne ki koshish karega, ye use block karega
+    document.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault(); // Multi-touch zoom block
+      }
+    }, { passive: false });
+
+    // Double tap karke zoom karne ki koshish ko block karne ke liye
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault(); // 300ms ke andar double tap block
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
+
+    // 3. DESKTOP VIEW ZOOM DISABLE (Ctrl + Wheel & Keys)
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '+' || e.key === '0')) {
+        e.preventDefault();
+      }
+      if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+      }
+    });
+
+    // 4. SILENT RIGHT-CLICK & COPY DISABLE
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+    });
+    
+    document.addEventListener('cut', function(e) {
+      e.preventDefault();
+    });
+  })();
+</script>
+<!-- SIDS Strict Mobile Anti-Zoom & Protection Section End -->
+
+
+
+
+
+<!-- SEO Meta Tags, Favicon, and Title Setup Start -->
+<!-- 1. Website Title -->
+<title>Privacy Policy</title>
+
+<!-- 2. Standard Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="SIDS Experts" />
+
+<!-- 3. Short Search Engine Description (Max 160 Characters) -->
+<meta name="description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
+<!-- 4. Keywords for Search Indexing -->
+<meta name="keywords" content="SIDS INDIA, SIDS Experts, Creative Hub, Website Design, Web Development, Custom UI, Professional Web Agency" />
+
+<!-- 5. Favicon Link Setup (Icon in Browser Tab) -->
+<link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+<link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+<!-- 6. Social Media Optimization (Open Graph Meta Tags for Facebook/WhatsApp/LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
+<meta property="og:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+<!-- 7. Twitter Card Optimization -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
+<meta name="twitter:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+<!-- SEO Meta Tags, Favicon, and Title Setup End -->
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 <!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip Start -->
 <div class="mani-nav-full-width">
   <style>
@@ -483,7 +628,7 @@
       
      <!-- Inside Mobile View Links -->
 <li class="mani-mobile-only-item">
-  <a class="mani-nav-cta-btn" href="https://www.gla.com">
+  <a class="mani-nav-cta-btn" href="https://sidsindia.manishchaudharymathura.in/contact.html">
     <span>Hire Us</span>
   </a>
 </li>
@@ -491,9 +636,10 @@
 
     <!-- Actions Tray Layout -->
     <div class='mani-nav-actions'>
-      <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
-        <span>Hire Us</span>
-      </a>
+  <a class='mani-nav-cta-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+    <span>Hire Us</span>
+  </a>
+</div>
 
       <!-- Hamburger Button Component -->
       <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
@@ -545,7 +691,9 @@
   </script>
 </div>
 
-<br/><br/><br/>
+<br><br><br>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -759,7 +907,7 @@
         <img src="https://wallpapercave.com/wp/wp15976934.jpg" alt="SIDS India Header Banner">
         <div class="header-content">
             <h1>Privacy Policy</h1>
-            <p>SIDS India — Commitment to Protect Your Digital Footprint</p>
+            
         </div>
     </div>
 
@@ -839,13 +987,30 @@
         
         <div class="contact-info">
             <strong>SIDS India</strong>
-            Website: <a href="https://www.sidsindia.in" target="_blank">www.sidsindia.in</a>
+            Website: <a href="https://sidsindia.manishchaudharymathura.in/" target="_blank">www.sidsindia.manishchaudharymathura.in/</a>
         </div>
 
     </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -956,7 +1121,7 @@
   <footer class="mani-footer-container">
     <!-- Left Section: Copyright Text -->
     <p class="mani-footer-text">
-      Copyright ©️ 2026 SIDS INDIA Website Design and Development by <span class="mani-footer-highlight">SIDS Experts</span>
+      &copy; 2026 SIDS INDIA 2026 SIDS INDIA. All Rights Reserved. 
     </p>
 
     <!-- Right Section: Hyperlinks -->
@@ -968,4 +1133,3 @@
   </footer>
 </div>
 <!-- Edge-to-Edge Premium SIDS Footer End -->
-
