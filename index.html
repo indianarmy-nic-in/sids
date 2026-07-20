@@ -1,8 +1,3 @@
-
-
-
-
-
 <!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
 <style>
   /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
@@ -100,6 +95,8 @@
 
 
 
+
+
 <!-- SEO Meta Tags, Favicon, and Title Setup Start -->
 <!-- 1. Website Title -->
 <title>SIDS INDIA | Creative Hub - Website Design & Development</title>
@@ -132,6 +129,17 @@
 <meta name="twitter:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
 <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 <!-- SEO Meta Tags, Favicon, and Title Setup End -->
+
+
+
+
+    
+
+
+
+
+
+
 
 
 
@@ -297,6 +305,13 @@
       padding: 0;
     }
 
+    .mani-nav-item {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
     .mani-nav-link {
       color: #ffffff !important;
       text-decoration: none !important;
@@ -305,8 +320,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: color 0.3s ease;
-      padding: 8px 2px;
+      padding: 26px 2px; /* Vertically centers the trigger area */
       position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
     }
 
     .mani-nav-link:hover { color: #f17329 !important; }
@@ -314,7 +333,7 @@
     .mani-nav-link::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: 18px;
       left: 0;
       width: 0;
       height: 2px;
@@ -323,6 +342,62 @@
     }
 
     .mani-nav-link:hover::after { width: 100%; }
+
+    /* Dropdown Arrow Icon Styling */
+    .mani-drop-icon {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    /* --- PREMIUM DROPDOWN ENGINE --- */
+    .mani-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background-color: #ffffff;
+      min-width: 200px;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      list-style: none;
+      padding: 8px 0;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 100000;
+    }
+
+    /* Desktop Hover Logic */
+    @media (min-width: 993px) {
+      .mani-nav-item:hover .mani-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+      .mani-nav-item:hover .mani-drop-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    .mani-dropdown-item a {
+      color: #1e3a8a !important;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+    }
+
+    .mani-dropdown-item a:hover {
+      background-color: #f8fafc;
+      color: #f17329 !important;
+      padding-left: 24px;
+    }
 
     /* Right Controls Hub */
     .mani-nav-actions {
@@ -395,7 +470,7 @@
     /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
     @media (max-width: 992px) {
       .mani-navbar {
-        padding: 0 35px; /* Shifting layout slightly inwards from absolute corners */
+        padding: 0 35px;
       }
 
       .mani-nav-actions .mani-nav-cta-btn {
@@ -416,22 +491,75 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 95px 30px 30px 30px;
-        gap: 22px;
+        gap: 15px;
         transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
         margin: 0;
+        overflow-y: auto;
       }
 
       .mani-nav-menu.active {
         right: 0;
       }
 
+      .mani-nav-item {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+      }
+
       .mani-nav-link {
         font-size: 16px;
         width: 100%;
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         border-bottom: 1px solid rgba(255,255,255,0.05);
-        padding-bottom: 10px;
+        padding: 10px 0;
+      }
+
+      .mani-nav-link::after {
+        display: none;
+      }
+
+      /* Mobile Dropdown UI Engine */
+      .mani-dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none !important;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.15);
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transition: max-height 0.3s ease-out;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      .mani-nav-item.open-active .mani-dropdown-menu {
+        max-height: 200px;
+        padding: 5px 0;
+      }
+
+      .mani-nav-item.open-active .mani-drop-icon {
+        transform: rotate(180deg);
+      }
+
+      .mani-dropdown-item a {
+        color: #e2e8f0 !important;
+        padding: 10px 15px;
+      }
+
+      .mani-dropdown-item a:hover {
+        background-color: transparent;
+        color: #f17329 !important;
+        padding-left: 15px;
       }
 
       .mani-mobile-toggle-btn {
@@ -451,7 +579,7 @@
     @media (max-width: 480px) {
       .mani-navbar {
         height: 65px;
-        padding: 0 24px; /* Perfectly aligned space away from the sharp edges */
+        padding: 0 24px;
       }
       .mani-logo-flip-box { width: 38px; height: 38px; }
       .mani-main-brand { font-size: 16px; }
@@ -482,25 +610,36 @@
 
     <!-- Navigation Menu Links Container -->
     <ul class='mani-nav-menu'>
-      <li><a class='mani-nav-link' href='/'>Home</a></li>
-      <li><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
-      <li><a class='mani-nav-link' href='/p/about-sids.html'>About SIDS</a></li>
-      <li><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
-      <li><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='/'>Home</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
       
-      <!-- Inside Mobile View Links -->
-      <li class="mani-mobile-only-item">
-        <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
-          <span>Hire Us</span>
-        </a>
+      <!-- Premium Dropdown Menu Item -->
+      <li class="mani-nav-item mani-has-dropdown">
+        <span class='mani-nav-link'>About SIDS <span class="mani-drop-icon">▼</span></span>
+        <ul class="mani-dropdown-menu">
+          <li class="mani-dropdown-item"><a href="/p/about-sids.html">About SIDS</a></li>
+          <li class="mani-dropdown-item"><a href="/p/our-experts.html">Our Experts</a></li>
+          <li class="mani-dropdown-item"><a href="/p/our-leaders.html">Our Leaders</a></li>
+        </ul>
       </li>
+
+      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
+      
+     <!-- Inside Mobile View Links -->
+<li class="mani-mobile-only-item">
+  <a class="mani-nav-cta-btn" href="https://sidsindia.manishchaudharymathura.in/contact.html">
+    <span>Hire Us</span>
+  </a>
+</li>
     </ul>
 
     <!-- Actions Tray Layout -->
     <div class='mani-nav-actions'>
-      <a class='mani-nav-cta-btn' href='mailto:infosidsmathura@gmail.com?subject=Inquiry%20about%20SIDS%20Services&amp;body=Hello%20SIDS%20Team%2C%0A%0AI%20am%20interested%20in%20your%20services.'>
-        <span>Hire Us</span>
-      </a>
+  <a class='mani-nav-cta-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+    <span>Hire Us</span>
+  </a>
+</div>
 
       <!-- Hamburger Button Component -->
       <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
@@ -516,25 +655,41 @@
     (function() {
       const toggleBtn = document.querySelector('.mani-mobile-toggle-btn');
       const navMenu = document.querySelector('.mani-nav-menu');
+      const dropdownParent = document.querySelector('.mani-has-dropdown');
 
       if (toggleBtn && navMenu) {
+        // Toggle Hamburger and Mobile Sidebar Menu
         toggleBtn.addEventListener('click', function() {
           this.classList.toggle('open');
           navMenu.classList.toggle('active');
         });
 
-        const navLinks = document.querySelectorAll('.mani-nav-link');
+        // Mobile Dropdown Engine Trigger (Accordian style on click)
+        if(dropdownParent) {
+          const triggerLink = dropdownParent.querySelector('.mani-nav-link');
+          triggerLink.addEventListener('click', function(e) {
+            if(window.innerWidth <= 992) {
+              e.preventDefault();
+              dropdownParent.classList.toggle('open-active');
+            }
+          });
+        }
+
+        // Close Navbar when single links are clicked (excluding the dropdown main trigger itself)
+        const navLinks = document.querySelectorAll('.mani-nav-link, .mani-dropdown-menu a');
         navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            toggleBtn.classList.remove('open');
-            navMenu.classList.remove('active');
+          link.addEventListener('click', (e) => {
+            if(!link.classList.contains('mani-nav-link') || !link.parentElement.classList.contains('mani-has-dropdown')) {
+              toggleBtn.classList.remove('open');
+              navMenu.classList.remove('active');
+              if(dropdownParent) dropdownParent.classList.remove('open-active');
+            }
           });
         });
       }
     })();
   </script>
 </div>
-<!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip End -->
 
 
 <div class='mani-banner-full-width protected-banner-zone'>
@@ -3646,8 +3801,8 @@
       width: 100vw !important;    
       margin: 0 !important;       
       padding: 0 !important;      
-      background-color: #1e3a8a; /* Navbar se bilkul match karta hua deep blue color */
-      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* Halka top shadow smooth look ke liye */
+      background-color: #1e3a8a; /* Deep blue color */
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* Smooth top shadow */
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       position: relative;
       left: 50%;
@@ -3660,11 +3815,11 @@
     .mani-footer-container {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 20px 24px; /* Mobile aur desktop dono par safe padding */
+      padding: 15px 24px;
       display: flex;
+      flex-direction: row; /* Desktop standard: Row alignment */
       align-items: center;
-      justify-content: center; /* Text ko center me rakhne ke liye */
-      text-align: center;
+      justify-content: space-between; /* Left text, Right links */
       min-height: 60px;
       box-sizing: border-box;
       width: 100%;
@@ -3681,7 +3836,7 @@
       user-select: none;
     }
 
-    /* SIDS EXPERTS ke liye ek pyara sa orange highlight text effect */
+    /* SIDS Experts highlight color */
     .mani-footer-highlight {
       color: #f17329;
       font-weight: 700;
@@ -3692,23 +3847,67 @@
       color: #ffffff;
     }
 
+    /* --- FOOTER LINKS STYLE --- */
+    .mani-footer-links {
+      display: flex;
+      gap: 20px; /* Links ke beech ka gap */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mani-footer-link-item {
+      color: rgba(255, 255, 255, 0.8) !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .mani-footer-link-item:hover {
+      color: #f17329 !important; /* Hover karne par links orange ho jayenge */
+    }
+
     /* --- RESPONSIVE MOBILE ADJUSTMENT --- */
     @media (max-width: 768px) {
       .mani-footer-container {
-        padding: 15px 20px;
-        min-height: 50px;
+        flex-direction: column; /* Mobile par stack layer banayega */
+        justify-content: center;
+        text-align: center;
+        gap: 12px; /* Text aur links ke beech ka safe space */
+        padding: 20px 20px;
       }
+      
       .mani-footer-text {
-        font-size: 12px; /* Choti screens par text clear aur readable rahega */
+        font-size: 13px;
         letter-spacing: 0.3px;
+      }
+
+      .mani-footer-links {
+        justify-content: center;
+        flex-wrap: wrap; /* Agar screen bohot choti ho toh links perfectly wrap ho jayein */
+        gap: 15px; 
+      }
+
+      .mani-footer-link-item {
+        font-size: 13px;
       }
     }
   </style>
 
   <footer class="mani-footer-container">
+    <!-- Left Section: Copyright Text -->
     <p class="mani-footer-text">
-      Copyright © 2026 SIDS INDIA Website Design and Development by <span class="mani-footer-highlight">SIDS Experts</span>
+      &copy; 2026 SIDS INDIA. All Rights Reserved. 
     </p>
+
+    <!-- Right Section: Hyperlinks -->
+    <div class="mani-footer-links">
+      <a href="#privacy" class="mani-footer-link-item">Privacy Policy</a>
+      <a href="#cookie" class="mani-footer-link-item">Cookie Policy</a>
+      <a href="#terms" class="mani-footer-link-item">Terms of Use</a>
+    </div>
   </footer>
 </div>
 <!-- Edge-to-Edge Premium SIDS Footer End -->
