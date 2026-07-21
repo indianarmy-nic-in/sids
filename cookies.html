@@ -1,153 +1,309 @@
-<!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
+ <!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
+
 <style>
+
   /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
+
   html, body {
+
     /* Mobile me pinch-to-zoom aur double-tap-zoom ko completely disable karne ke liye CSS property */
+
     touch-action: none !important; 
+
     touch-action: pan-x pan-y !important; /* Sirf scroll karne dega, zoom nahi */
+
     
+
     -webkit-user-select: none !important;  
+
     -moz-user-select: none !important;     
+
     -ms-user-select: none !important;      
+
     user-select: none !important;          
+
     -webkit-touch-callout: none !important; 
+
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+
   }
+
+
 
   /* --- 2. IMAGES PROTECTION --- */
+
   img {
+
     -webkit-user-drag: none !important;    
+
     user-drag: none !important;
+
     pointer-events: none !important;       
+
   }
+
+
 
   /* Forms ke andar typing me koi problem na ho, isliye exemption */
+
   input, textarea, select {
+
     -webkit-user-select: text !important;
+
     -moz-user-select: text !important;
+
     -ms-user-select: text !important;
+
     user-select: text !important;
+
     touch-action: auto !important; /* Form fields par default touch action allowed rahega */
+
   }
+
 </style>
 
+
+
 <script>
+
   (function() {
+
     // 1. HIGH-PRIORITY VIEWPORT FORCING
+
     // Yeh meta tag browser ko batata hai ki screen ka zoom level 1.0 par lock rahe
+
     let viewportMeta = document.querySelector('meta[name="viewport"]');
+
     if (!viewportMeta) {
+
       viewportMeta = document.createElement('meta');
+
       viewportMeta.name = "viewport";
+
       document.getElementsByTagName('head')[0].appendChild(viewportMeta);
+
     }
+
     viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no";
 
+
+
     // 2. JAVASCRIPT TOUCH-GESTURE CORES (CRITICAL FOR MOBILE ZOOM LOCK)
+
     // Jab koi do ungliyon (2 fingers) se pinch karne ki koshish karega, ye use block karega
+
     document.addEventListener('touchstart', function(event) {
+
       if (event.touches.length > 1) {
+
         event.preventDefault(); // Multi-touch zoom block
+
       }
+
     }, { passive: false });
+
+
 
     // Double tap karke zoom karne ki koshish ko block karne ke liye
+
     let lastTouchEnd = 0;
+
     document.addEventListener('touchend', function(event) {
+
       const now = (new Date()).getTime();
+
       if (now - lastTouchEnd <= 300) {
+
         event.preventDefault(); // 300ms ke andar double tap block
+
       }
+
       lastTouchEnd = now;
+
     }, { passive: false });
+
+
 
     // 3. DESKTOP VIEW ZOOM DISABLE (Ctrl + Wheel & Keys)
+
     window.addEventListener('wheel', function(e) {
+
       if (e.ctrlKey) {
+
         e.preventDefault();
+
       }
+
     }, { passive: false });
 
+
+
     window.addEventListener('keydown', function(e) {
+
       if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '+' || e.key === '0')) {
+
         e.preventDefault();
+
       }
+
       if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U')) {
+
         e.preventDefault();
+
       }
+
     });
+
+
 
     // 4. SILENT RIGHT-CLICK & COPY DISABLE
+
     document.addEventListener('contextmenu', function(e) {
+
       e.preventDefault();
+
     });
 
+
+
     document.addEventListener('copy', function(e) {
+
       e.preventDefault();
+
     });
+
     
+
     document.addEventListener('cut', function(e) {
+
       e.preventDefault();
+
     });
+
   })();
+
 </script>
+
 <!-- SIDS Strict Mobile Anti-Zoom & Protection Section End -->
 
 
 
 
 
+
+
+
+
+
+
 <!-- SEO Meta Tags, Favicon, and Title Setup Start -->
+
 <!-- 1. Website Title -->
-<title>Cookies</title>
+
+<title>SIDS INDIA | Creative Hub - Website Design & Development</title>
+
+
 
 <!-- 2. Standard Meta Tags -->
+
 <meta charset="UTF-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <meta name="robots" content="index, follow" />
+
 <meta name="author" content="SIDS Experts" />
 
+
+
 <!-- 3. Short Search Engine Description (Max 160 Characters) -->
+
 <meta name="description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
 
+
+
 <!-- 4. Keywords for Search Indexing -->
+
 <meta name="keywords" content="SIDS INDIA, SIDS Experts, Creative Hub, Website Design, Web Development, Custom UI, Professional Web Agency" />
 
+
+
 <!-- 5. Favicon Link Setup (Icon in Browser Tab) -->
+
 <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
 <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 
+
+
 <!-- 6. Social Media Optimization (Open Graph Meta Tags for Facebook/WhatsApp/LinkedIn) -->
+
 <meta property="og:type" content="website" />
+
 <meta property="og:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
+
 <meta property="og:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
 <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
 
+
+
 <!-- 7. Twitter Card Optimization -->
+
 <meta name="twitter:card" content="summary_large_image" />
+
 <meta name="twitter:title" content="SIDS INDIA | Creative Hub - Website Design & Development" />
+
 <meta name="twitter:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
 <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
-<!-- SEO Meta Tags, Favicon, and Title Setup End -->    
+
+<!-- SEO Meta Tags, Favicon, and Title Setup End -->
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip Start -->
 <div class="mani-nav-full-width">
   <style>
     /* Google Fonts Integration */
-    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght=400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
 
     /* --- FIXED TOP & SIDE LAYOUT --- */
     .mani-nav-full-width {
       position: fixed !important;
-      top: 0 !important;          
-      left: 0 !important;         
+      top: 0 !important;      
+      left: 0 !important;      
       width: 100vw !important;    
-      margin: 0 !important;       
+      margin: 0 !important;        
       padding: 0 !important;      
       background-color: #1e3a8a;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      z-index: 99999;             
+      z-index: 99999;              
     }
 
     html, body {
@@ -269,7 +425,16 @@
     }
 
     .mani-first-word { margin-right: 6px; }
-    .mani-logo-highlight { color: #f17329; }
+
+    /* --- TRICOLOR (INDIAN FLAG) GRADIENT EFFECT FOR INDIA --- */
+    .mani-logo-highlight { 
+      background: linear-gradient(to right, #ff9933 0%, #ff9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%, #138808 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.4)); /* Blue bg par clear visibility ke liye */
+    }
 
     .mani-sub-brand {
       font-size: 9px;
@@ -394,7 +559,7 @@
       margin-left: 25px;
     }
 
-    /* Premium Action CTA Button */
+    /* Premium Action CTA Button with Stable Continuous Smooth Animation */
     .mani-nav-cta-btn {
       background: #f17329;
       color: #ffffff !important;
@@ -406,21 +571,29 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       display: inline-block;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease;
       box-shadow: 0 4px 10px rgba(241, 115, 41, 0.25);
-      animation: buttonPulseGlow 2.5s infinite ease-in-out;
+      animation: buttonPulseGlow 2s infinite ease-in-out;
       flex-shrink: 0;
+      will-change: transform, box-shadow;
     }
 
     .mani-nav-cta-btn:hover {
       background: #ffffff;
       color: #1e3a8a !important;
-      transform: translateY(-1.5px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(241, 115, 41, 0.4);
     }
 
     @keyframes buttonPulseGlow {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); box-shadow: 0 4px 15px rgba(241, 115, 41, 0.45); }
+      0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 10px rgba(241, 115, 41, 0.25);
+      }
+      50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 6px 20px rgba(241, 115, 41, 0.5); 
+      }
     }
 
     .mani-mobile-only-item {
@@ -590,7 +763,7 @@
           <div class='mani-main-brand'>
             <span class='mani-first-word'>SIDS</span><span class='mani-logo-highlight'>INDIA</span>
           </div>
-          <div class='mani-sub-brand'>CREATIVE HUB</div>
+          <div class='mani-sub-brand'>Visibility that converts.</div>
         </div>
       </div>
     </div>
@@ -598,43 +771,45 @@
     <!-- Navigation Menu Links Container -->
     <ul class='mani-nav-menu'>
       <li class="mani-nav-item"><a class='mani-nav-link' href='/'>Home</a></li>
-      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/services.html'>Services</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/services'>Services</a></li>
       
       <!-- Premium Dropdown Menu Item -->
       <li class="mani-nav-item mani-has-dropdown">
         <span class='mani-nav-link'>About SIDS <span class="mani-drop-icon">▼</span></span>
         <ul class="mani-dropdown-menu">
-          <li class="mani-dropdown-item"><a href="/p/about-sids.html">About SIDS</a></li>
-          <li class="mani-dropdown-item"><a href="/p/our-experts.html">Our Experts</a></li>
-          <li class="mani-dropdown-item"><a href="/p/our-leaders.html">Our Leaders</a></li>
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/about.html">About SIDS</a></li>
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/about.html">Our Experts</a></li>
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/about.html">Our Leaders</a></li>
         </ul>
       </li>
 
-      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/career.html'>Career</a></li>
-      <li class="mani-nav-item"><a class='mani-nav-link' href='/p/contact-us.html'>Contact Us</a></li>
+      <!-- Added Pricing Nav Link right after About SIDS -->
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/pricing'>Pricing</a></li>
+
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/career'>Career</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/contact.html'>Contact Us</a></li>
       
-    <!-- Inside Mobile View Links -->
-<li class="mani-mobile-only-item">
-  <a class="mani-nav-cta-btn" href="https://sidsindia.manishchaudharymathura.in/contact.html">
-    <span>Hire Us</span>
-  </a>
-</li>
+      <!-- Inside Mobile View Links -->
+      <li class="mani-mobile-only-item">
+        <a class="mani-nav-cta-btn" href="https://sidsindia.manishchaudharymathura.in/contact.html">
+          <span>Hire Us</span>
+        </a>
+      </li>
     </ul>
 
     <!-- Actions Tray Layout -->
     <div class='mani-nav-actions'>
-  <a class='mani-nav-cta-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
-    <span>Hire Us</span>
-  </a>
-</div>
-
-      <!-- Hamburger Button Component -->
-      <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <a class='mani-nav-cta-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+        <span>Hire Us</span>
+      </a>
     </div>
+
+    <!-- Hamburger Button Component -->
+    <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- Mobile Toggle Trigger Core Logic -->
@@ -677,8 +852,9 @@
     })();
   </script>
 </div>
+<!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip End -->
 
-<br/><br/><br/>
+<br><br><br>
 
 
 
