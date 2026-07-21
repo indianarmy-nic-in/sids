@@ -879,7 +879,7 @@
         </p>
         
         <div class='mani-banner-btn-wrap'>
-          <a class='mani-banner-animated-btn' href='#'>
+          <a class='mani-banner-animated-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
             <span>Get Started Now</span>
           </a>
         </div>
@@ -1140,8 +1140,8 @@
           <p class='ts-paragraph'>Our team combines creativity, technology, and strategy to deliver impactful digital experiences that drive growth, engagement, and long-term success.</p>
           
           <div class='ts-btn-group'>
-            <a class='ts-btn ts-btn-filled' href='#'>Learn More &#10132;</a>
-            <a class='ts-btn ts-btn-outlined' href='#'>Explore Our Services &#10132;</a>
+            <a class='ts-btn ts-btn-filled' href='https://sidsindia.manishchaudharymathura.in/about.html'>About SIDS &#10132;</a>
+            <a class='ts-btn ts-btn-outlined' href='https://sidsindia.manishchaudharymathura.in/services'>Explore Our Services &#10132;</a>
           </div>
         </div>
       </div>
@@ -3179,14 +3179,31 @@
                     </div>
                 </div>
 
+                <!-- Box 7: Hyderabad (NEWLY ADDED) -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">SIDS HYDERABAD</div>
+                                <div class="coordinator-text">Coordinator: Priya Rao</div>
+                            </div>
+                            <button class="click-btn">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://images.unsplash.com/photo-1590050752408-414c43dca8f9?auto=format&fit=crop&w=400&q=80" alt="Hyderabad">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- JavaScript For Automatic 4-Second Loop Logic -->
+    <!-- JavaScript For Automatic Loop Logic (Updated for 7 cards) -->
     <script>
         const track = document.getElementById('sliderTrack');
         let index = 0;
+        const totalCards = 7; // Updated total count
 
         function getVisibleCards() {
             if (window.innerWidth >= 992) return 3;
@@ -3196,15 +3213,14 @@
 
         function startAutoSlider() {
             setInterval(() => {
-                const totalCards = 6;
                 const visibleCards = getVisibleCards();
+                const maxIndex = totalCards - visibleCards;
                 
-                if (visibleCards === 3) {
-                    index = (index === 0) ? 3 : 0;
-                } else if (visibleCards === 2) {
-                    index = (index >= 4) ? 0 : index + 2;
+                // Advance index safely without crossing boundaries or blank spaces
+                if (index < maxIndex) {
+                    index++;
                 } else {
-                    index = (index >= 5) ? 0 : index + 1;
+                    index = 0; // Reset back to start
                 }
 
                 const percentageMove = -(index * (100 / visibleCards));
@@ -3220,9 +3236,7 @@
         };
     </script>
 </body>
-</html>   
-
-
+</html>
 
 
 
