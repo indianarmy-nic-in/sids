@@ -2417,10 +2417,301 @@
 /*]]>*/
 </style>  
     
-   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Presence - SIDS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* --- Left Content Section --- */
+        .content-section {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .heading-cursive {
+            font-family: 'Great Vibes', cursive;
+            color: #D4AF37;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            margin-left: 20px;
+        }
+
+        .heading-main {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #0b1c3c;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background-color: #D4AF37;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .description strong {
+            color: #D4AF37;
+        }
+
+        /* --- Stats Box --- */
+        .stats-box {
+            background-color: #0b1c3c;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0 5px;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-icon {
+            font-size: 1.4rem;
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-text {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Footer Note --- */
+        .footer-note {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .footer-note .globe-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #fff9e6;
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 1.2rem;
+        }
+
+        .footer-note span {
+            color: #D4AF37;
+        }
+
+        /* --- Right Image Section --- */
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .image-section img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* --- Mobile Responsive View --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content-section {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .heading-cursive {
+                margin-left: 0;
+            }
+
+            .heading-main {
+                font-size: 2.8rem;
+            }
+
+            .divider {
+                margin: 20px auto;
+            }
+
+            .stats-box {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 8px 0;
+                min-width: 45%;
+            }
+
+            .footer-note {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .image-section img {
+                max-width: 100%;
+            }
+        }
+    </style>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Left Content Section -->
+    <div class="content-section">
+        <div class="heading-cursive">Our</div>
+        <div class="heading-main">Presence</div>
+        <div class="divider"></div>
+        
+        <p class="description">
+            <strong>SIDS</strong> is on a mission to empower businesses, institutions, and brands with innovative digital solutions across India.
+        </p>
+        <p class="description">
+            From strategy to execution, we deliver creative digital marketing, social media management, branding, web development, and design solutions that drive growth and create impact.
+        </p>
+
+        <!-- Stats Box -->
+        <div class="stats-box">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-text">Trusted by</div>
+                <div class="stat-number">500+</div>
+                <div class="stat-text">Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+                <div class="stat-number">5000+</div>
+                <div class="stat-text">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="stat-number">10M+</div>
+                <div class="stat-text">People Reached</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+                <div class="stat-number">Results</div>
+                <div class="stat-text">Driven Approach</div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <div class="globe-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div>
+                Serving with <span>Passion.</span><br>
+                Growing <span>Together.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Image Section (Simple & Clean) -->
+    <div class="image-section">
+        <!-- Yahan aap apni map wali image ka link ya file name (jaise map.png) daal sakte hain -->
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/030/347/632/small/map-of-india-with-detailed-country-map-line-map-png.png" alt="Our Presence Map - SIDS">
+    </div>
+</div>
+
+</body>
+</html>
 
 
 
