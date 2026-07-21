@@ -200,7 +200,7 @@
 
 <!-- 1. Website Title -->
 
-<title>Head Leaders</title>
+<title>Board Members</title>
 
 
 
@@ -854,7 +854,8 @@
 </div>
 <!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip End -->
 
-<br>
+<br><br><br>
+
 
 
 
@@ -864,268 +865,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our CEO Message with Premium Header</title>
+    <title>SIDS Heads</title>
     <style>
+        /* Basic Reset and Box Sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
         }
 
         body {
-            background-color: #ffffff;
-            color: #333333;
-            width: 100%;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* --- 1. FULL WIDTH HEADER SECTION WITH FIXED NAVBAR FIX --- */
-        .ceo-hero-header {
+        /* 1. Header Section - Fits perfectly around the image with text overlay */
+        .header-section {
             width: 100%;
-            height: 250px; 
-            margin-top: 75px; /* Navbar ke neeche push karne ke liye (Desktop) */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://wallpapercave.com/wp/wp15976931.jpg');
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 40px;
+            position: relative; /* Required for positioning text over image */
+            background: #fff;
+            overflow: hidden;
+            display: block;
         }
 
-        .ceo-hero-title {
-            color: #ffffff;
-            font-size: 42px;
-            font-weight: 800; 
+        /* The background image */
+        .header-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Black Shadow Overlay on the image */
+        .header-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust 0.5 for more/less shadow */
+            z-index: 1;
+        }
+
+        /* Container for text inside header */
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Perfectly centers the text */
+            text-align: center;
+            color: #ffffff; /* White text */
+            z-index: 2; /* Keeps text above the black shadow */
+            width: 90%; /* Prevents text from touching edges on mobile */
+            max-width: 800px;
+        }
+
+        /* Bold White Title over Image */
+        .header-content h1 {
+            font-size: 42px; /* Large size for desktop */
+            font-weight: 800; /* Extra bold */
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5); 
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Extra text shadow for clarity */
+        }
+
+        /* Subtitle over Image (Optional) */
+        .header-content p {
+            font-size: 18px;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* 2. Intro Content Below Header */
+        .intro-content {
+            max-width: 800px;
+            margin: 50px auto 10px auto; /* Increased top margin to give space from header */
             text-align: center;
             padding: 0 20px;
         }
 
-        /* --- 2. MAIN CONTENT CONTAINER --- */
-        .ceo-message-container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto 50px auto;
-            position: relative;
-            background: #ffffff;
+        .intro-content h2 {
+            font-size: 28px;
+            color: #1a2e6b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .intro-content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* 3. Main Container for Profile Grid */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto 60px auto;
             padding: 0 20px;
         }
 
-        .ceo-heading {
-            font-size: 32px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #000000;
-            margin-bottom: 25px;
+        /* 4. Team Grid Layout (3 Columns on Desktop) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* 5. Team Card Style */
+        .team-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Profile Photo */
+        .member-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Member Name (Dark Blue Background) */
+        .member-name {
+            background-color: #1a2e6b;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 10px;
             letter-spacing: 0.5px;
         }
 
-        .ceo-content-wrapper {
-            width: 100%;
-            display: block;
-        }
-
-        /* --- STABLE AUTO-SCALING PROFILE IMAGE FRAME (DESKTOP) --- */
-        .ceo-image-card {
-            float: right;
-            width: 180px;         /* Symmetrical width block */
-            height: 180px;        /* Fixed height constraint */
-            margin-left: 30px;
-            margin-bottom: 20px;
-            background: #ffffff;
-            border: 3px solid #1e3a8a; /* Theme base matching solid border */
-            border-radius: 12px;  /* Smooth round format */
-            padding: 6px;
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); /* Soft colored reflection */
+        /* Role & Location Container */
+        .member-info {
+            padding: 15px 10px 20px 10px;
+            background-color: #ffffff;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;     /* Image border layout se bahar leak nahi hogi */
-            transition: transform 0.3s ease;
+            gap: 12px;
+            flex-grow: 1;
         }
 
-        .ceo-image-card:hover {
-            transform: translateY(-5px);
+        .member-role {
+            font-size: 14px;
+            color: #555555;
+            font-weight: 500;
         }
 
-        .ceo-image-card img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover;    /* Kitni bhi badi image ho, perfect ratio me lock ho jayegi */
-            border-radius: 8px; 
-            display: block;
-        }
-
-        .ceo-text-p {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #222222;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .ceo-quote-box {
+        /* 3D Animated Button */
+        .btn-3d {
             display: inline-block;
-            background-color: #f4f5f7;
-            border-radius: 4px;
-            padding: 15px 25px;
-            margin-top: 25px;
-            max-width: 550px;
-            clear: both;
-            border-left: 4px solid #f17329; /* Elegant orange left bar element */
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #1a2e6b;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 0 #007e33, 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.1s ease-in-out;
         }
 
-        .ceo-quote-text {
-            font-size: 16px;
-            font-weight: 700;
-            color: #000000;
-            line-height: 1.5;
-            text-align: left;
+        .btn-3d:hover {
+            background-color: #d9be0f;
         }
 
-        .ceo-signature-block {
-            float: right;
-            clear: right;
-            width: 180px;
-            text-align: center;
-            margin-top: 15px;
+        .btn-3d:active {
+            box-shadow: 0 2px 0 #007e33, 0 3px 6px rgba(0, 0, 0, 0.2);
+            transform: translateY(3px);
         }
 
-        .ceo-name {
-            font-size: 18px;
-            font-weight: 800;
-            color: #000000;
+        /* =======================================================
+           Responsive Media Queries (Tablet & Mobile)
+           ======================================================= */
+        
+        /* Tablet View (Screens below 900px) */
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .header-content h1 {
+                font-size: 32px; /* Smaller text for tablets */
+            }
         }
 
-        .ceo-content-wrapper::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* ================= MOBILE VIEW RESPONSIVENESS ================= */
-        @media (max-width: 768px) {
-            .ceo-hero-header {
-                height: 180px; 
-                margin-top: 65px; /* Mobile navigation framework adjustment */
-                margin-bottom: 25px;
-            }
-
-            .ceo-hero-title {
-                font-size: 30px;
-                letter-spacing: 1.5px;
-            }
-
-            .ceo-message-container {
-                padding: 0 16px; 
-            }
-
-            .ceo-heading {
-                font-size: 24px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-
-            .ceo-content-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .ceo-image-card {
-                float: none;
-                width: 160px;     /* Mobile display scaling block */
-                height: 160px;
-                margin: 0 auto 20px auto;
-                order: 1;
-            }
-
-            .ceo-text-p {
-                order: 2;
-                font-size: 14px;
-                line-height: 1.6;
-                text-align: left;
-            }
-
-            .ceo-signature-block {
-                float: none;
-                clear: none;
-                width: 100%;
-                text-align: center;
-                margin: 5px 0 25px 0;
-                order: 3;
-            }
-
-            .ceo-quote-box {
-                order: 4;
-                width: 100%;
-                max-width: 100%;
-                margin-top: 5px;
-                text-align: center;
+        /* Mobile View (Screens below 600px) */
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 20px;
             }
             
-            .ceo-quote-text {
-                text-align: center;
+            /* Adjusting Header Text for Mobile */
+            .header-content h1 {
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
+            .header-content p {
+                font-size: 14px;
+            }
+
+            .intro-content {
+                margin-top: 30px;
+            }
+            .intro-content h2 {
+                font-size: 22px;
+            }
+            
+            .member-name {
+                font-size: 16px;
+            }
+            .btn-3d {
+                padding: 8px 18px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Full Width Header -->
-    <header class="ceo-hero-header">
-        <h1 class="ceo-hero-title">Our CEO</h1>
-    </header>
-
-    <!-- 2. Content Layout Container -->
-    <div class="ceo-message-container">
+    <!-- Header Banner Area -->
+    <div class="header-section">
+        <img src="https://t3.ftcdn.net/jpg/08/49/91/60/360_F_849916007_BOLEtAA08exCwCAbIu4vu6O30lVes2BJ.jpg" alt="Header Banner">
         
-        <h2 class="ceo-heading">Our CEO Message</h2>
+        <!-- NEW: Text Overlay Content -->
+<div class="header-content">
+    <h1>SIDS MANAGEMENT</h1>
+</div>
+</div>
 
-        <div class="ceo-content-wrapper">
+<!-- Intro Text Area -->
+<div class="intro-content">
+    <h2>Executive Leadership & Main Management</h2>
+    <p>
+        Meet the Executive Leadership Team of <strong>(SIDS)</strong>. 
+        These are the key decision-makers responsible for the company's vision, strategic planning, operational excellence, 
+        and nationwide growth. Our Main Management Team leads every department, ensures high-quality services, 
+        and drives innovation while overseeing all regional and state operations across India.
+    </p>
+</div>
+
+    <!-- Leaders Grid Container -->
+    <div class="container">
+        <div class="team-grid">
             
-            <!-- CEO Image Frame -->
-            <div class="ceo-image-card">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBmet-uXrNDX-2xtapWN-ca4O-OskApMXKkr_A1wdL-08gMhrt39YI5XsMjvHzFp9iv2mWeoBKY-o2d7pr5PcyJQdK3oOiM_f1NgRF23GMYNouJjR5IvUg0Kvrg4BTIE1SXB2OQVYGsk1ikp3aLfGJTsp6F5Fn9c52nawPZKVo5_LITzT6CHahelqp3Qk/s1600/Untitled%20design%20(1).png" alt="Manish Chaudhary">
+            <!-- Card 1 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7BgAR7fAhZvMCeaDuYLv9cuwnIdF-DBVEX2eFcS5DR9sUScDUvnjClq1IiiN8DD0W2Nx_ZrKCNPx5OhgMsN60y9-OBmFKnthjHUVNn1ZfcR3tdwXuEqfVqF7-MG0JSBSsEa90yT4_155vRoInCYld8RXINPnBVAV5AbqKWTHek4iKxU3o4gNjwaAwJfg/s320/143C6587-155A-4ADC-85E2-299812839513.jpeg" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Manish Chaudhary</div>
+                <div class="member-info">
+                      <div class="member-role">Manager Chennai SIDS India<br>Board Member</div>
+                    
+                </div>
             </div>
 
-            <!-- Message Body Paragraphs -->
-            <p class="ceo-text-p">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-
-            <p class="ceo-text-p">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
-
-            <p class="ceo-text-p">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <!-- Signature Tag for Manish Chaudhary -->
-            <div class="ceo-signature-block">
-                <h4 class="ceo-name">Manish Chaudhary</h4>
+            <!-- Card 2 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgz5LDDOU77doQitzDWzfh4F5ullQDjSQ4BffZjTfk42Jq342aB7F6nKa5VJ4AoMIDHiR0VxOJWL6u2Y3RrxCdSEsUbEN3cW5Z8IPNKxl75ZDQMLiBGZAtID_i6be4FA9p5aOrBqqRtkT7-T06a76fWoEKUetc8zm9GFa3VQ6IEzR9tyLmdIAqacZ8BQJQ/s1600/1.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Arjun Narayanan</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                    
+                </div>
             </div>
 
-            <!-- Highlight Quote Element -->
-            <div class="ceo-quote-box">
-                <p class="ceo-quote-text">“Jdkdgogsogslhslhsohdohslhslg slhslhdlhdjpdhoxohxohxohd”</p>
+            <!-- Card 3 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjb5us7jJQUpdfZvQ8m7Q9qKZP1zH1vdgifblKuOB6LAKmxD1Tcp43pb8RdXx3Z2vfeB-g49uMuY72b6yTrzGMMXWb7AGaiZePQ1V91FkOCbRMxMaU8nrbeG5HXIzYaYv5sLMHvclkDAhFGpBGMU05kYFh-UbgJuRpLWkgV4U4wlq6sXH9V69ZUDTIKqLo/s1600/2.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Nandini Rao</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                    
+                </div>
             </div>
+
+            <!-- Card 4 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoerxsNq0bD4ESX69mMOndtWzQMquD_riH_f-1KwiGWixxxMsdWlZKsMtkpjBQYrdz6QXzDSRB2jUzD6rmRvvWSTVchKDb1NoOsgf2hs7MK9M1QT_jgixx7zlvWNMOTZp6hdKP3eVRRGikt7KXPM2lzEgd78BXcKzgTJjc2iNRole2TuSIWyh5van2TQY/s1600/3.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Aditya Hegde</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                    
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhickK8Gk8U00aWsjjlw-boZWYo5AOx4QHYXtzfAHYUSXQUqkc1XzQp1zJKA_2fc9Z2j0U8HJpE7D1zL4ShR217ICjRsOUfoWV9JKVZFRZ66RR7EqwclORTyrelxMUpuCPVpixYl2_fqk4NRsm1la6m24ZHOO7XJoY9hy1n1VVOJcfA0w_Kns0xur55DhE/s1600/4.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Rajat Malhotra</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                    
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEix2nyfItxSmQgibUx0SjJ-7ZG1obMm_aD-LExTNLD10w-BS8iliiKnXhIcEUr-ldygD7QkXsxTeqta7ifPPP9jMpcwOP0IVK1Lg3RQhBJvQiYgBzJY1TEd2hyphenhyphen5MB_G5Py5gNElTZG_ayFrFcqKN1brsQzNOlFcDXMHIMIwx13NYLM_0WuKYp3DwH5WyzI/s1600/5.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Aman Sharma</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="team-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiV0mfeJTA8bCSam_Xh3WG6RMk8qHSX8AeQGIJbHm6IuG6vRdj9jY1R_e-4ZQgo59TUPeOsahEHuCYMGfhnS5rYjfwUtlTzewdAtx-s9mz90lVfcth2BMVnedZ7gne9Da0udim3b_WS4WjZJ-asCDokPOfx0BxwdvtWaOs0e2yFPgJBK1obVNY2_6ldMBk/s1600/6.png" alt="Bhupesh Sharma" class="member-img">
+                <div class="member-name">Vipin Pandey</div>
+                <div class="member-info">
+                    <div class="member-role">Board Member</div>
+                    
+                </div>
+            </div>
+
+            
 
         </div>
-
     </div>
 
 </body>
 </html>
-
-
-
 
 
 
