@@ -879,12 +879,25 @@
         </p>
         
         <div class='mani-banner-btn-wrap'>
-          <a class='mani-banner-animated-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+          <!-- Desktop view me hyperlink hata kar 'div' tag banaya gaya hai, mobile par link kaam karega -->
+          
+          <a class='mani-banner-animated-btn mani-mobile-link-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
             <span>OUR MANAGER</span>
           </a>
         </div>
 
       </div>
+
+      <!-- Right Side Animated Circle Frame Image & Pointer Arrow (Desktop View Only) -->
+      <div class='mani-banner-right-frame-wrap'>
+        <div class='mani-pointer-arrow-png'>
+          <img alt='Pointing Arrow' src='https://static.vecteezy.com/system/resources/thumbnails/008/493/109/small/right-direction-arrow-png.png'/>
+        </div>
+        <div class='mani-circle-frame-box'>
+          <img alt='Manager Profile' class='mani-circle-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -955,6 +968,19 @@
   z-index: 1;
 }
 
+/* Desktop White Shadow Overlay for Left Text Clarity */
+.mani-banner-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.15) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* Transparent Content Box */
 .mani-banner-content-box {
   position: absolute;
@@ -963,17 +989,18 @@
   width: 100%;
   height: 100%;
   background: transparent;
-  z-index: 2;
-  display: table;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px 0 0;
 }
 
 /* Align Content Strictly to Left Vertically Centered */
 .mani-banner-left-content {
-  display: table-cell;
-  vertical-align: middle;
   padding-left: 80px;
   padding-right: 40px;
-  width: 60%;
+  width: 58%;
   text-align: left;
 }
 
@@ -988,27 +1015,33 @@
   text-transform: uppercase;
 }
 
-/* Highlighted Text in Premium Blue Colour */
+/* Highlighted Text in Yellow Colour */
 .mani-banner-title .mani-text-highlight {
-  color: #1e3a8a;
+  color: #eab308;
   display: inline-block;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Subtitle Text Description in Black Colour */
+/* Subtitle Text Description in Dark Colour */
 .mani-banner-desc {
   font-size: 16px;
-  color: #333333;
+  color: #1f2937;
   line-height: 1.6;
   max-width: 580px;
   margin: 0 0 35px 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .mani-banner-btn-wrap {
   display: block;
 }
 
-/* Premium Button Architecture in Blue Colour */
+/* Default Mobile Link Button (Hidden on Desktop) */
+.mani-mobile-link-btn {
+  display: none !important;
+}
+
+/* Premium Button Architecture in Blue Colour (Desktop Non-clickable text style) */
 .mani-banner-animated-btn {
   display: inline-block;
   position: relative;
@@ -1023,6 +1056,7 @@
   letter-spacing: 1px;
   transition: background 0.3s ease, transform 0.3s ease;
   z-index: 5;
+  cursor: default;
 }
 
 .mani-banner-animated-btn span {
@@ -1030,48 +1064,149 @@
   z-index: 7;
 }
 
-/* Simple Clean Hover State */
-.mani-banner-animated-btn:hover {
-  background: #111827; 
-  transform: translateY(-2px);
+.mani-desktop-text-btn:hover {
+  background: #1e3a8a;
+  transform: none;
+}
+
+/* --- RIGHT SIDE CIRCLE FRAME & POINTER ARROW --- */
+.mani-banner-right-frame-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-right: 40px;
+  position: relative;
+}
+
+/* Pointing Arrow PNG Styling & Floating Animation */
+.mani-pointer-arrow-png {
+  width: 75px;
+  height: auto;
+  animation: maniArrowPointing 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mani-pointer-arrow-png img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+@keyframes maniArrowPointing {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+}
+
+.mani-circle-frame-box {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  background: #1e3a8a;
+  animation: maniFrameFloat 4s ease-in-out infinite;
+}
+
+.mani-circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lighting Reflection Gleam Effect */
+.mani-circle-frame-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: maniGleamSweep 3.5s ease-in-out infinite;
+}
+
+@keyframes maniGleamSweep {
+  0% { left: -150%; }
+  35%, 100% { left: 160%; }
+}
+
+@keyframes maniFrameFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
 }
 
 /* RESPONSIVE SCALING - TABLET INTERFACE */
 @media (max-width: 992px) {
+  .mani-banner-content-box {
+    padding: 0 30px;
+  }
   .mani-banner-left-content {
-    padding-left: 45px;
-    width: 80%;
+    padding-left: 30px;
+    width: 60%;
   }
   .mani-banner-title {
     font-size: 36px;
   }
+  .mani-circle-frame-box {
+    width: 170px;
+    height: 170px;
+  }
+  .mani-pointer-arrow-png {
+    width: 55px;
+  }
 }
 
 /* =======================================================
-   MOBILE VIEW OPTIMIZATION (UPDATED)
+   MOBILE VIEW OPTIMIZATION
    ======================================================= */
 @media (max-width: 768px) {
   .mani-banner-container {
-    height: 80vh; /* मोबाइल स्क्रीन के लिए परफेक्ट हाइट */
+    height: 80vh; 
     min-height: 500px;
+  }
+
+  /* Mobile Background Black Shadow Overlay */
+  .mani-banner-container::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65));
   }
   
   .mani-banner-content-box {
     display: flex;
-    align-items: flex-end; /* बटन को नीचे की तरफ अलाइन करने के लिए */
-    justify-content: center;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)); /* बटन विजिबिलिटी के लिए हल्का बॉटम ग्रेडिएंट */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 40px 20px 60px 20px;
+  }
+
+  /* Mobile View me Right Side Circle Frame aur Arrow ko hide kar diya gaya hai */
+  .mani-banner-right-frame-wrap {
+    display: none !important;
   }
   
   .mani-banner-left-content {
-    display: block;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 60px; /* बटन को स्क्रीन के बिल्कुल नीचे चिपकने से रोकने के लिए स्पेस */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
     width: 100%;
-    text-align: center; 
+    text-align: center;
   }
   
+  /* Mobile view me non-clickable button hide karke working link button show kiya gaya hai */
+  .mani-desktop-text-btn {
+    display: none !important;
+  }
+
+  .mani-mobile-link-btn {
+    display: inline-block !important;
+  }
+
   /* मोबाइल व्यू में टाइटल और डिस्क्रिप्शन दोनों को छुपा दिया गया है */
   .mani-banner-title, 
   .mani-banner-desc {
@@ -1089,9 +1224,10 @@
     display: inline-block;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
     letter-spacing: 0.5px;
+    cursor: pointer;
   }
   
-  .mani-banner-animated-btn:hover {
+  .mani-mobile-link-btn:hover {
     background: #ffffff;
     color: #3b82f6 !important;
     transform: scale(1.03);
@@ -1103,17 +1239,13 @@
   .mani-banner-container {
     height: 75vh;
   }
-  .mani-banner-left-content {
-    padding-bottom: 50px;
-  }
   .mani-banner-animated-btn {
     padding: 14px 38px;
     font-size: 14px;
   }
 }
 /*]]>*/
-</style> 
-<br>
+</style><br>
 
 
 <!-- Professional Split Section with Floating Animated Image & Structured Details Start -->
@@ -1941,3 +2073,241 @@
   </script>
 </div>
 <!-- Full Width SIDS Demo CTA Section End -->
+
+
+
+<!-- Edge-to-Edge Premium SIDS Footer Start -->
+
+<div class="mani-footer-full-width">
+
+  <style>
+
+    /* --- FOOTER MAIN CONTAINER --- */
+
+    .mani-footer-full-width {
+
+      width: 100vw !important;    
+
+      margin: 0 !important;       
+
+      padding: 0 !important;      
+
+      background-color: #1e3a8a; /* Deep blue color */
+
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* Smooth top shadow */
+
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+      position: relative;
+
+      left: 50%;
+
+      right: 50%;
+
+      margin-left: -50vw !important;
+
+      margin-right: -50vw !important;
+
+      box-sizing: border-box;
+
+    }
+
+
+
+    .mani-footer-container {
+
+      max-width: 1300px;
+
+      margin: 0 auto;
+
+      padding: 15px 24px;
+
+      display: flex;
+
+      flex-direction: row; /* Desktop standard: Row alignment */
+
+      align-items: center;
+
+      justify-content: space-between; /* Left text, Right links */
+
+      min-height: 60px;
+
+      box-sizing: border-box;
+
+      width: 100%;
+
+    }
+
+
+
+    /* --- FOOTER TEXT STYLE --- */
+
+    .mani-footer-text {
+
+      color: #ffffff !important;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      line-height: 1.6;
+
+      margin: 0;
+
+      letter-spacing: 0.5px;
+
+      user-select: none;
+
+    }
+
+
+
+    /* SIDS Experts highlight color */
+
+    .mani-footer-highlight {
+
+      color: #f17329;
+
+      font-weight: 700;
+
+      transition: color 0.3s ease;
+
+    }
+
+
+
+    .mani-footer-highlight:hover {
+
+      color: #ffffff;
+
+    }
+
+
+
+    /* --- FOOTER LINKS STYLE --- */
+
+    .mani-footer-links {
+
+      display: flex;
+
+      gap: 20px; /* Links ke beech ka gap */
+
+      margin: 0;
+
+      padding: 0;
+
+      list-style: none;
+
+    }
+
+
+
+    .mani-footer-link-item {
+
+      color: rgba(255, 255, 255, 0.8) !important;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+
+      letter-spacing: 0.5px;
+
+    }
+
+
+
+    .mani-footer-link-item:hover {
+
+      color: #f17329 !important; /* Hover karne par links orange ho jayenge */
+
+    }
+
+
+
+    /* --- RESPONSIVE MOBILE ADJUSTMENT --- */
+
+    @media (max-width: 768px) {
+
+      .mani-footer-container {
+
+        flex-direction: column; /* Mobile par stack layer banayega */
+
+        justify-content: center;
+
+        text-align: center;
+
+        gap: 12px; /* Text aur links ke beech ka safe space */
+
+        padding: 20px 20px;
+
+      }
+
+      
+
+      .mani-footer-text {
+
+        font-size: 13px;
+
+        letter-spacing: 0.3px;
+
+      }
+
+
+
+      .mani-footer-links {
+
+        justify-content: center;
+
+        flex-wrap: wrap; /* Agar screen bohot choti ho toh links perfectly wrap ho jayein */
+
+        gap: 15px; 
+
+      }
+
+
+
+      .mani-footer-link-item {
+
+        font-size: 13px;
+
+      }
+
+    }
+
+  </style>
+
+
+
+  <footer class="mani-footer-container">
+
+    <!-- Left Section: Copyright Text -->
+
+    <p class="mani-footer-text">
+
+      &copy; 2026 SIDS INDIA. All Rights Reserved. 
+
+    </p>
+
+
+
+    <!-- Right Section: Hyperlinks -->
+
+    <div class="mani-footer-links">
+
+      <a href="https://sidsindia.manishchaudharymathura.in/policy.html" class="mani-footer-link-item">Privacy Policy</a>
+
+      <a href="https://sidsindia.manishchaudharymathura.in/cookies" class="mani-footer-link-item">Cookie Policy</a>
+
+      <a href="https://sidsindia.manishchaudharymathura.in/terms" class="mani-footer-link-item">Terms of Use</a>
+
+    </div>
+
+  </footer>
+
+</div>
+
+<!-- Edge-to-Edge Premium SIDS Footer End -->
