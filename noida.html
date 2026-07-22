@@ -1419,7 +1419,7 @@
       <!-- Action Button Area -->
       <div class='sids-action-box'>
         <a class='sids-section-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
-          <span>Explore Services</span>
+          <span>Contact Us</span>
           <i class='fa-solid fa-arrow-right'></i>
         </a>
       </div>
@@ -1706,3 +1706,238 @@
   </script>
 </div>
 <!-- Full Width SIDS Category Stats Section End -->
+
+
+
+
+
+
+
+
+
+<!-- Full Width SIDS Demo CTA Section Start -->
+<div class="sids-fullwidth-brown-section">
+  <style>
+    /* Google Fonts & FontAwesome Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    /* --- FULL WIDTH LIGHT BROWN BACKGROUND CONTAINER --- */
+    .sids-fullwidth-brown-section {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background-color: #d7ccc8; /* Light Brown Color */
+      padding: 80px 20px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      overflow: hidden;
+      perspective: 1200px; /* 3D perspective depth */
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
+    }
+
+    .sids-fullwidth-brown-section * {
+      box-sizing: border-box;
+    }
+
+    /* --- 3D Rotation Class Applied on Click --- */
+    .sids-fullwidth-brown-section.sids-3d-rotate-active {
+      transform: rotateY(720deg) scale(0.1) translateZ(-1000px);
+      opacity: 0;
+    }
+
+    /* --- INNER WRAPPER LAYOUT (LEFT IMAGE + RIGHT CONTENT) --- */
+    .sids-brown-inner-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    /* --- LEFT SIDE: SMALL IMAGE WITH SOFT ANIMATION --- */
+    .sids-brown-left-img {
+      flex-shrink: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(93, 64, 55, 0.2);
+      animation: sidsPulseGlowImg 4s ease-in-out infinite;
+    }
+
+    .sids-brown-left-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .sids-brown-left-img:hover img {
+      transform: scale(1.1);
+    }
+
+    @keyframes sidsPulseGlowImg {
+      0%, 100% { transform: scale(1); box-shadow: 0 10px 25px rgba(93, 64, 55, 0.2); }
+      50% { transform: scale(1.03); box-shadow: 0 15px 35px rgba(93, 64, 55, 0.35); }
+    }
+
+    /* --- RIGHT SIDE: CONTENT & FANTASTIC ANIMATED BUTTON --- */
+    .sids-brown-right-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      max-width: 750px;
+    }
+
+    .sids-brown-heading {
+      font-size: 28px;
+      font-weight: 800;
+      color: #3e2723;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .sids-brown-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: #5d4037;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- FANTASTIC BIG ANIMATED DEMO BUTTON --- */
+    .sids-demo-action-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #4e342e 0%, #3e2723 100%);
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 34px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 8px 25px rgba(62, 39, 35, 0.3);
+      cursor: pointer;
+      border: none;
+      overflow: hidden;
+      margin-top: 10px;
+      animation: sidsButtonSuperPulse 2.5s infinite ease-in-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .sids-demo-action-btn:hover {
+      background: linear-gradient(135deg, #f17329 0%, #d85c13 100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(241, 115, 41, 0.45);
+    }
+
+    /* Fantastic Glowing Shimmer Sweep on Button */
+    .sids-demo-action-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: sidsBtnShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes sidsBtnShimmer {
+      0% { left: -150%; }
+      30%, 100% { left: 150%; }
+    }
+
+    @keyframes sidsButtonSuperPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); box-shadow: 0 10px 30px rgba(62, 39, 35, 0.4); }
+    }
+
+    /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
+    @media (max-width: 768px) {
+      .sids-brown-inner-wrap {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+      }
+
+      .sids-brown-right-content {
+        align-items: center;
+      }
+
+      .sids-brown-heading {
+        font-size: 22px;
+      }
+
+      .sids-brown-desc {
+        font-size: 14px;
+      }
+
+      .sids-brown-left-img {
+        width: 130px;
+        height: 130px;
+      }
+
+      .sids-fullwidth-brown-section {
+        padding: 50px 15px;
+      }
+    }
+  </style>
+
+  <div class='sids-brown-inner-wrap'>
+    
+    <!-- Left Side: Small Animated Circle Image -->
+    <div class='sids-brown-left-img'>
+      <img alt='SIDS Demo Preview' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+    </div>
+
+    <!-- Right Side: Content & Action Button -->
+    <div class='sids-brown-right-content'>
+      <h2 class='sids-brown-heading'>Experience Our Live High-Performance Digital System</h2>
+      <p class='sids-brown-desc'>
+        Discover how SIDS India transforms online visibility into exponential business growth. Connect with our expert team today for a personalized interactive walk-through.
+      </p>
+
+      <!-- 3D Animation Trigger Button -->
+      <button class='sids-demo-action-btn' id='sidsDemoBtn'>
+        <span>Connect Now For Demo</span>
+        <i class='fa-solid fa-arrow-right-long'></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- 3D Animation Screen Transition Engine Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const demoBtn = document.getElementById("sidsDemoBtn");
+      const section = document.querySelector(".sids-fullwidth-brown-section");
+
+      if (demoBtn && section) {
+        demoBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          
+          // Trigger the 3D rotation and zoom out effect
+          section.classList.add("sids-3d-rotate-active");
+
+          // Delay navigation to let the 3D animation complete smoothly
+          setTimeout(function () {
+            window.location.href = "https://sidsindia.manishchaudharymathura.in/contact.html";
+          }, 1000);
+        });
+      }
+    });
+  </script>
+</div>
+<!-- Full Width SIDS Demo CTA Section End -->
