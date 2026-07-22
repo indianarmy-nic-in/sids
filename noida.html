@@ -1113,3 +1113,319 @@
 }
 /*]]>*/
 </style> 
+<br>
+
+
+<!-- Professional Split Section with Floating Animated Image & Structured Details Start -->
+<div class="sids-split-section-wrapper">
+  <style>
+    /* Google Fonts & FontAwesome Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    /* --- SECTION CONTAINER --- */
+    .sids-split-section-wrapper {
+      position: relative;
+      width: 100%;
+      background-color: #f8fafc;
+      padding: 90px 20px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      overflow: hidden;
+      margin-top: 75px; /* Navbar ke neeche proper spacing ke liye */
+    }
+
+    .sids-split-section-wrapper * {
+      box-sizing: border-box;
+    }
+
+    /* --- MAIN GRID LAYOUT --- */
+    .sids-split-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    /* --- LEFT SIDE: FLOATING ANIMATED IMAGE --- */
+    .sids-split-left {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .sids-floating-image-box {
+      width: 100%;
+      max-width: 480px;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
+      border: 4px solid #ffffff;
+      background: #ffffff;
+      position: relative;
+      animation: sidsUpDownFloat 5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .sids-floating-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .sids-floating-image-box:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Smooth Up and Down Gentle Animation */
+    @keyframes sidsUpDownFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* --- RIGHT SIDE: CONTENT AREA --- */
+    .sids-split-right {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* Heading Styling */
+    .sids-content-heading {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1.25;
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    /* Description Styling */
+    .sids-content-description {
+      font-size: 15px;
+      font-weight: 400;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Structured Details List (Table/Row Format) */
+    .sids-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 5px;
+    }
+
+    .sids-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #ffffff;
+      padding: 14px 18px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      border-left: 4px solid #f17329;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sids-detail-row:hover {
+      transform: translateX(4px);
+      box-shadow: 0 5px 15px rgba(30, 58, 138, 0.08);
+    }
+
+    .sids-icon-box {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(30, 58, 138, 0.08);
+      color: #1e3a8a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .sids-detail-row:hover .sids-icon-box {
+      background-color: #f17329;
+      color: #ffffff;
+    }
+
+    .sids-detail-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sids-detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sids-detail-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    /* Action Button Container */
+    .sids-action-box {
+      margin-top: 10px;
+    }
+
+    .sids-section-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #f17329;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(241, 115, 41, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .sids-section-btn:hover {
+      background: #1e3a8a;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(30, 58, 138, 0.3);
+    }
+
+    /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
+    @media (max-width: 992px) {
+      .sids-split-section-wrapper {
+        padding: 60px 20px;
+        margin-top: 65px;
+      }
+
+      .sids-split-container {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        gap: 0;
+      }
+
+      /* Requirement: Hide Left Side Image completely in mobile view */
+      .sids-split-left {
+        display: none !important;
+      }
+
+      .sids-split-right {
+        text-align: left;
+        gap: 18px;
+      }
+
+      .sids-content-heading {
+        font-size: 24px;
+      }
+
+      .sids-content-description {
+        font-size: 14px;
+      }
+
+      .sids-detail-row {
+        padding: 12px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sids-split-section-wrapper {
+        padding: 40px 15px;
+      }
+      .sids-content-heading {
+        font-size: 22px;
+      }
+    }
+  </style>
+
+  <div class='sids-split-container'>
+    
+    <!-- LEFT SIDE: Floating Image with Up-Down Animation -->
+    <div class='sids-split-left'>
+      <div class='sids-floating-image-box'>
+        <!-- Aap yahan apni pasand ki image ka URL laga sakte hain -->
+        <img alt='SIDS India Feature Image' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Content, Table format details & Button -->
+    <div class='sids-split-right'>
+      <h2 class='sids-content-heading'>Empowering Digital Visibility & Growth Across India</h2>
+      
+      <p class='sids-content-description'>
+        We build high-performance digital strategies, stunning web applications, and result-driven marketing frameworks customized to take your business to absolute market leadership.
+      </p>
+
+      <!-- Structured Table Format Details with Icons -->
+      <div class='sids-details-list'>
+        
+        <!-- 1. Location Row -->
+        <div class='sids-detail-row'>
+          <div class='sids-icon-box'>
+            <i class='fa-solid fa-location-dot'></i>
+          </div>
+          <div class='sids-detail-text-wrap'>
+            <span class='sids-detail-label'>SIDS Noida UP</span>
+            <span class='sids-detail-value'>SIDS India Innovation, Tower 2, Techno Park, Sector 15A, Noida, Uttar Pradesh – 201301</span>
+          </div>
+        </div>
+
+        <!-- 2. User/Expert Row -->
+        <div class='sids-detail-row'>
+          <div class='sids-icon-box'>
+            <i class='fa-solid fa-user-tie'></i>
+          </div>
+          <div class='sids-detail-text-wrap'>
+            <span class='sids-detail-label'>Manager</span>
+            <span class='sids-detail-value'>Vikram Sharma</span>
+          </div>
+        </div>
+
+        <!-- 3. Management / Leader Row -->
+        <div class='sids-detail-row'>
+          <div class='sids-icon-box'>
+            <i class='fa-solid fa-chess-king'></i>
+          </div>
+          <div class='sids-detail-text-wrap'>
+            <span class='sids-detail-label'>Management Leadership</span>
+            <span class='sids-detail-value'>Aman Sharma</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button Area -->
+      <div class='sids-action-box'>
+        <a class='sids-section-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+          <span>Explore Services</span>
+          <i class='fa-solid fa-arrow-right'></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Professional Split Section with Floating Animated Image & Structured Details End -->
