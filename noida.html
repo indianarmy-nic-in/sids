@@ -1429,3 +1429,280 @@
   </div>
 </div>
 <!-- Professional Split Section with Floating Animated Image & Structured Details End -->
+
+
+
+
+
+
+
+
+<!-- Full Width SIDS Category Stats Section Start -->
+<div class="sids-fullwidth-stats-section">
+  <style>
+    /* Google Fonts & FontAwesome Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    /* --- FULL WIDTH CONTAINER --- */
+    .sids-fullwidth-stats-section {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background-color: #e0f2fe; /* Light Blue Background */
+      padding: 90px 20px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .sids-fullwidth-stats-section * {
+      box-sizing: border-box;
+    }
+
+    /* --- INNER WRAPPER --- */
+    .sids-stats-inner-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    /* Section Heading Style */
+    .sids-stats-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sids-stats-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin: 0;
+      text-transform: capitalize;
+    }
+
+    .sids-stats-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0369a1;
+      margin: 0;
+    }
+
+    /* --- 6 BOXES GRID LAYOUT --- */
+    .sids-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 100%;
+    }
+
+    /* Individual Card Style */
+    .sids-stat-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.08);
+      border-top: 5px solid #f17329;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sids-stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
+    }
+
+    /* Top Icon Styling */
+    .sids-stat-icon {
+      width: 65px;
+      height: 65px;
+      background-color: rgba(30, 58, 138, 0.06);
+      color: #1e3a8a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      transition: all 0.3s ease;
+    }
+
+    .sids-stat-card:hover .sids-stat-icon {
+      background-color: #f17329;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    /* Bold Name Styling */
+    .sids-stat-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Big Animated Number Styling */
+    .sids-stat-number {
+      font-size: 44px;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1;
+      margin: 0;
+    }
+
+    /* --- RESPONSIVE BREAKPOINTS --- */
+    @media (max-width: 992px) {
+      .sids-stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        gap: 20px;
+      }
+      .sids-fullwidth-stats-section {
+        padding: 70px 20px;
+      }
+      .sids-stats-title {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sids-stats-grid {
+        grid-template-columns: 1fr; /* 1 column for mobile view */
+      }
+      .sids-fullwidth-stats-section {
+        padding: 50px 15px;
+      }
+      .sids-stat-card {
+        padding: 25px 20px;
+      }
+      .sids-stat-number {
+        font-size: 38px;
+      }
+    }
+  </style>
+
+  <div class='sids-stats-inner-wrap'>
+    
+    <!-- Section Header -->
+    <div class='sids-stats-header'>
+      <h2 class='sids-stats-title'>Trusted Industry Categories We Serve</h2>
+      <p class='sids-stats-subtitle'>Empowering businesses and organizations with verified digital reach</p>
+    </div>
+
+    <!-- 6 Boxes Grid -->
+    <div class='sids-stats-grid'>
+      
+      <!-- Box 1: Beauty Parlour -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-spa'></i>
+        </div>
+        <h3 class='sids-stat-name'>Beauty Parlour</h3>
+        <div class='sids-stat-number' data-target='20'>0+</div>
+      </div>
+
+      <!-- Box 2: Colleges -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-graduation-cap'></i>
+        </div>
+        <h3 class='sids-stat-name'>Colleges</h3>
+        <div class='sids-stat-number' data-target='10'>0+</div>
+      </div>
+
+      <!-- Box 3: Schools -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-school'></i>
+        </div>
+        <h3 class='sids-stat-name'>Schools</h3>
+        <div class='sids-stat-number' data-target='40'>0+</div>
+      </div>
+
+      <!-- Box 4: Hospitals -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-hospital'></i>
+        </div>
+        <h3 class='sids-stat-name'>Hospitals</h3>
+        <div class='sids-stat-number' data-target='15'>0+</div>
+      </div>
+
+      <!-- Box 5: Gyms -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-dumbbell'></i>
+        </div>
+        <h3 class='sids-stat-name'>Gyms</h3>
+        <div class='sids-stat-number' data-target='10'>0+</div>
+      </div>
+
+      <!-- Box 6: Shops -->
+      <div class='sids-stat-card'>
+        <div class='sids-stat-icon'>
+          <i class='fa-solid fa-store'></i>
+        </div>
+        <h3 class='sids-stat-name'>Shops</h3>
+        <div class='sids-stat-number' data-target='60'>0+</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Scroll-triggered Counting Animation Engine Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counters = document.querySelectorAll(".sids-stat-number");
+      let animated = false;
+
+      function runCounters() {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute("data-target");
+          let count = 0;
+          const speed = target / 40; // Animation speed control
+
+          function updateCount() {
+            count += speed;
+            if (count < target) {
+              counter.innerText = Math.ceil(count) + "+";
+              setTimeout(updateCount, 30);
+            } else {
+              counter.innerText = target + "+";
+            }
+          }
+          updateCount();
+        });
+      }
+
+      // Intersection Observer to trigger when section comes into viewport on scroll
+      const section = document.querySelector(".sids-fullwidth-stats-section");
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animated) {
+            runCounters();
+            animated = true;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      if (section) {
+        observer.observe(section);
+      }
+    });
+  </script>
+</div>
+<!-- Full Width SIDS Category Stats Section End -->
