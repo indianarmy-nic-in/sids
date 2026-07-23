@@ -879,8 +879,6 @@
         </p>
         
         <div class='mani-banner-btn-wrap'>
-          <!-- Desktop view me hyperlink hata kar 'div' tag banaya gaya hai, mobile par link kaam karega -->
-          
           <a class='mani-banner-animated-btn mani-mobile-link-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
             <span>OUR MANAGER</span>
           </a>
@@ -888,13 +886,13 @@
 
       </div>
 
-      <!-- Right Side Animated Circle Frame Image & Pointer Arrow (Desktop View Only) -->
+      <!-- Right Side Animated Rectangular Frame Image & Pointer Arrow -->
       <div class='mani-banner-right-frame-wrap'>
         <div class='mani-pointer-arrow-png'>
           <img alt='Pointing Arrow' src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Arrow_png_image.png'/>
         </div>
-        <div class='mani-circle-frame-box'>
-          <img alt='Manager Profile' class='mani-circle-img' src=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjz4N7wCaWbLNcgCgl5w7vYeTiQxlblRRvXsTxiWp_YwEpYG2PARVgZf5fHFYxLg-3svtgrfQnVAkzfcWoA1oGYcEX3cs_nNcXLRqcVccjnH1f8OCBQ0w3W_-quEtBjbEG2mJG0jk2-X5lo6pGew50kaERniHPVW5TmMEsalSIQ_fR5_UTHfMxxo7BkR3g/s320/Untitled%20design%20-%202.jpeg'/>
+        <div class='mani-rect-frame-box'>
+          <img alt='Manager Profile' class='mani-rect-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjz4N7wCaWbLNcgCgl5w7vYeTiQxlblRRvXsTxiWp_YwEpYG2PARVgZf5fHFYxLg-3svtgrfQnVAkzfcWoA1oGYcEX3cs_nNcXLRqcVccjnH1f8OCBQ0w3W_-quEtBjbEG2mJG0jk2-X5lo6pGew50kaERniHPVW5TmMEsalSIQ_fR5_UTHfMxxo7BkR3g/s320/Untitled%20design%20-%202.jpeg'/>
         </div>
       </div>
 
@@ -907,11 +905,11 @@
 /*<![CDATA[*/
 /* Complete Section Copy Protection Layer */
 .protected-banner-zone {
-  -webkit-user-select: none;  /* Safari */
-  -moz-user-select: none;     /* Firefox */
-  -ms-user-select: none;      /* IE10+/Edge */
-  user-select: none;          /* Standard Browsers */
-  -webkit-touch-callout: none; /* iOS Safari link/image long-press menu disable */
+  -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  user-select: none;          
+  -webkit-touch-callout: none; 
 }
 
 /* Image Saving Protection System */
@@ -1036,12 +1034,10 @@
   display: block;
 }
 
-/* Default Mobile Link Button (Hidden on Desktop) */
 .mani-mobile-link-btn {
   display: none !important;
 }
 
-/* Premium Button Architecture in Blue Colour (Desktop Non-clickable text style) */
 .mani-banner-animated-btn {
   display: inline-block;
   position: relative;
@@ -1064,12 +1060,7 @@
   z-index: 7;
 }
 
-.mani-desktop-text-btn:hover {
-  background: #1e3a8a;
-  transform: none;
-}
-
-/* --- RIGHT SIDE CIRCLE FRAME & POINTER ARROW --- */
+/* --- RIGHT SIDE RECTANGULAR FRAME & POINTER ARROW --- */
 .mani-banner-right-frame-wrap {
   display: flex;
   align-items: center;
@@ -1079,7 +1070,6 @@
   position: relative;
 }
 
-/* Pointing Arrow PNG Styling & Floating Animation */
 .mani-pointer-arrow-png {
   width: 75px;
   height: auto;
@@ -1099,19 +1089,20 @@
   50% { transform: translateX(-10px); }
 }
 
-.mani-circle-frame-box {
+/* Updated Rectangular Frame with 2px Bold Blue Border & Floating Animation */
+.mani-rect-frame-box {
   width: 220px;
-  height: 220px;
-  border-radius: 50%;
+  height: 260px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
-  border: 5px solid #ffffff;
+  border: 2px solid #1e3a8a;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  background: #1e3a8a;
+  background: #ffffff;
   animation: maniFrameFloat 4s ease-in-out infinite;
 }
 
-.mani-circle-img {
+.mani-rect-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1119,7 +1110,7 @@
 }
 
 /* Lighting Reflection Gleam Effect */
-.mani-circle-frame-box::after {
+.mani-rect-frame-box::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1153,9 +1144,9 @@
   .mani-banner-title {
     font-size: 36px;
   }
-  .mani-circle-frame-box {
+  .mani-rect-frame-box {
     width: 170px;
-    height: 170px;
+    height: 200px;
   }
   .mani-pointer-arrow-png {
     width: 55px;
@@ -1171,7 +1162,6 @@
     min-height: 500px;
   }
 
-  /* Mobile Background Black Shadow Overlay */
   .mani-banner-container::before {
     background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65));
   }
@@ -1184,7 +1174,6 @@
     padding: 40px 20px 60px 20px;
   }
 
-  /* Mobile View me Right Side Circle Frame aur Arrow ko hide kar diya gaya hai */
   .mani-banner-right-frame-wrap {
     display: none !important;
   }
@@ -1198,7 +1187,6 @@
     text-align: center;
   }
   
-  /* Mobile view me non-clickable button hide karke working link button show kiya gaya hai */
   .mani-desktop-text-btn {
     display: none !important;
   }
@@ -1207,13 +1195,11 @@
     display: inline-block !important;
   }
 
-  /* मोबाइल व्यू में टाइटल और डिस्क्रिप्शन दोनों को छुपा दिया गया है */
   .mani-banner-title, 
   .mani-banner-desc {
     display: none !important;
   }
   
-  /* मोबाइल के हिसाब से बटन का खूबसूरत डिजाइन */
   .mani-banner-animated-btn {
     padding: 16px 45px;
     font-size: 15px;
@@ -1234,7 +1220,6 @@
   }
 }
 
-/* छोटे मोबाइल स्क्रीन्स (जैसे iPhone SE) के लिए माइनर एडजस्टमेंट */
 @media (max-width: 480px) {
   .mani-banner-container {
     height: 75vh;
@@ -1245,7 +1230,7 @@
   }
 }
 /*]]>*/
-</style><br>
+</style>
 
 
 <!-- Professional Split Section with Floating Animated Image & Structured Details Start -->
