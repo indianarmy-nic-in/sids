@@ -2896,6 +2896,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Offices - Slider Section</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styles & Reset */
         * {
@@ -3040,6 +3042,130 @@
             pointer-events: none;
         }
 
+        /* Pop-up Modal Styles */
+        .office-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            padding: 15px;
+        }
+
+        .office-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .office-modal-box {
+            background: #ffffff;
+            color: #333333;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .office-modal-overlay.active .office-modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .office-modal-header {
+            background: #003399;
+            color: #ffffff;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .office-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .office-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .office-modal-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .office-modal-body {
+            padding: 24px;
+        }
+
+        .office-details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .office-details-table tr {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .office-details-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .office-details-table th, 
+        .office-details-table td {
+            padding: 16px 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .office-details-table th {
+            width: 35%;
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .office-details-table th i {
+            color: #003399;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .office-details-table td {
+            width: 65%;
+            color: #2d3748;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
         /* Desktop Layout (3 Cards per slide view) */
         @media (min-width: 992px) {
             .office-card {
@@ -3061,7 +3187,7 @@
             }
             .click-btn {
                 padding: 8px 14px; /* Perfectly scales button size */
-                font-size: 0.85rem;  /* Keeps 'Click Here' locked inside the boundaries */
+                font-size: 0.85rem; /* Keeps 'Click Here' locked inside the boundaries */
                 width: auto;
             }
             .office-title {
@@ -3069,6 +3195,14 @@
             }
             .coordinator-text {
                 font-size: 0.85rem;
+            }
+            .office-modal-body {
+                padding: 16px;
+            }
+            .office-details-table th, 
+            .office-details-table td {
+                padding: 12px 8px;
+                font-size: 0.88rem;
             }
         }
     </style>
@@ -3091,7 +3225,7 @@
                                 <div class="office-title">DELHI</div>
                                 <div class="coordinator-text">Chanakyapuri</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('DELHI', 'Plot No. 4, Dr. APJ Abdul Kalam Road, Chanakyapuri, New Delhi - 110011', 'Mr. Rajesh Sharma', 'Global Operations & Regional Directorate')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=400&q=80" alt="Delhi">
@@ -3107,7 +3241,7 @@
                                 <div class="office-title">HQ CHENNAI</div>
                                 <div class="coordinator-text">Teynampet</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('HQ CHENNAI', 'South Wing, Eldorado Building, 112, Nungambakkam High Road, Teynampet, Chennai - 600034', 'Ms. Priya Sundaram', 'Managing Secretary (South) Operations')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTY9udRbu0e5nAYmmGzb_YgWUxJLkXvy1CVeVfkwlQk8XJZ2KzVifGl2NrcpL5OA_HHH9OCeC3JGeR3PVsyAVYQvrE&s=19" alt="Chennai">
@@ -3123,7 +3257,7 @@
                                 <div class="office-title">GURUGRAM</div>
                                 <div class="coordinator-text">DLF Phase 5 (Golf Course Road)</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('GURUGRAM', 'Tower C, DLF Cyber City, Phase 5, Sector 54, Golf Course Road, Gurugram - 122002', 'Mr. Amitav Ghosh', 'Corporate Tech & Regional Hub')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSrqqncV4OalR7R2in9Mh1n1F6pny01VKISjs8N8s3_ro2YJG8UTE5FhWQ8Wcoz8vFan_PN8ZKujIqpSN9ngKmdgBA&s=19" alt="Gurugram">
@@ -3139,7 +3273,7 @@
                                 <div class="office-title">MATHURA</div>
                                 <div class="coordinator-text">Dampier Nagar</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('MATHURA', 'Civil Lines, Near Collectorate, Dampier Nagar, Mathura - 281001', 'Col. Vikramaditya Singh', 'Strategic Command & Liaison Wing')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmO5HKoyse3iYafmiovZ1pjtaD0S6B3JiNUaGiwoGVAn9AlS5tBlnS--sZJjN2wzYBo7ZfEes9rZ8eiqx788XMEES9r5SoHG-KHLsIRrQl_p_G_rYUuQGDpcg9t_gEhKkef9FT4Ig=w675-h390-n-k-no" alt="Mathura">
@@ -3155,7 +3289,7 @@
                                 <div class="office-title">BENGALURU</div>
                                 <div class="coordinator-text">Sadashivanagar</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('BENGALURU', 'No. 45, Sankey Road, Sadashivanagar, Bengaluru - 560080', 'Mrs. Sneha Ramesh', 'Innovation & R&D Division')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTZzQBEAAIPaLub8QoG6xq0OmLJTAkkWbICm_0f70znJx81HhpUtg2dywklgBXi3yo7t5F4idHV9XT0hCYJnkuuUDc&s=19" alt="Bengaluru">
@@ -3171,7 +3305,7 @@
                                 <div class="office-title">NOIDA</div>
                                 <div class="coordinator-text">Sector 15A</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('NOIDA', 'Block A, Film City, Sector 15A, Noida, Uttar Pradesh - 201301', 'Mr. Vineet Malhotra', 'Digital Infrastructure Branch')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTY9udRbu0e5nAYmmGzb_YgWUxJLkXvy1CVeVfkwlQk8XJZ2KzVifGl2NrcpL5OA_HHH9OCeC3JGeR3PVsyAVYQvrE&s=19" alt="Noida">
@@ -3187,7 +3321,7 @@
                                 <div class="office-title">HYDERABAD</div>
                                 <div class="coordinator-text">Banjara Hills</div>
                             </div>
-                            <button class="click-btn">Click Here</button>
+                            <button class="click-btn" onclick="openOfficeModal('HYDERABAD', 'Road No. 12, MLA Colony, Banjara Hills, Hyderabad - 500034', 'Dr. K. Srinivas Rao', 'Southern Development Center')">Click Here</button>
                         </div>
                         <div class="image-side">
                             <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRUzd5vivp7t2WqWCu_ZQbL-k0xVdhXHzXNw2GEjRzpd0GefGDGsoERRU8IirHxNKCdEeAPlHcAVwT0uRMpSQ-6T7U&s=19" alt="Hyderabad">
@@ -3199,11 +3333,37 @@
         </div>
     </section>
 
-    <!-- JavaScript For Automatic Loop Logic (Updated for 7 cards) -->
+    <!-- Dynamic Pop-up Modal Structure -->
+    <div class="office-modal-overlay" id="officeModalOverlay" onclick="closeOfficeModal(event)">
+        <div class="office-modal-box">
+            <div class="office-modal-header">
+                <span class="office-modal-title" id="modalOfficeName">Office Details</span>
+                <button class="office-modal-close" onclick="closeOfficeModalDirect()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="office-modal-body">
+                <table class="office-details-table">
+                    <tr>
+                        <th><i class="fa-solid fa-location-dot"></i> Address</th>
+                        <td id="modalOfficeAddress">-</td>
+                    </tr>
+                    <tr>
+                        <th><i class="fa-solid fa-user-tie"></i> Manager</th>
+                        <td id="modalOfficeManager">-</td>
+                    </tr>
+                    <tr>
+                        <th><i class="fa-solid fa-sitemap"></i> Management</th>
+                        <td id="modalOfficeManagement">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript For Automatic Loop Logic & Pop-up Handling -->
     <script>
         const track = document.getElementById('sliderTrack');
         let index = 0;
-        const totalCards = 7; // Updated total count
+        const totalCards = 7;
 
         function getVisibleCards() {
             if (window.innerWidth >= 992) return 3;
@@ -3213,14 +3373,16 @@
 
         function startAutoSlider() {
             setInterval(() => {
+                // Do not auto-slide if the modal is currently open
+                if (document.getElementById('officeModalOverlay').classList.contains('active')) return;
+
                 const visibleCards = getVisibleCards();
                 const maxIndex = totalCards - visibleCards;
                 
-                // Advance index safely without crossing boundaries or blank spaces
                 if (index < maxIndex) {
                     index++;
                 } else {
-                    index = 0; // Reset back to start
+                    index = 0; 
                 }
 
                 const percentageMove = -(index * (100 / visibleCards));
@@ -3234,11 +3396,29 @@
             track.style.transform = 'translateX(0%)';
             index = 0;
         };
+
+        // Modal Control Functions
+        function openOfficeModal(title, address, manager, management) {
+            document.getElementById('modalOfficeName').innerText = title + " Office";
+            document.getElementById('modalOfficeAddress').innerText = address;
+            document.getElementById('modalOfficeManager').innerText = manager;
+            document.getElementById('modalOfficeManagement').innerText = management;
+
+            document.getElementById('officeModalOverlay').classList.add('active');
+        }
+
+        function closeOfficeModalDirect() {
+            document.getElementById('officeModalOverlay').classList.remove('active');
+        }
+
+        function closeOfficeModal(event) {
+            if (event.target.id === 'officeModalOverlay') {
+                closeOfficeModalDirect();
+            }
+        }
     </script>
 </body>
 </html>
-
-
 
 
 
