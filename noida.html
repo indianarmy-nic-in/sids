@@ -874,10 +874,10 @@
           GROW YOUR BRAND<br/>WITH <span class='mani-text-highlight'>SIDS NOIDA</span>
         </h1>
 
-      <h1>
-    VIKRAM SHARMA
-    <span>Manager SIDS Noida</span>
-</h1>
+        <div class='mani-manager-info'>
+          <h2>VIKRAM SHARMA</h2>
+          <span>Manager SIDS Noida</span>
+        </div>
         
         <p class='mani-banner-desc'>
           Discover premium corporate marketing strategies, web development frameworks, and elite digital design components curated specifically to boost your platform&#39;s online presence.
@@ -1013,16 +1013,37 @@
   font-weight: 900;
   color: #000000;
   line-height: 1.15;
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
   letter-spacing: -1.5px;
   text-transform: uppercase;
 }
 
-/* Highlighted Text in Yellow Colour */
+/* Highlighted Text in Yellow Colour with Same Main Title Size */
 .mani-banner-title .mani-text-highlight {
   color: #eab308;
   display: inline-block;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Manager Info Styling */
+.mani-manager-info {
+  margin-bottom: 15px;
+}
+
+.mani-manager-info h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.mani-manager-info span {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-top: 2px;
 }
 
 /* Subtitle Text Description in Dark Colour */
@@ -1031,7 +1052,7 @@
   color: #1f2937;
   line-height: 1.6;
   max-width: 580px;
-  margin: 0 0 35px 0;
+  margin: 0 0 25px 0;
   font-weight: 600;
 }
 
@@ -1201,7 +1222,8 @@
   }
 
   .mani-banner-title, 
-  .mani-banner-desc {
+  .mani-banner-desc,
+  .mani-manager-info {
     display: none !important;
   }
   
@@ -1233,13 +1255,6 @@
     padding: 14px 38px;
     font-size: 14px;
   }
-}
-
- h1 span {
-    display: block;
-    font-size: 16px;
-    margin-top: 0;
-    line-height: 1;
 }
 /*]]>*/
 </style>
