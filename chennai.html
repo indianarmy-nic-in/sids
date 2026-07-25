@@ -1,0 +1,3715 @@
+ <!-- SIDS Strict Mobile Anti-Zoom & Protection Section Start -->
+
+<style>
+
+  /* --- 1. CSS SE TEXT SELECTION AUR TOUCH GESTURES BLOCK --- */
+
+  html, body {
+
+    /* Mobile me pinch-to-zoom aur double-tap-zoom ko completely disable karne ke liye CSS property */
+
+    touch-action: none !important; 
+
+    touch-action: pan-x pan-y !important; /* Sirf scroll karne dega, zoom nahi */
+
+    
+
+    -webkit-user-select: none !important;  
+
+    -moz-user-select: none !important;     
+
+    -ms-user-select: none !important;      
+
+    user-select: none !important;          
+
+    -webkit-touch-callout: none !important; 
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+
+  }
+
+
+
+  /* --- 2. IMAGES PROTECTION --- */
+
+  img {
+
+    -webkit-user-drag: none !important;    
+
+    user-drag: none !important;
+
+    pointer-events: none !important;       
+
+  }
+
+
+
+  /* Forms ke andar typing me koi problem na ho, isliye exemption */
+
+  input, textarea, select {
+
+    -webkit-user-select: text !important;
+
+    -moz-user-select: text !important;
+
+    -ms-user-select: text !important;
+
+    user-select: text !important;
+
+    touch-action: auto !important; /* Form fields par default touch action allowed rahega */
+
+  }
+
+</style>
+
+
+
+<script>
+
+  (function() {
+
+    // 1. HIGH-PRIORITY VIEWPORT FORCING
+
+    // Yeh meta tag browser ko batata hai ki screen ka zoom level 1.0 par lock rahe
+
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+
+    if (!viewportMeta) {
+
+      viewportMeta = document.createElement('meta');
+
+      viewportMeta.name = "viewport";
+
+      document.getElementsByTagName('head')[0].appendChild(viewportMeta);
+
+    }
+
+    viewportMeta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no";
+
+
+
+    // 2. JAVASCRIPT TOUCH-GESTURE CORES (CRITICAL FOR MOBILE ZOOM LOCK)
+
+    // Jab koi do ungliyon (2 fingers) se pinch karne ki koshish karega, ye use block karega
+
+    document.addEventListener('touchstart', function(event) {
+
+      if (event.touches.length > 1) {
+
+        event.preventDefault(); // Multi-touch zoom block
+
+      }
+
+    }, { passive: false });
+
+
+
+    // Double tap karke zoom karne ki koshish ko block karne ke liye
+
+    let lastTouchEnd = 0;
+
+    document.addEventListener('touchend', function(event) {
+
+      const now = (new Date()).getTime();
+
+      if (now - lastTouchEnd <= 300) {
+
+        event.preventDefault(); // 300ms ke andar double tap block
+
+      }
+
+      lastTouchEnd = now;
+
+    }, { passive: false });
+
+
+
+    // 3. DESKTOP VIEW ZOOM DISABLE (Ctrl + Wheel & Keys)
+
+    window.addEventListener('wheel', function(e) {
+
+      if (e.ctrlKey) {
+
+        e.preventDefault();
+
+      }
+
+    }, { passive: false });
+
+
+
+    window.addEventListener('keydown', function(e) {
+
+      if (e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '+' || e.key === '0')) {
+
+        e.preventDefault();
+
+      }
+
+      if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U')) {
+
+        e.preventDefault();
+
+      }
+
+    });
+
+
+
+    // 4. SILENT RIGHT-CLICK & COPY DISABLE
+
+    document.addEventListener('contextmenu', function(e) {
+
+      e.preventDefault();
+
+    });
+
+
+
+    document.addEventListener('copy', function(e) {
+
+      e.preventDefault();
+
+    });
+
+    
+
+    document.addEventListener('cut', function(e) {
+
+      e.preventDefault();
+
+    });
+
+  })();
+
+</script>
+
+<!-- SIDS Strict Mobile Anti-Zoom & Protection Section End -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- SEO Meta Tags, Favicon, and Title Setup Start -->
+
+<!-- 1. Website Title -->
+
+<title>SIDS Chennai HQ | Visibility that converts - Website Design & Development</title>
+
+
+
+<!-- 2. Standard Meta Tags -->
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="robots" content="index, follow" />
+
+<meta name="author" content="SIDS Experts" />
+
+
+
+<!-- 3. Short Search Engine Description (Max 160 Characters) -->
+
+<meta name="description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
+
+
+<!-- 4. Keywords for Search Indexing -->
+
+<meta name="keywords" content="SIDS INDIA, SIDS Experts, Creative Hub, Website Design, Web Development, Custom UI, Professional Web Agency" />
+
+
+
+<!-- 5. Favicon Link Setup (Icon in Browser Tab) -->
+
+<link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+<link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+
+
+<!-- 6. Social Media Optimization (Open Graph Meta Tags for Facebook/WhatsApp/LinkedIn) -->
+
+<meta property="og:type" content="website" />
+
+<meta property="og:title" content="SIDS Chennai | Creative Hub - Website Design & Development" />
+
+<meta property="og:description" content="SIDS INDIA Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+
+
+<!-- 7. Twitter Card Optimization -->
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:title" content="SIDS Chennai | Creative Hub - Website Design & Development" />
+
+<meta name="twitter:description" content="SIDS Chennai Creative Hub: Professional website design, robust development, and tailored digital solutions crafted expertly by SIDS Experts." />
+
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png" />
+
+<!-- SEO Meta Tags, Favicon, and Title Setup End -->
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip Start -->
+<div class="mani-nav-full-width">
+  <style>
+    /* Google Fonts Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+
+    /* --- FIXED TOP & SIDE LAYOUT --- */
+    .mani-nav-full-width {
+      position: fixed !important;
+      top: 0 !important;      
+      left: 0 !important;      
+      width: 100vw !important;    
+      margin: 0 !important;        
+      padding: 0 !important;      
+      background-color: #1e3a8a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      z-index: 99999;              
+    }
+
+    html, body {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    .mani-navbar {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 75px; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .mani-navbar * {
+      box-sizing: border-box;
+    }
+
+    /* --- LOGO WRAPPER AND ARCHITECTURE --- */
+    .mani-logo-flex-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+    }
+
+    /* ONLY Logo Icon has Hyperlink now */
+    .mani-nav-logo-link {
+      text-decoration: none !important;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* Slow Flip Animation + Border Layout */
+    .mani-logo-flip-box {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #ffffff;
+      background-color: transparent;
+      animation: m-slowFlip 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      perspective: 1000px;
+    }
+
+    .mani-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* 3D Slow Flip Logic - Turns, flips, and stays straight */
+    @keyframes m-slowFlip {
+      0%, 70% { transform: rotateY(0deg); }
+      85% { transform: rotateY(360deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    /* Premium Gleam Reflection Effect on Logo Icon */
+    .mani-logo-flip-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: m-shinyGleam 4s ease-in-out infinite;
+    }
+
+    @keyframes m-shinyGleam {
+      0% { left: -150%; }
+      30%, 100% { left: 150%; }
+    }
+
+    /* --- BRAND TEXT ZONE (NO HYPERLINK) --- */
+    .mani-slide-text-container {
+      overflow: hidden; /* Clips the sliding text window */
+      padding: 5px 0;
+    }
+
+    .mani-logo-text-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      /* Fast slide in from left, holds 4s, slides back left */
+      animation: textSlideInOut 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+
+    /* 5-second total animation sequence (fast slide in, 4s view, fast slide out) */
+    @keyframes textSlideInOut {
+      0% { transform: translateX(-105%); opacity: 0; }
+      8% { transform: translateX(0); opacity: 1; }
+      88% { transform: translateX(0); opacity: 1; }
+      96%, 100% { transform: translateX(-105%); opacity: 0; }
+    }
+
+    .mani-main-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff !important;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+
+    .mani-first-word { margin-right: 6px; }
+
+    /* --- TRICOLOR (INDIAN FLAG) GRADIENT EFFECT FOR INDIA --- */
+    .mani-logo-highlight { 
+      background: linear-gradient(to right, #ff9933 0%, #ff9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%, #138808 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.4)); /* Blue bg par clear visibility ke liye */
+    }
+
+    .mani-sub-brand {
+      font-size: 9px;
+      font-weight: 600;
+      color: #e2e8f0;
+      letter-spacing: 1.5px;
+      margin-top: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    /* --- RIGHT ALIGNED NAVIGATION MENU (DESKTOP) --- */
+    .mani-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+      margin: 0 0 0 auto;
+      padding: 0;
+    }
+
+    .mani-nav-item {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .mani-nav-link {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      padding: 26px 2px; /* Vertically centers the trigger area */
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .mani-nav-link:hover { color: #f17329 !important; }
+
+    .mani-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #f17329;
+      transition: width 0.3s ease;
+    }
+
+    .mani-nav-link:hover::after { width: 100%; }
+
+    /* Dropdown Arrow Icon Styling */
+    .mani-drop-icon {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    /* --- PREMIUM DROPDOWN ENGINE --- */
+    .mani-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background-color: #ffffff;
+      min-width: 200px;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      list-style: none;
+      padding: 8px 0;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 100000;
+    }
+
+    /* Desktop Hover Logic */
+    @media (min-width: 993px) {
+      .mani-nav-item:hover .mani-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+      .mani-nav-item:hover .mani-drop-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    .mani-dropdown-item a {
+      color: #1e3a8a !important;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+    }
+
+    .mani-dropdown-item a:hover {
+      background-color: #f8fafc;
+      color: #f17329 !important;
+      padding-left: 24px;
+    }
+
+    /* Right Controls Hub */
+    .mani-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 25px;
+    }
+
+    /* Premium Action CTA Button with Stable Continuous Smooth Animation */
+    .mani-nav-cta-btn {
+      background: #f17329;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      transition: background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(241, 115, 41, 0.25);
+      animation: buttonPulseGlow 2s infinite ease-in-out;
+      flex-shrink: 0;
+      will-change: transform, box-shadow;
+    }
+
+    .mani-nav-cta-btn:hover {
+      background: #ffffff;
+      color: #1e3a8a !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(241, 115, 41, 0.4);
+    }
+
+    @keyframes buttonPulseGlow {
+      0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 10px rgba(241, 115, 41, 0.25);
+      }
+      50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 6px 20px rgba(241, 115, 41, 0.5); 
+      }
+    }
+
+    .mani-mobile-only-item {
+      display: none;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    /* Mobile Hamburger Trigger */
+    .mani-mobile-toggle-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+      z-index: 10001;
+    }
+
+    .mani-mobile-toggle-btn span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .mani-mobile-toggle-btn.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 5px); }
+    .mani-mobile-toggle-btn.open span:nth-child(2) { opacity: 0; }
+    .mani-mobile-toggle-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -5px); }
+
+    /* --- RESPONSIVE MOBILE ARCHITECTURE --- */
+    @media (max-width: 992px) {
+      .mani-navbar {
+        padding: 0 35px;
+      }
+
+      .mani-nav-actions .mani-nav-cta-btn {
+        display: none;
+      }
+
+      .mani-mobile-only-item {
+        display: block;
+      }
+
+      .mani-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #11255a;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 95px 30px 30px 30px;
+        gap: 15px;
+        transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        margin: 0;
+        overflow-y: auto;
+      }
+
+      .mani-nav-menu.active {
+        right: 0;
+      }
+
+      .mani-nav-item {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+      }
+
+      .mani-nav-link {
+        font-size: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 10px 0;
+      }
+
+      .mani-nav-link::after {
+        display: none;
+      }
+
+      /* Mobile Dropdown UI Engine */
+      .mani-dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none !important;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.15);
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transition: max-height 0.3s ease-out;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      .mani-nav-item.open-active .mani-dropdown-menu {
+        max-height: 200px;
+        padding: 5px 0;
+      }
+
+      .mani-nav-item.open-active .mani-drop-icon {
+        transform: rotate(180deg);
+      }
+
+      .mani-dropdown-item a {
+        color: #e2e8f0 !important;
+        padding: 10px 15px;
+      }
+
+      .mani-dropdown-item a:hover {
+        background-color: transparent;
+        color: #f17329 !important;
+        padding-left: 15px;
+      }
+
+      .mani-mobile-toggle-btn {
+        display: flex;
+      }
+
+      .mani-mobile-only-item .mani-nav-cta-btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+        animation: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mani-navbar {
+        height: 65px;
+        padding: 0 24px;
+      }
+      .mani-logo-flip-box { width: 38px; height: 38px; }
+      .mani-main-brand { font-size: 16px; }
+      .mani-sub-brand { font-size: 8px; letter-spacing: 1px; }
+    }
+  </style>
+
+  <nav class='mani-navbar'>
+    <!-- Logo Zone with Separate Active Elements -->
+    <div class='mani-logo-flex-wrapper'>
+      <!-- Hyperlink locked ONLY to the flipping graphic box icon -->
+      <a class='mani-nav-logo-link' href='/'>
+        <div class='mani-logo-flip-box'>
+          <img alt='Logo' class='mani-logo-img' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvma6IlWPy-h1NodtVIfcwklZ-ZcObzYCQv54yFvsMrag50xXTZAQtMPdJLu9LGuPpzZYx3pyOt-CBTkmIxAoufzjRVR6ZJVvCYd2P8ZC8pLd-JyhxKKFadNv9lzjG26FVLzrOVPcEreh8Z6nbs07z9yIqMrdrQxRgxdc8tpI3QkM07onUDaupZCfR2LE/s1800/Copy%20of%20SGMC%20NEW.png'/>
+        </div>
+      </a>
+
+      <!-- Plain Text Brand Container (No Links) with Slide Animations -->
+      <div class='mani-slide-text-container'>
+        <div class='mani-logo-text-group'>
+          <div class='mani-main-brand'>
+            <span class='mani-first-word'>SIDS</span><span class='mani-logo-highlight'>INDIA</span>
+          </div>
+          <div class='mani-sub-brand'>Visibility that converts.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Links Container -->
+    <ul class='mani-nav-menu'>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='/'>Home</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/services'>Services</a></li>
+      
+      <!-- Premium Dropdown Menu Item -->
+      <li class="mani-nav-item mani-has-dropdown">
+        <span class='mani-nav-link'>About SIDS <span class="mani-drop-icon">▼</span></span>
+        <ul class="mani-dropdown-menu">
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/about.html">About SIDS</a></li>
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/team">Our Experts</a></li>
+          <li class="mani-dropdown-item"><a href="https://sidsindia.manishchaudharymathura.in/leaders">Board Members</a></li>
+        </ul>
+      </li>
+
+      <!-- Added Pricing Nav Link right after About SIDS -->
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/pricing'>Pricing</a></li>
+
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/career'>Career</a></li>
+      <li class="mani-nav-item"><a class='mani-nav-link' href='https://sidsindia.manishchaudharymathura.in/contact.html'>Contact Us</a></li>
+      
+      <!-- Inside Mobile View Links -->
+      <li class="mani-mobile-only-item">
+        <a class="mani-nav-cta-btn" href="https://sidsindia.manishchaudharymathura.in/contact.html">
+          <span>Hire Us</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Actions Tray Layout -->
+    <div class='mani-nav-actions'>
+      <a class='mani-nav-cta-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+        <span>Hire Us</span>
+      </a>
+    </div>
+
+    <!-- Hamburger Button Component -->
+    <button class='mani-mobile-toggle-btn' aria-label='Toggle Navigation Menu'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Toggle Trigger Core Logic -->
+  <script>
+    (function() {
+      const toggleBtn = document.querySelector('.mani-mobile-toggle-btn');
+      const navMenu = document.querySelector('.mani-nav-menu');
+      const dropdownParent = document.querySelector('.mani-has-dropdown');
+
+      if (toggleBtn && navMenu) {
+        // Toggle Hamburger and Mobile Sidebar Menu
+        toggleBtn.addEventListener('click', function() {
+          this.classList.toggle('open');
+          navMenu.classList.toggle('active');
+        });
+
+        // Mobile Dropdown Engine Trigger (Accordian style on click)
+        if(dropdownParent) {
+          const triggerLink = dropdownParent.querySelector('.mani-nav-link');
+          triggerLink.addEventListener('click', function(e) {
+            if(window.innerWidth <= 992) {
+              e.preventDefault();
+              dropdownParent.classList.toggle('open-active');
+            }
+          });
+        }
+
+        // Close Navbar when single links are clicked (excluding the dropdown main trigger itself)
+        const navLinks = document.querySelectorAll('.mani-nav-link, .mani-dropdown-menu a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            if(!link.classList.contains('mani-nav-link') || !link.parentElement.classList.contains('mani-has-dropdown')) {
+              toggleBtn.classList.remove('open');
+              navMenu.classList.remove('active');
+              if(dropdownParent) dropdownParent.classList.remove('open-active');
+            }
+          });
+        });
+      }
+    })();
+  </script>
+</div>
+<!-- Edge-to-Edge Premium SIDS Navbar with Text Loop & Icon Flip End -->
+
+
+<div class='mani-banner-full-width protected-banner-zone'>
+  <div class='mani-banner-container'>
+    
+    <!-- Background Images with Right-Click & Drag Protection -->
+    <picture class='secure-image-mask'>
+      <!-- Mobile View Background Image (Under 768px) -->
+      <source media='(max-width: 768px)' srcset='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwNqqaFS39qqOmObReqivUiukT_0RCKV2PR9A12X70JZGRrzhuSwxIW6nabeHghH9ga4_NsTCGGENJ-siWPgAceAvZs5mIlX7z-GB-nNwCPvQBBczmb6P_fXDkzoeQexCA_0IZ70OSjdMbMnRihEAlBDYbX4_2vfFGyAuNrSrXG6Vc5XrSUCgDMbiFn6k/s1600/IMG_7211.gif'/>
+      <!-- Desktop View Background Image (Default) -->
+      <img alt='Banner Background' class='mani-banner-bg secure-img' oncontextmenu='return false;' ondragstart='return false;' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWEvhZgRgLabc4SPRlKl8m6AgpDgv0D5IfyPNZUA2T4bMgXVOzTGBhSD71HYJn6rCG5JBQJ0P49DyK95cXpDDtsH3J0P2hpbffecLZ0JXJN_VnmmdeSzv4zoR9jCLHQQt4n0K5_4FYv14LACvAJcD6fYxBnfe2xRjHoaw4A8yARYPcafHcgQ3jgjwcga4/s1600/Promotion.png'/>
+    </picture>
+
+    <!-- Content Box with Anti-Copy Protocol -->
+    <div class='mani-banner-content-box'>
+      <div class='mani-banner-left-content secure-text-zone'>
+        
+        <h1 class='mani-banner-title'>
+          GROW YOUR BRAND<br/>WITH <span class='mani-text-highlight'>SIDS INDIA</span>
+        </h1>
+        
+        <p class='mani-banner-desc'>
+          Discover premium corporate marketing strategies, web development frameworks, and elite digital design components curated specifically to boost your platform&#39;s online presence.
+        </p>
+        
+        <div class='mani-banner-btn-wrap'>
+          <a class='mani-banner-animated-btn' href='https://sidsindia.manishchaudharymathura.in/contact.html'>
+            <span>Get Started Now</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* Complete Section Copy Protection Layer */
+.protected-banner-zone {
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+/Edge */
+  user-select: none;          /* Standard Browsers */
+  -webkit-touch-callout: none; /* iOS Safari link/image long-press menu disable */
+}
+
+/* Image Saving Protection System */
+.secure-image-mask {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+}
+
+.secure-img {
+  pointer-events: none;
+  -webkit-user-drag: none; 
+  user-drag: none;
+}
+
+/* Full Width Page Bleed Alignment */
+.mani-banner-full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Strict Layout Canvas Size Dimensions (For Desktop) */
+.mani-banner-container {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  width: 100%;
+  max-width: 1600px;
+  height: 600px; 
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mani-banner-container * {
+  box-sizing: border-box;
+}
+
+/* Banner Image Layer Setup */
+.mani-banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Transparent Content Box */
+.mani-banner-content-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+  display: table;
+}
+
+/* Align Content Strictly to Left Vertically Centered */
+.mani-banner-left-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 80px;
+  padding-right: 40px;
+  width: 60%;
+  text-align: left;
+}
+
+/* Big Bold Main Header in Black Colour */
+.mani-banner-title {
+  font-size: 52px;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+/* Highlighted Text in Premium Blue Colour */
+.mani-banner-title .mani-text-highlight {
+  color: #1e3a8a;
+  display: inline-block;
+}
+
+/* Subtitle Text Description in Black Colour */
+.mani-banner-desc {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 0 35px 0;
+  font-weight: 500;
+}
+
+.mani-banner-btn-wrap {
+  display: block;
+}
+
+/* Premium Button Architecture in Blue Colour */
+.mani-banner-animated-btn {
+  display: inline-block;
+  position: relative;
+  background: #1e3a8a;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+}
+
+.mani-banner-animated-btn span {
+  position: relative;
+  z-index: 7;
+}
+
+/* Simple Clean Hover State */
+.mani-banner-animated-btn:hover {
+  background: #111827; 
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE SCALING - TABLET INTERFACE */
+@media (max-width: 992px) {
+  .mani-banner-left-content {
+    padding-left: 45px;
+    width: 80%;
+  }
+  .mani-banner-title {
+    font-size: 36px;
+  }
+}
+
+/* =======================================================
+   MOBILE VIEW OPTIMIZATION (UPDATED)
+   ======================================================= */
+@media (max-width: 768px) {
+  .mani-banner-container {
+    height: 80vh; /* मोबाइल स्क्रीन के लिए परफेक्ट हाइट */
+    min-height: 500px;
+  }
+  
+  .mani-banner-content-box {
+    display: flex;
+    align-items: flex-end; /* बटन को नीचे की तरफ अलाइन करने के लिए */
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)); /* बटन विजिबिलिटी के लिए हल्का बॉटम ग्रेडिएंट */
+  }
+  
+  .mani-banner-left-content {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px; /* बटन को स्क्रीन के बिल्कुल नीचे चिपकने से रोकने के लिए स्पेस */
+    width: 100%;
+    text-align: center; 
+  }
+  
+  /* मोबाइल व्यू में टाइटल और डिस्क्रिप्शन दोनों को छुपा दिया गया है */
+  .mani-banner-title, 
+  .mani-banner-desc {
+    display: none !important;
+  }
+  
+  /* मोबाइल के हिसाब से बटन का खूबसूरत डिजाइन */
+  .mani-banner-animated-btn {
+    padding: 16px 45px;
+    font-size: 15px;
+    font-weight: 700;
+    background: #3b82f6; 
+    border-radius: 50px;
+    width: auto;
+    display: inline-block;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+    letter-spacing: 0.5px;
+  }
+  
+  .mani-banner-animated-btn:hover {
+    background: #ffffff;
+    color: #3b82f6 !important;
+    transform: scale(1.03);
+  }
+}
+
+/* छोटे मोबाइल स्क्रीन्स (जैसे iPhone SE) के लिए माइनर एडजस्टमेंट */
+@media (max-width: 480px) {
+  .mani-banner-container {
+    height: 75vh;
+  }
+  .mani-banner-left-content {
+    padding-bottom: 50px;
+  }
+  .mani-banner-animated-btn {
+    padding: 14px 38px;
+    font-size: 14px;
+  }
+}
+/*]]>*/
+</style>    
+    
+    
+    
+    
+<div class='mani-main-landing-wrapper'>
+
+  <div class='ts-section ts-about-section'>
+    <div class='ts-container'>
+      <div class='ts-row'>
+        <div class='ts-col ts-col-50 ts-img-collage-side'>
+          <div class='ts-collage-container'>
+            <div class='ts-collage-img img-top-left'>
+              <img alt='TechSky Office Workspace' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ8UKHWVl1sB0BM6XYx8vCFRftgilgsQLxhrEH_Xv-a-AFgBmMtGejvqTFqHmP0LhMTPHfXiHx8zsnY7mlqMCEfMxcMybEbkthIlq7DYqqBx_w0V984qTgRCQbTNmHFZkX9AO7YPfV88Wbeb4gE2UCcQr56vhANgaasYrGY-qj8Thyphenhyphenw9cFhb5lbdCpoFo/s1600/B80ECECD-EB66-4EDD-8ED9-44FD1CEDD142.png'/>
+            </div>
+            <div class='ts-collage-img img-bottom-right'>
+              <img alt='TechSky Media Setup' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRn3qXAoWGsLPVbK33eQNh-Tw_CF3PhAT2DiKLQ2urjW4G6VV8raQff7Z3ilFMQ1GoLY9KbFW85nmWbU3juXS97MgylreAQIwC3DRRKO-tzaHcEkbXmgF2cXVS1oOlh8SrSPKwLLH-R4IZPxnMPYD0gtmIIHbRQIT1JLWczse8RdJHtWNk1_RjMwOoFEA/s1600/F93D81FE-C63F-4417-8B9B-4FF1FC27C9B1.png'/>
+            </div>
+          </div>
+        </div>
+        
+        <div class='ts-col ts-col-50 ts-text-side'>
+          <span class='ts-section-tag'>ABOUT US</span>
+          <h2 class='ts-main-heading'>Helping Businesses Grow with <span class='ts-highlight-blue'>Smart Digital Solutions</span></h2>
+          <p class='ts-paragraph'>SIDS India is a results-driven digital agency focused on helping businesses build a strong online presence. From website development and SEO to digital marketing and branding, we create innovative solutions tailored to your business goals.</p>
+          <p class='ts-paragraph'>Our team combines creativity, technology, and strategy to deliver impactful digital experiences that drive growth, engagement, and long-term success.</p>
+          
+          <div class='ts-btn-group'>
+            <a class='ts-btn ts-btn-filled' href='https://sidsindia.manishchaudharymathura.in/about.html'>About SIDS &#10132;</a>
+            <a class='ts-btn ts-btn-outlined' href='https://sidsindia.manishchaudharymathura.in/services'>Explore Our Services &#10132;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='ts-section ts-process-section'>
+    <div class='ts-container'>
+      <div class='ts-center-head'>
+        <h2 class='ts-center-title'>Our Process</h2>
+      </div>
+      
+      <div class='ts-process-grid'>
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>💬</div>
+            <span class='ts-step-number'>01</span>
+          </div>
+          <h3 class='ts-card-title'>Requirement Analysis</h3>
+          <p class='ts-card-desc'>We understand your business goals, audience, and project requirements to create the right strategy.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>📊</div>
+            <span class='ts-step-number'>02</span>
+          </div>
+          <h3 class='ts-card-title'>Planning &amp; Strategy</h3>
+          <p class='ts-card-desc'>Our team creates a clear roadmap and customized digital strategy focused on performance and growth.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>💻</div>
+            <span class='ts-step-number'>03</span>
+          </div>
+          <h3 class='ts-card-title'>Design &amp; Development</h3>
+          <p class='ts-card-desc'>We build modern, responsive, and user-friendly websites and digital solutions tailored to your business.</p>
+        </div>
+
+        <div class='ts-process-card'>
+          <div class='ts-card-top'>
+            <div class='ts-icon-box box-blue'>🚀</div>
+            <span class='ts-step-number'>04</span>
+          </div>
+          <h3 class='ts-card-title'>Launch &amp; Optimization</h3>
+          <p class='ts-card-desc'>After launch, we optimize performance, improve user experience, and ensure long-term digital success.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+    
+  
+
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* Global Base Wrapper Setup for Blogger Templates */
+.mani-main-landing-wrapper {
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.mani-main-landing-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.ts-section {
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.ts-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Row-Column System Framework */
+.ts-row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.ts-col {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ts-col-50 {
+  width: 50%;
+}
+
+/* --- SECTION 1 STYLING: ABOUT US --- */
+.ts-about-section {
+  background-color: #ffffff;
+}
+
+.ts-img-collage-side {
+  padding-right: 40px;
+}
+
+.ts-collage-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+}
+
+.ts-collage-img {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.ts-collage-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img-top-left {
+  width: 75%;
+  height: 260px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border: 4px solid #ffffff;
+}
+
+.img-bottom-right {
+  width: 70%;
+  height: 220px;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  border: 6px solid #ffffff;
+}
+
+.ts-text-side {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.ts-section-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0284c7;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.ts-main-heading {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.ts-highlight-blue {
+  color: #0284c7;
+}
+
+.ts-paragraph {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.ts-btn-group {
+  margin-top: 25px;
+}
+
+.ts-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+}
+
+.ts-btn-filled {
+  background-color: #0284c7;
+  color: #ffffff !important;
+}
+
+.ts-btn-filled:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+}
+
+.ts-btn-outlined {
+  background-color: transparent;
+  color: #0284c7 !important;
+  border: 2px solid #0284c7;
+}
+
+.ts-btn-outlined:hover {
+  background-color: #0284c7;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* --- SECTION 2 STYLING: PROCESS --- */
+.ts-process-section {
+  background-color: #f8fafc;
+}
+
+.ts-center-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.ts-center-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.ts-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ts-process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.ts-process-card:hover {
+  transform: translateY(-5px);
+}
+
+.ts-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ts-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.box-blue {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.ts-step-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #cbd5e1;
+  line-height: 1;
+}
+
+.ts-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.ts-card-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* --- SECTION 3 STYLING: GOVERNORS / TEAM --- */
+.ts-team-section {
+  background-color: #ffffff;
+}
+
+.ts-highlight-orange {
+  color: #ea580c;
+}
+
+.ts-center-subtitle {
+  font-size: 15px;
+  color: #475569;
+  max-width: 700px;
+  margin: 12px auto 0 auto;
+  line-height: 1.6;
+}
+
+/* Uniform 2 Columns Everywhere Configuration */
+.ts-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.ts-team-member {
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.ts-team-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none !important;
+}
+
+.ts-team-img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.ts-team-info {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.ts-member-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ea580c;
+  margin-bottom: 4px;
+}
+
+.ts-member-role {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* ==========================================================
+   MOBILE & RESPONSIVE MEDIA QUERIES (100% Mobile Friendly)
+   ========================================================== */
+
+@media (max-width: 992px) {
+  .ts-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .ts-main-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ts-section {
+    padding: 45px 15px;
+  }
+
+  /* About Section Stack to Single Column Mobile Friendly */
+  .ts-row {
+    display: block;
+  }
+  
+  .ts-col-50 {
+    display: block;
+    width: 100%;
+  }
+  
+  .ts-img-collage-side {
+    padding-right: 0;
+    margin-bottom: 35px;
+  }
+  
+  .ts-collage-container {
+    height: 300px;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .img-top-left {
+    height: 200px;
+  }
+  
+  .img-bottom-right {
+    height: 170px;
+  }
+  
+  .ts-text-side {
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .ts-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .ts-btn {
+    margin-right: 0;
+    width: 80%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Process Cards to 1 Column Stack */
+  .ts-process-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .ts-center-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Team Section Mobile Optimization (Keeps 2 columns neat & small) */
+  .ts-team-grid {
+    gap: 16px;
+  }
+  
+  .ts-team-member {
+    max-width: 150px;
+  }
+  
+  .ts-member-name {
+    font-size: 13.5px;
+  }
+  
+  .ts-member-role {
+    font-size: 11px;
+  }
+  
+  .ts-center-subtitle {
+    font-size: 13px;
+  }
+}
+/*]]>*/
+</style>    
+    
+    
+ 
+    
+ 
+<style type='text/css'>
+/*<![CDATA[*/
+/* CSS Core Structural Defaults */
+.mani-master-workflow-wrapper {
+  width: 100%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mani-master-workflow-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.mani-wf-section {
+  padding: 80px 20px;
+  width: 100%;
+  position: relative;
+}
+
+.mani-wf-bg-light { background-color: #f8fafc; }
+.mani-wf-bg-white { background-color: #ffffff; }
+
+.mani-wf-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Common Section Header Typography styles */
+.mani-wf-center-head {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.mani-wf-section-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.mani-wf-title-bar {
+  width: 60px;
+  height: 4px;
+  background-color: #0284c7;
+  margin: 15px auto 0 auto;
+  border-radius: 2px;
+}
+
+.mani-wf-highlight-orange { color: #ea580c; }
+
+.mani-wf-section-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 720px;
+  margin: 16px auto 0 auto;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 1 (PROCESS CARD MODULE GRID)
+   ========================================================== */
+.mani-wf-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mani-wf-process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 25px rgba(15, 23, 42, 0.03);
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(2, 132, 199, 0.06);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+.mani-wf-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.mani-wf-icon-box {
+  width: 46px;
+  height: 46px;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.mani-wf-step-number {
+  font-size: 44px;
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.mani-wf-process-card:hover .mani-wf-step-number {
+  color: #cbd5e1;
+}
+
+.mani-wf-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.mani-wf-card-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 2 (COUNTERS WITH 1-START ANIMATION)
+   ========================================================== */
+.mani-wf-counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mani-wf-counter-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-counter-num-wrap {
+  font-size: 46px;
+  font-weight: 800;
+  color: #0284c7;
+  line-height: 1;
+  margin-bottom: 12px;
+  font-family: Arial, sans-serif;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Property Configuration for CSS Pure Counter Engine */
+@property --c650 { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c300 { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c10  { syntax: '<integer>'; inherits: false; initial-value: 1; }
+@property --c2   { syntax: '<integer>'; inherits: false; initial-value: 1; }
+
+.mani-wf-counter-number {
+  transition: --c650 3s, --c300 3s, --c10 3s, --c2 3s;
+}
+
+/* Triggers animation automatically from value 1 up to destination parameter values */
+.num-650 {
+  animation: count650 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c650);
+}
+.num-650::after { content: counter(num); }
+
+.num-300 {
+  animation: count300 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c300);
+}
+.num-300::after { content: counter(num); }
+
+.num-10 {
+  animation: count10 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c10);
+}
+.num-10::after { content: counter(num); }
+
+.num-2 {
+  animation: count2 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  counter-reset: num var(--c2);
+}
+.num-2::after { content: counter(num); }
+
+.mani-wf-plus {
+  color: #0284c7;
+  margin-left: 2px;
+}
+
+.mani-wf-counter-label {
+  font-size: 15px;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   STYLE RULES: SECTION 3 (BOARD OF GOVERNORS MODULE CARD)
+   ========================================================== */
+.mani-wf-governors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.mani-wf-gov-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: maniWfFadeInUp 0.8s ease-out forwards;
+}
+
+.mani-wf-gov-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.mani-wf-gov-img-holder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #f1f5f9;
+}
+
+.mani-wf-gov-img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mani-wf-gov-details {
+  padding: 4px 0 8px 0;
+}
+
+.mani-wf-gov-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.mani-wf-gov-role {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ea580c;
+}
+
+/* ==========================================================
+   KEYFRAMES FRAMEWORK & SEQUENTIAL STACK TIMINGS
+   ========================================================== */
+.mani-wf-delay-1 { animation-delay: 0.1s; }
+.mani-wf-delay-2 { animation-delay: 0.25s; }
+.mani-wf-delay-3 { animation-delay: 0.4s; }
+.mani-wf-delay-4 { animation-delay: 0.55s; }
+
+@keyframes maniWfFadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Counter Engine 1-Start Dynamic Targets */
+@keyframes count650 { from { --c650: 1; } to { --c650: 650; } }
+@keyframes count300 { from { --c300: 1; } to { --c300: 300; } }
+@keyframes count10  { from { --c10: 1; }  to { --c10: 10; } }
+@keyframes count2   { from { --c2: 1; }   to { --c2: 2; } }
+
+/* ==========================================================
+   RESPONSIVE DESIGN SYSTEM (100% MOBILE FRIENDLY READY)
+   ========================================================== */
+@media (max-width: 1024px) {
+  .mani-wf-process-grid, 
+  .mani-wf-counter-grid, 
+  .mani-wf-governors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mani-wf-section {
+    padding: 50px 15px;
+  }
+  
+  .mani-wf-section-title {
+    font-size: 26px;
+  }
+  
+  .mani-wf-process-grid,
+  .mani-wf-counter-grid {
+    grid-template-columns: 1fr; /* Full width stack on mobile viewports */
+    gap: 16px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  
+  .mani-wf-governors-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 grid layouts kept tight on mobile for team profiles */
+    gap: 12px;
+  }
+  
+  .mani-wf-counter-card {
+    padding: 25px 15px;
+  }
+  
+  .mani-wf-counter-num-wrap {
+    font-size: 38px;
+  }
+  
+  .mani-wf-gov-name {
+    font-size: 14px;
+  }
+  
+  .mani-wf-gov-role {
+    font-size: 11.5px;
+  }
+}
+/*]]>*/
+</style>   
+    
+    
+    
+    
+    
+ 
+    
+<div class='industries-section-m'>
+  <div class='ind-container-m'>
+    <div class='ind-header-m'>
+      <h2>Industries We Serve</h2>
+      <p>We build websites and apps for businesses across all industries. From startups to enterprises.</p>
+    </div>
+
+    <div class='ind-grid-m'>
+      <!-- Card 1: Restaurant -->
+      <div class='ind-card-m' style='--card-idx: 1;'>
+        <div class='ind-icon-w wrap-rest'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>
+        </div>
+        <h3>Restaurant &amp; Cafe</h3>
+      </div>
+
+      <!-- Card 2: E-commerce -->
+      <div class='ind-card-m' style='--card-idx: 2;'>
+        <div class='ind-icon-w wrap-ecom'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/></svg>
+        </div>
+        <h3>E-commerce Store</h3>
+      </div>
+
+      <!-- Card 3: Real Estate -->
+      <div class='ind-card-m' style='--card-idx: 3;'>
+        <div class='ind-icon-w wrap-real'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>
+        </div>
+        <h3>Real Estate</h3>
+      </div>
+
+      <!-- Card 4: Healthcare -->
+      <div class='ind-card-m' style='--card-idx: 4;'>
+        <div class='ind-icon-w wrap-health'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>
+        </div>
+        <h3>Healthcare</h3>
+      </div>
+
+      <!-- Card 5: Beauty & Salon -->
+      <div class='ind-card-m' style='--card-idx: 5;'>
+        <div class='ind-icon-w wrap-beauty'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='6' cy='6' r='3'/><circle cx='6' cy='18' r='3'/><line x1='9.8' x2='22' y1='8.5' y2='12.5'/><line x1='9.8' x2='22' y1='15.5' y2='11.5'/><circle cx='18' cy='12' r='1'/></svg>
+        </div>
+        <h3>Beauty &amp; Salon</h3>
+      </div>
+
+      <!-- Card 6: Education -->
+      <div class='ind-card-m' style='--card-idx: 6;'>
+        <div class='ind-icon-w wrap-edu'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M22 10v6M2 10l10-5 10 5-10 5z'/><path d='M6 12v5c0 2 2 3 6 3s6-1 6-3v-5'/></svg>
+        </div>
+        <h3>Education</h3>
+      </div>
+
+      <!-- Card 7: Hospital & Clinic -->
+      <div class='ind-card-m' style='--card-idx: 7;'>
+        <div class='ind-icon-w wrap-hosp'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><rect height='18' rx='2' ry='2' width='18' x='3' y='3'/><line x1='12' x2='12' y1='8' y2='16'/><line x1='8' x2='16' y1='12' y2='12'/></svg>
+        </div>
+        <h3>Hospital &amp; Clinic</h3>
+      </div>
+
+      <!-- Card 8: Bar & Brewery -->
+      <div class='ind-card-m' style='--card-idx: 8;'>
+        <div class='ind-icon-w wrap-bar'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M18 22H6M12 11V22M19 3H5l1 8h12z'/></svg>
+        </div>
+        <h3>Bar &amp; Brewery</h3>
+      </div>
+
+      <!-- Card 9: Hotel & Resort -->
+      <div class='ind-card-m' style='--card-idx: 9;'>
+        <div class='ind-icon-w wrap-hotel'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z'/><path d='M9 22V12h6v10M12 2v3M12 5a3 3 0 1 0 0 6 3 3 0 1 0 0-6Z'/></svg>
+        </div>
+        <h3>Hotel &amp; Resort</h3>
+      </div>
+
+      <!-- Card 10: Car Towing -->
+      <div class='ind-card-m' style='--card-idx: 10;'>
+        <div class='ind-icon-w wrap-tow'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7h2'/><circle cx='7' cy='17' r='2'/><circle cx='17' cy='17' r='2'/></svg>
+        </div>
+        <h3>Car Towing</h3>
+      </div>
+
+      <!-- Card 11: Jewellery -->
+      <div class='ind-card-m' style='--card-idx: 11;'>
+        <div class='ind-icon-w wrap-jewel'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M12 3 5 9l7 12 7-12-7-6z'/><path d='M5 9h14M12 3v18'/></svg>
+        </div>
+        <h3>Jewellery</h3>
+      </div>
+
+      <!-- Card 12: Pharmacy -->
+      <div class='ind-card-m' style='--card-idx: 12;'>
+        <div class='ind-icon-w wrap-pharm'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><path d='M4.8 15h14.4M12 4.8v14.4M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z'/></svg>
+        </div>
+        <h3>Pharmacy</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+.industries-section-m {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8faff;
+  padding: 50px 15px;
+  box-sizing: border-box;
+}
+.industries-section-m * {
+  box-sizing: border-box;
+}
+.ind-container-m {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ind-header-m {
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(-15px);
+  animation: indFadeDown 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.ind-header-m h2 {
+  font-size: 30px;
+  color: #0f1e36;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+.ind-header-m p {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.ind-grid-m {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.ind-card-m {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  opacity: 0;
+  transform: translateY(25px);
+  animation: indFadeUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+  animation-delay: calc(var(--ind-card-idx) * 0.06s);
+}
+.ind-card-m h3 {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 600;
+  margin: 12px 0 0 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+.ind-icon-w {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.ind-icon-w svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Custom Soft Palette colors */
+.wrap-rest { background-color: #e6fcf5; color: #0ca678; }
+.wrap-ecom { background-color: #fff0f6; color: #d6336c; }
+.wrap-real { background-color: #fff5f5; color: #fa5252; }
+.wrap-health { background-color: #ebfbee; color: #37b24d; }
+.wrap-beauty { background-color: #e8f7ff; color: #1c7ed6; }
+.wrap-edu { background-color: #fff0f6; color: #e64980; }
+.wrap-hosp { background-color: #fff5f5; color: #f03e3e; }
+.wrap-bar { background-color: #e6fcf5; color: #12b886; }
+.wrap-hotel { background-color: #f3f0ff; color: #7048e8; }
+.wrap-tow { background-color: #f1f3f5; color: #495057; }
+.wrap-jewel { background-color: #e8f7ff; color: #228be6; }
+.wrap-pharm { background-color: #e6fcf5; color: #0ca678; }
+
+/* Interactive Hover Actions */
+.ind-card-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(15, 30, 54, 0.08);
+  border-color: rgba(15, 30, 54, 0.06);
+}
+.ind-card-m:hover h3 {
+  color: #0f1e36;
+}
+.ind-card-m:hover .ind-icon-w {
+  transform: scale(1.1) rotate(8deg);
+}
+
+/* Animation Keyframes */
+@keyframes indFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes indFadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .ind-grid-m {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .ind-header-m h2 {
+    font-size: 26px;
+  }
+  .ind-grid-m {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .industries-section-m {
+    padding: 35px 10px;
+  }
+  .ind-header-m h2 {
+    font-size: 22px;
+  }
+  .ind-header-m p {
+    font-size: 13px;
+  }
+  .ind-grid-m {
+    grid-template-columns: repeat(2, 1fr); /* Mobile layout displays 2 clean cards side-by-side */
+    gap: 10px;
+  }
+  .ind-card-m {
+    padding: 16px 8px;
+    border-radius: 12px;
+  }
+  .ind-card-m h3 {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .ind-icon-w {
+    width: 44px;
+    height: 44px;
+  }
+  .ind-icon-w svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+/*]]>*/
+</style>
+    
+    
+    
+    
+    
+  <div class='purpose-section-m'>
+  <div class='purp-container-m'>
+    
+    <div class='purp-header-m'>
+      <span class='purp-subtitle-m'>OUR PURPOSE</span>
+      <h2>Our Vision, Our Mission &amp; Our Values</h2>
+      <p>At Techsky Media, we are committed to helping businesses grow through innovative digital marketing, web development, and SEO solutions. Our mission is to deliver impactful digital experiences that build long-term success and strong client relationships.</p>
+    </div>
+
+    <div class='purp-grid-m'>
+      
+      <div class='purp-card-m card-vision' style='--purp-idx: 1;'>
+        <div class='purp-icon-wrap icon-blue'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <path d='M10.08 8.12 19 3l2 3-8.88 5.12M14 14l-4-4M4 21l6-10M14 14l4 7M10 11l4 3'/>
+          </svg>
+        </div>
+        <h3>Our <span>Vision</span></h3>
+        <p class='card-desc'>To become a trusted digital solutions company recognized for creativity, innovation, and result-driven services that empower businesses to succeed online.</p>
+        <ul class='card-list list-blue'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Deliver innovative digital experiences</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Help businesses achieve online growth</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Set new standards in digital excellence</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class='purp-card-m card-mission' style='--purp-idx: 2;'>
+        <div class='purp-icon-wrap icon-orange'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/>
+          </svg>
+        </div>
+        <h3>Our <span>Mission</span></h3>
+        <p class='card-desc'>To provide high-quality web development, SEO, and digital marketing services that drive measurable results, increase brand visibility, and maximize business growth.</p>
+        <ul class='card-list list-orange'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Create result-oriented digital strategies</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Build long-term client partnerships</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Deliver performance-focused solutions</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class='purp-card-m card-values' style='--purp-idx: 3;'>
+        <div class='purp-icon-wrap icon-green'>
+          <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+            <path d='M6 3h12l4 6-10 13L2 9z'/><path d='M11 3 8 9l4 13 4-13-3-6M2 9h20'/>
+          </svg>
+        </div>
+        <h3>Our <span>Values</span></h3>
+        <p class='card-desc'>We believe in transparency, creativity, commitment, and customer satisfaction. Our values guide every project we deliver and every relationship we build.</p>
+        <ul class='card-list list-green'>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Integrity in every project</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Client success is our priority</span>
+          </li>
+          <li>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>
+            <span>Innovation, teamwork &amp; continuous growth</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style type='text/css'>
+/*<![CDATA[*/
+/* CSS code safe from Blogger XML validation errors */
+
+.purpose-section-m {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f6f9fc;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+.purpose-section-m * {
+  box-sizing: border-box;
+}
+.purp-container-m {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header design matching your layout */
+.purp-header-m {
+  text-align: center;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: purpFadeInDown 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.purp-subtitle-m {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0066cc;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.purp-header-m h2 {
+  font-size: 32px;
+  color: #0f1e36;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+}
+.purp-header-m p {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3 Column Grid for desktop */
+.purp-grid-m {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card basic layout */
+.purp-card-m {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 25px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-bottom: 5px solid transparent;
+  
+  /* Entry animations */
+  opacity: 0;
+  transform: translateY(35px);
+  animation: purpFadeInUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+  animation-delay: calc(var(--purp-idx) * 0.15s);
+}
+
+/* Accent bottom borders matching screenshots */
+.card-vision { border-bottom-color: #0066cc; }
+.card-mission { border-bottom-color: #f7941d; }
+.card-values { border-bottom-color: #22b14c; }
+
+/* Icon wrappers styling with soft colors */
+.purp-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  padding: 18px;
+}
+.icon-blue { background-color: #e6f0fa; color: #0066cc; }
+.icon-orange { background-color: #fff4e6; color: #f7941d; }
+.icon-green { background-color: #ebf7ee; color: #22b14c; }
+
+.purp-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Typography Inside Cards */
+.purp-card-m h3 {
+  font-size: 20px;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+.card-vision h3 span { color: #0066cc; }
+.card-mission h3 span { color: #f7941d; }
+.card-values h3 span { color: #22b14c; }
+
+.card-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  min-height: 90px;
+}
+
+/* Bullet list inside cards with styling */
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.card-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.4;
+}
+.card-list li svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Specific checklist color matching themes */
+.list-blue li svg { color: #0066cc; }
+.list-orange li svg { color: #f7941d; }
+.list-green li svg { color: #22b14c; }
+
+/* Interactive Hover Actions */
+.purp-card-m:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(15, 30, 54, 0.08);
+}
+.purp-card-m:hover .purp-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Animation Keyframes */
+@keyframes purpFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes purpFadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .purp-grid-m {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .card-values {
+    grid-column: span 2;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card-desc {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .purp-header-m h2 {
+    font-size: 26px;
+  }
+  .purp-header-m p {
+    font-size: 14px;
+  }
+  .purp-grid-m {
+    grid-template-columns: 1fr; /* Tablet/Mobile single-column setup */
+    gap: 20px;
+  }
+  .card-values {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .purpose-section-m {
+    padding: 40px 15px;
+  }
+  .purp-header-m h2 {
+    font-size: 22px;
+  }
+  .purp-card-m {
+    padding: 30px 18px;
+    border-radius: 12px;
+  }
+  .purp-icon-wrap {
+    width: 64px;
+    height: 64px;
+    padding: 15px;
+  }
+  .purp-card-m h3 {
+    font-size: 18px;
+  }
+  .card-desc {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .card-list li {
+    font-size: 12.5px;
+  }
+}
+/*]]>*/
+</style>  
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Presence - SIDS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* --- Left Content Section --- */
+        .content-section {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .heading-cursive {
+            font-family: 'Great Vibes', cursive;
+            color: #D4AF37;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            margin-left: 20px;
+        }
+
+        .heading-main {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #0b1c3c;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background-color: #D4AF37;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #D4AF37;
+            border-radius: 50%;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .description strong {
+            color: #D4AF37;
+        }
+
+        /* --- Stats Box --- */
+        .stats-box {
+            background-color: #0b1c3c;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0 5px;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-icon {
+            font-size: 1.4rem;
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-text {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Footer Note --- */
+        .footer-note {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .footer-note .globe-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #fff9e6;
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 1.2rem;
+        }
+
+        .footer-note span {
+            color: #D4AF37;
+        }
+
+        /* --- Right Image Section --- */
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .image-section img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* --- Mobile Responsive View --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content-section {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .heading-cursive {
+                margin-left: 0;
+            }
+
+            .heading-main {
+                font-size: 2.8rem;
+            }
+
+            .divider {
+                margin: 20px auto;
+            }
+
+            .stats-box {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 8px 0;
+                min-width: 45%;
+            }
+
+            .footer-note {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .image-section img {
+                max-width: 100%;
+            }
+        }
+    </style>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Left Content Section -->
+    <div class="content-section">
+        <div class="heading-cursive">Our</div>
+        <div class="heading-main">Presence</div>
+        <div class="divider"></div>
+        
+        <p class="description">
+            <strong>SIDS</strong> is on a mission to empower businesses, institutions, and brands with innovative digital solutions across India.
+        </p>
+        <p class="description">
+            From strategy to execution, we deliver creative digital marketing, social media management, branding, web development, and design solutions that drive growth and create impact.
+        </p>
+
+        <!-- Stats Box -->
+        <div class="stats-box">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-text">Trusted by</div>
+                <div class="stat-number">500+</div>
+                <div class="stat-text">Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+                <div class="stat-number">5000+</div>
+                <div class="stat-text">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="stat-number">10M+</div>
+                <div class="stat-text">People Reached</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+                <div class="stat-number">Results</div>
+                <div class="stat-text">Driven Approach</div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <div class="globe-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div>
+                Serving with <span>Passion.</span><br>
+                Growing <span>Together.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Image Section (Simple & Clean) -->
+    <div class="image-section">
+        <!-- Yahan aap apni map wali image ka link ya file name (jaise map.png) daal sakte hain -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_HDvcun5X1r4RcNV0FQXGcGPsRmSANdNkwWvdHrsdLBd6KVsUspz-MeM1L7jGoXbDpXgLiQUnHiW8WceZ5cVJ2rvsUcEAZwgFmSz3eIec0TnX_LAu2SMxuFePvwu61ez1l-jsryEv3pm9cPg9Nz7obdieCeTFv9PXB66oMWP3m0gmrD3xgI-KW4aBEQE/s1600/Copy%20of%20SGMC%20NEW.png" alt="Our Presence Map - SIDS">
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Offices - Slider Section</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Main Section Background and Text Colors */
+        .offices-section {
+            background-color: #003399; /* Blue Background */
+            color: #ffffff; /* White Text */
+            padding: 60px 20px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Centered Heading */
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Slider Outer Container */
+        .slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Track holding all cards */
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            width: 100%;
+        }
+
+        /* Individual Card Box Structure */
+        .office-card {
+            flex: 0 0 100%; /* Default for Mobile View (1 Card per view) */
+            padding: 15px;
+        }
+
+        /* Inside content of each Card */
+        .card-content {
+            background: rgba(255, 255, 255, 0.1); /* Subtle transparent white background */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            height: 180px;
+        }
+
+        /* Info Container (Left Side of Card) */
+        .info-side {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0; /* Prevents flex children from breaking boundaries */
+        }
+
+        .office-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .coordinator-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Click Here Animated Button */
+        .click-btn {
+            background: #ffffff;
+            color: #003399;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            
+            /* Text alignment & spill protection fixed */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap; 
+            max-width: 100%;
+        }
+
+        /* Button Hover Effects */
+        .click-btn:hover {
+            transform: translateY(-2px);
+            background: #e6f0ff;
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Image Container (Right Side of Card) */
+        .image-side {
+            width: 40%;
+            position: relative;
+        }
+
+        .image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay to blend image nicely with the card bg */
+        .image-side::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.15), transparent);
+            pointer-events: none;
+        }
+
+        /* Pop-up Modal Styles */
+        .office-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            padding: 15px;
+        }
+
+        .office-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .office-modal-box {
+            background: #ffffff;
+            color: #333333;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .office-modal-overlay.active .office-modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .office-modal-header {
+            background: #003399;
+            color: #ffffff;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .office-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .office-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .office-modal-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .office-modal-body {
+            padding: 24px;
+        }
+
+        .office-details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .office-details-table tr {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .office-details-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .office-details-table th, 
+        .office-details-table td {
+            padding: 16px 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .office-details-table th {
+            width: 35%;
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .office-details-table th i {
+            color: #003399;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .office-details-table td {
+            width: 65%;
+            color: #2d3748;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Desktop Layout (3 Cards per slide view) */
+        @media (min-width: 992px) {
+            .office-card {
+                flex: 0 0 33.333%; /* 3 Cards on a single screen */
+            }
+        }
+
+        /* Tablet Layout (2 Cards per view) */
+        @media (min-width: 600px) and (max-width: 991px) {
+            .office-card {
+                flex: 0 0 50%;
+            }
+        }
+
+        /* Specific Mobile Optimizations for the Button text wrap */
+        @media (max-width: 480px) {
+            .info-side {
+                padding: 15px; /* Compact padding for small screens */
+            }
+            .click-btn {
+                padding: 8px 14px; /* Perfectly scales button size */
+                font-size: 0.85rem; /* Keeps 'Click Here' locked inside the boundaries */
+                width: auto;
+            }
+            .office-title {
+                font-size: 1.1rem;
+            }
+            .coordinator-text {
+                font-size: 0.85rem;
+            }
+            .office-modal-body {
+                padding: 16px;
+            }
+            .office-details-table th, 
+            .office-details-table td {
+                padding: 12px 8px;
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="offices-section">
+        <!-- Center Headings -->
+        <h2 class="section-heading">Our Offices</h2>
+
+        <!-- Slider Main Wrapper -->
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+
+                <!-- Box 1: Delhi -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">DELHI</div>
+                                <div class="coordinator-text">Chanakyapuri</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('DELHI', 'SIDS India Pvt Ltd., Tower A, Diplomatic Business Centre, Road No. 12, Chanakyapuri, New Delhi, Delhi – 110021', 'Anjali Gupta', 'Rajat Malhotra')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=400&q=80" alt="Delhi">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 2: Chennai -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">HQ CHENNAI</div>
+                                <div class="coordinator-text">Teynampet</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('HQ CHENNAI', 'SIDS India Pvt Ltd., Tower A, Marina Corporate Centre, Teynampet, Chennai, Tamil Nadu – 600018', 'Manish Chaudhary', 'Manish Chaudhary')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80" alt="Chennai">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 3: Gurugram -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">GURUGRAM</div>
+                                <div class="coordinator-text">DLF Phase 5 (Golf Course Road)</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('GURUGRAM', 'SIDS India Pvt Ltd., Corporate Tower, Building 5, Golf Business District, DLF Phase 5, Gurugram, Haryana – 122009', 'Mahesh Chaudhary', 'Vikas Singh')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSrqqncV4OalR7R2in9Mh1n1F6pny01VKISjs8N8s3_ro2YJG8UTE5FhWQ8Wcoz8vFan_PN8ZKujIqpSN9ngKmdgBA&s=19" alt="Gurugram">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 4: Mathura -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">MATHURA</div>
+                                <div class="coordinator-text">Dampier Nagar</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('MATHURA', 'SIDS India Pvt Ltd., Block A, Digital Business Centre, Dampier Nagar, Mathura, Uttar Pradesh – 281001', 'Vipin Pandey', 'Manish Chaudhary')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlU5HYVdYbB2dJYTty71ohXEEPwwobAxSGppnu8jq-ft05kBWUFHrVA_zfZK0KyHS4s9gylf-pZFpbq_mf-RfQa-hKCelZvxoT-kK15jcZ_4PDb1yoRYh-sCSYug8BmR8sCXY06=w675-h390-n-k-no" alt="Mathura">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 5: Bengaluru -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">BENGALURU</div>
+                                <div class="coordinator-text">Sadashivanagar</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('BENGALURU', 'SIDS India Pvt Ltd., Tower 3, Silicon Business Park, Sadashivanagar, Bengaluru, Karnataka – 560080', 'Soniya Hari', 'Nandini Rao')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg/330px-View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg" alt="Bengaluru">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 6: Noida -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">NOIDA</div>
+                                <div class="coordinator-text">Sector 15A</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('NOIDA', 'SIDS India Pvt Ltd., Tower 2, Tech Business Park, Sector 15A, Noida, Uttar Pradesh – 201301', 'Vikram Singh', 'Aman Sharma')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://cdn.sanity.io/images/ocl5w36p/ihcl_prod/017ef11e45a6c03975fe83bfe95031f46b9fa4ef-780x988.jpg?w=380" alt="Noida">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 7: Hyderabad -->
+                <div class="office-card">
+                    <div class="card-content">
+                        <div class="info-side">
+                            <div>
+                                <div class="office-title">HYDERABAD</div>
+                                <div class="coordinator-text">Banjara Hills</div>
+                            </div>
+                            <button class="click-btn" onclick="openOfficeModal('HYDERABAD', 'SIDS India Pvt Ltd., Tower B, Innovation Business Centre, Road No. 52, Jubilee Hills, Hyderabad, Telangana – 500033', 'Arun Reddy', 'Arjun Narayanan')">Click Here</button>
+                        </div>
+                        <div class="image-side">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRUzd5vivp7t2WqWCu_ZQbL-k0xVdhXHzXNw2GEjRzpd0GefGDGsoERRU8IirHxNKCdEeAPlHcAVwT0uRMpSQ-6T7U&s=19" alt="Hyderabad">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Pop-up Modal Structure -->
+    <div class="office-modal-overlay" id="officeModalOverlay" onclick="closeOfficeModal(event)">
+        <div class="office-modal-box">
+            <div class="office-modal-header">
+                <span class="office-modal-title" id="modalOfficeName">Office Details</span>
+                <button class="office-modal-close" onclick="closeOfficeModalDirect()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="office-modal-body">
+                <table class="office-details-table">
+                    <tr>
+                        <th><i class="fa-solid fa-location-dot"></i> Address</th>
+                        <td id="modalOfficeAddress">-</td>
+                    </tr>
+                    <tr>
+                        <th><i class="fa-solid fa-user-tie"></i> Manager</th>
+                        <td id="modalOfficeManager">-</td>
+                    </tr>
+                    <tr>
+                        <th><i class="fa-solid fa-sitemap"></i> Management</th>
+                        <td id="modalOfficeManagement">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript For Automatic Loop Logic & Pop-up Handling -->
+    <script>
+        const track = document.getElementById('sliderTrack');
+        let index = 0;
+        const totalCards = 7;
+
+        function getVisibleCards() {
+            if (window.innerWidth >= 992) return 3;
+            if (window.innerWidth >= 600) return 2;
+            return 1;
+        }
+
+        function startAutoSlider() {
+            setInterval(() => {
+                if (document.getElementById('officeModalOverlay').classList.contains('active')) return;
+
+                const visibleCards = getVisibleCards();
+                const maxIndex = totalCards - visibleCards;
+                
+                if (index < maxIndex) {
+                    index++;
+                } else {
+                    index = 0; 
+                }
+
+                const percentageMove = -(index * (100 / visibleCards));
+                track.style.transform = `translateX(${percentageMove}%)`;
+            }, 4000); 
+        }
+
+        window.onload = startAutoSlider;
+        
+        window.onresize = () => {
+            track.style.transform = 'translateX(0%)';
+            index = 0;
+        };
+
+        // Modal Control Functions
+        function openOfficeModal(title, address, manager, management) {
+            document.getElementById('modalOfficeName').innerText = title + " Office";
+            document.getElementById('modalOfficeAddress').innerText = address;
+            document.getElementById('modalOfficeManager').innerText = manager;
+            document.getElementById('modalOfficeManagement').innerText = management;
+
+            document.getElementById('officeModalOverlay').classList.add('active');
+        }
+
+        function closeOfficeModalDirect() {
+            document.getElementById('officeModalOverlay').classList.remove('active');
+        }
+
+        function closeOfficeModal(event) {
+            if (event.target.id === 'officeModalOverlay') {
+                closeOfficeModalDirect();
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Categories Section</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Section Styling */
+        .category-slider-section {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 400px;
+            background-color: #222222; /* Dark Grey Background */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Heading Styling */
+        .section-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        /* Marquee Track */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scrollMarquee 35s linear infinite;
+        }
+
+        /* Pause animation on hover */
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        /* Individual White Box Styling */
+        .category-box {
+            background-color: #ffffff;
+            color: #333333;
+            width: 180px;
+            height: 190px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Box Content Styles */
+        .category-box i {
+            font-size: 28px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        /* Continuous Scrolling Keyframes */
+        @keyframes scrollMarquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50% - 10px));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="category-slider-section">
+        <h2 class="section-heading">Our SIDS Valued Clients</h2>
+        
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <!-- First Set of 19 Boxes -->
+                <div class="category-box"><i class="fa-solid fa-graduation-cap"></i><span class="category-name">Education</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-dumbbell"></i><span class="category-name">Fitness & Health</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-hospital"></i><span class="category-name">Healthcare</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-plane-departure"></i><span class="category-name">Hospitality & Travel</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-utensils"></i><span class="category-name">Food & Beverage</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-house-chimney"></i><span class="category-name">Real Estate</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-cart-shopping"></i><span class="category-name">Retail & E-commerce</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="category-name">Beauty & Fashion</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-car"></i><span class="category-name">Automobile</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-briefcase"></i><span class="category-name">Professional Services</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-building"></i><span class="category-name">Corporate & Business</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-coins"></i><span class="category-name">Finance</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-house-laptop"></i><span class="category-name">Home Services</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-champagne-glasses"></i><span class="category-name">Events & Entertainment</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-paw"></i><span class="category-name">Pet Industry</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-industry"></i><span class="category-name">Industrial</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-users"></i><span class="category-name">Organizations</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-laptop-code"></i><span class="category-name">Digital Businesses</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-store"></i><span class="category-name">Local Businesses</span><span class="category-number">55+</span></div>
+
+                <!-- Duplicate Set for Seamless Infinite Loop Effect -->
+                <div class="category-box"><i class="fa-solid fa-graduation-cap"></i><span class="category-name">Education</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-dumbbell"></i><span class="category-name">Fitness & Health</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-hospital"></i><span class="category-name">Healthcare</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-plane-departure"></i><span class="category-name">Hospitality & Travel</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-utensils"></i><span class="category-name">Food & Beverage</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-house-chimney"></i><span class="category-name">Real Estate</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-cart-shopping"></i><span class="category-name">Retail & E-commerce</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="category-name">Beauty & Fashion</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-car"></i><span class="category-name">Automobile</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-briefcase"></i><span class="category-name">Professional Services</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-building"></i><span class="category-name">Corporate & Business</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-coins"></i><span class="category-name">Finance</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-house-laptop"></i><span class="category-name">Home Services</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-champagne-glasses"></i><span class="category-name">Events & Entertainment</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-paw"></i><span class="category-name">Pet Industry</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-industry"></i><span class="category-name">Industrial</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-users"></i><span class="category-name">Organizations</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-laptop-code"></i><span class="category-name">Digital Businesses</span><span class="category-number">55+</span></div>
+                <div class="category-box"><i class="fa-solid fa-store"></i><span class="category-name">Local Businesses</span><span class="category-number">55+</span></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+<!-- Edge-to-Edge Premium SIDS Footer Start -->
+<div class="mani-footer-full-width">
+  <style>
+    /* --- FOOTER MAIN CONTAINER --- */
+    .mani-footer-full-width {
+      width: 100vw !important;    
+      margin: 0 !important;       
+      padding: 0 !important;      
+      background-color: #1e3a8a; /* Deep blue color */
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* Smooth top shadow */
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      box-sizing: border-box;
+    }
+
+    .mani-footer-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px 24px;
+      display: flex;
+      flex-direction: row; /* Desktop standard: Row alignment */
+      align-items: center;
+      justify-content: space-between; /* Left text, Right links */
+      min-height: 60px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* --- FOOTER TEXT STYLE --- */
+    .mani-footer-text {
+      color: #ffffff !important;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      margin: 0;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    /* SIDS Experts highlight color */
+    .mani-footer-highlight {
+      color: #f17329;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .mani-footer-highlight:hover {
+      color: #ffffff;
+    }
+
+    /* --- FOOTER LINKS STYLE --- */
+    .mani-footer-links {
+      display: flex;
+      gap: 20px; /* Links ke beech ka gap */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mani-footer-link-item {
+      color: rgba(255, 255, 255, 0.8) !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .mani-footer-link-item:hover {
+      color: #f17329 !important; /* Hover karne par links orange ho jayenge */
+    }
+
+    /* --- RESPONSIVE MOBILE ADJUSTMENT --- */
+    @media (max-width: 768px) {
+      .mani-footer-container {
+        flex-direction: column; /* Mobile par stack layer banayega */
+        justify-content: center;
+        text-align: center;
+        gap: 12px; /* Text aur links ke beech ka safe space */
+        padding: 20px 20px;
+      }
+      
+      .mani-footer-text {
+        font-size: 13px;
+        letter-spacing: 0.3px;
+      }
+
+      .mani-footer-links {
+        justify-content: center;
+        flex-wrap: wrap; /* Agar screen bohot choti ho toh links perfectly wrap ho jayein */
+        gap: 15px; 
+      }
+
+      .mani-footer-link-item {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+  <footer class="mani-footer-container">
+    <!-- Left Section: Copyright Text -->
+    <p class="mani-footer-text">
+      &copy; 2026 SIDS INDIA. All Rights Reserved. 
+    </p>
+
+    <!-- Right Section: Hyperlinks -->
+    <div class="mani-footer-links">
+      <a href="#privacy" class="mani-footer-link-item">Privacy Policy</a>
+      <a href="#cookie" class="mani-footer-link-item">Cookie Policy</a>
+      <a href="#terms" class="mani-footer-link-item">Terms of Use</a>
+    </div>
+  </footer>
+</div>
+<!-- Edge-to-Edge Premium SIDS Footer End -->
