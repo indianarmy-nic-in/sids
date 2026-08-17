@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>IAFZ - Indian Armed Forces</title>
+
+    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1Pages/s32/Untitled%20design.jpeg">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IAFZ">
+    <meta name="theme-color" content="#000000">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* 🚫 Anti-Copy & Anti-Save Protection */
+    html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    input {
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        pointer-events: none;
+    }
+
+    /* INITIAL PRELOADER */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVeDQ-4jG26a6qAnkLYv-IMuhj9HwOqCxoXPolDiFAp52Wu3ejHPYsR2Tb3DuXyfsJ4YMqDqrGIJgwmx1tB-Q6OmH8nNIBM19SU8rL0bfgW-i-coV_3rhTl0LuUmQ08Vf5hST2NiDo_07dK6YnfC95FPBLBPi9LCYbclzAsGOqiiDhGIv28VTJL8uqol8B/s1920/Add%20a%20heading.jpeg');
+        background-size: cover;
+        background-position: center;
+        transition: opacity 0.5s ease;
+    }
+
+    .logo-box {
+        width: 140px;
+        height: 140px;
+        border-radius: 14px;
+        overflow: hidden;
+        animation: glow 2s infinite alternate;
+    }
+
+    .logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: zoomIn 1.8s ease forwards;
+    }
+
+    .loader-text {
+        margin-top: 22px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 4px;
+        text-align: center;
+        opacity: 0;
+        animation: textAnim 2.5s ease forwards;
+        animation-delay: 0.8s;
+        text-shadow: 0 0 12px rgba(255,255,255,0.6);
+    }
+
+    @keyframes zoomIn {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        100% { box-shadow: 0 0 35px rgba(255,255,255,0.9); }
+    }
+
+    @keyframes textAnim {
+        0% { opacity: 0; transform: translateY(20px); letter-spacing: -3px; }
+        100% { opacity: 1; transform: translateY(0); letter-spacing: 4px; }
+    }
+
+    /* LOGIN PAGE */
+    #loginPage {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoS3xQh-rYFuh3plgOBzdSb7cRpbDK9cAtZPQMTC9u8LNSYPI_Drc1E6NgnnHsxqz7AmEeneLU-9fKaByZgrAyxIB9P8xSd3QBF9aswNIpbAUJEoHXWEGSQqu9l6xrFqyOeoueFTNxzaN09Yh5GHJ0gkPzHIX-FWhjJJ5zhEwrDoLGthLw22id6LZo5__F/s4095/EBB1227C-14D0-46E6-8CA6-7480536E8D5E.jpeg') center/cover no-repeat;
+        overflow: hidden;
+    }
+
+    /* 3D Glass Sweep Effect on Login */
+    #loginPage::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 80%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%); 
+        transform: skewX(-25deg);
+        animation: bgTrue3DShine 3.5s infinite;
+        z-index: 1; 
+        pointer-events: none; 
+    }
+
+    @keyframes bgTrue3DShine {
+        0% { left: -150%; }
+        40% { left: 150%; }
+        100% { left: 150%; }
+    }
+
+    /* COMPACT & ANIMATED LOGIN BOX */
+    .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 290px; /* Small & Compact Size */
+        padding: 24px 20px;
+        border-radius: 16px;
+        background: rgba(10, 15, 30, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        z-index: 10;
+        animation: boxAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes boxAppear {
+        from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+        to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .login-header i {
+        font-size: 28px;
+        color: #ef4444;
+        margin-bottom: 6px;
+        filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+    }
+
+    .login-header h3 {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    /* Compact Input Style */
+    .input-container {
+        position: relative;
+        margin-bottom: 14px;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        outline: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        font-weight: 600;
+        font-size: 13px;
+        text-align: center;
+        color: #ffffff;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .login-box input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 400;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .login-box input:focus {
+        border-color: #3b82f6;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .login-box button {
+        width: 100%;
+        padding: 11px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #1d4ed8, #dc2626);
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .login-box button:active {
+        transform: scale(0.97);
+    }
+
+    /* AUTHENTICATION SPINNER */
+    #loading {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(5, 7, 15, 0.92);
+        backdrop-filter: blur(8px);
+        z-index: 999999;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+    }
+
+    .spin {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255,255,255,0.15);
+        border-top: 4px solid #ef4444;
+        border-right: 4px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+        margin-bottom: 16px;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    /* DASHBOARD */
+    #dashboard {
+        display: none;
+        width: 100%;
+        min-height: 100vh;
+        background: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
+        background-size: cover;
+        background-position: center;
+        padding-bottom: 20px;
+        overflow-x: hidden;
+    }
+
+    .topbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        background: #fff;
+        padding: calc(12px + env(safe-area-inset-top)) 16px 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    .content {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        background: rgba(255,255,255,0.94);
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    .officer {
+        text-align: center;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .officer img {
+        width: 210px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 4px solid #ddd;
+        margin: 18px auto 0 auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* STORY CIRCLE & POPUP CSS */
+    .story-circle {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #D90000, #000080);
+        padding: 3px;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .story-circle-inner {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        color: #000080;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .story-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.92);
+        z-index: 9999999;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .story-progress-container {
+        position: absolute;
+        top: 15px;
+        left: 5%;
+        width: 90%;
+        height: 4px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .story-progress-bar {
+        height: 100%;
+        width: 100%;
+        background: #fff;
+        transform-origin: left;
+        transform: scaleX(0);
+    }
+
+    .story-progress-bar.active {
+        animation: storyLoad 10s linear forwards;
+    }
+
+    @keyframes storyLoad {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+    }
+
+    .story-overlay.paused .story-progress-bar {
+        animation-play-state: paused;
+    }
+
+    .story-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .story-custom-table { width: 100%; border-collapse: collapse; margin-top: 10px;}
+    .story-custom-table th, .story-custom-table td {
+        border: 1px solid #ddd;
+        padding: 12px 10px;
+        font-size: 13px;
+        text-align: left;
+        color: #333;
+    }
+    .story-custom-table th { background: #f3f4f6; width: 35%; font-weight: 700; }
+
+    .table-box {
+        overflow-x: auto;
+        margin-top: 28px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table td {
+        padding: 14px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    table td:first-child {
+        background: #f3f4f6;
+        font-weight: 700;
+        width: 32%;
+    }
+
+    .td-flex {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        vertical-align: middle;
+    }
+    .td-flex img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+    }
+
+    /* CUSTOM BUTTONS */
+    .custom-btn-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 15px auto 10px auto;
+        padding: 0 10px;
+    }
+
+    .custom-btn-container .my-button-row {
+        display: flex !important;
+        gap: 12px !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .custom-btn-container .my-popup-btn {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 10px 5px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: transform 0.2s, box-shadow 0.2s !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+    }
+
+    .custom-btn-container .my-popup-btn:hover {
+        transform: translateY(-2px) !important;
+    }
+
+    #popup-btn1 { background: linear-gradient(135deg, #D90000, #b00000) !important; }
+    #popup-btn2 { background: linear-gradient(135deg, #000080, #000055) !important; }
+    #popup-btn3 { background: linear-gradient(135deg, #0284c7, #0369a1) !important; }
+
+    /* PDF/A4 PORTAL */
+    .pdf-portal-container {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 10px auto !important;
+        padding: 0 10px !important;
+    }
+
+    .pdf-portal-container .pdf-btn-row {
+        display: flex !important;
+        gap: 10px !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .pdf-portal-container .pdf-small-btn {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        padding: 8px 4px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: transform 0.2s !important;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important;
+    }
+
+    #pdf-btn1 { background: linear-gradient(135deg, #ff3333, #bd0000) !important; }
+    #pdf-btn2 { background: linear-gradient(135deg, #0088cc, #005580) !important; }
+    #pdf-btn3 { background: linear-gradient(135deg, #2ecc71, #27ae60) !important; }
+
+    /* ACCORDION */
+    .accordion {
+        margin-top: 16px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .acc-head {
+        padding: 16px 18px;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: #fff;
+    }
+
+    .acc-body {
+        display: none;
+        padding: 18px;
+        border-top: 1px solid #eee;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .footer2 {
+        margin-top: 35px;
+        background: #c1121f;
+        padding: 18px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer2 img {
+        margin: 0 auto 10px auto;
+    }
+
+    #tricolorStripe {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        z-index: 10000;
+        background: linear-gradient(to right, #D90000 33.33%, #000080 33.33%, #000080 66.66%, #4CC7FC 66.66%);
+    }
+
+    /* MODALS & FLIP CARD */
+    .my-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(5px) !important;
+        display: none;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 999999 !important;
+    }
+
+    .my-modal-content {
+        position: relative !important;
+        background: transparent !important;
+        padding: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 95% !important;
+        max-width: 400px !important;
+    }
+
+    .my-close-btn {
+        position: absolute !important;
+        top: -45px !important;
+        right: 10px !important;
+        color: white !important;
+        font-size: 32px !important;
+        cursor: pointer !important;
+        background: none !important;
+        border: none !important;
+    }
+
+    .my-flip-card {
+        background-color: transparent !important;
+        width: 100% !important;
+        max-width: 336px !important; 
+        aspect-ratio: 85.6 / 53.98 !important;
+        perspective: 1000px !important;
+        cursor: pointer !important;
+    }
+
+    .my-flip-card-inner {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        text-align: center !important;
+        transition: transform 0.5s !important;
+        transform-style: preserve-3d !important;
+    }
+
+    .my-flip-card.flipped .my-flip-card-inner {
+        transform: rotateY(180deg) !important;
+    }
+
+    .my-flip-card-front, .my-flip-card-back {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        -webkit-backface-visibility: hidden !important;
+        backface-visibility: hidden !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    }
+
+    .my-flip-card-front img, .my-flip-card-back img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: fill !important;
+    }
+
+    .my-flip-card-back {
+        transform: rotateY(180deg) !important;
+    }
+
+    .pdf-a4-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(26, 26, 26, 0.9) !important;
+        display: none;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 999999 !important;
+        padding: 40px 10px 10px 10px !important;
+    }
+
+    .pdf-a4-content {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        height: 80vh !important;
+        max-height: 636px !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+    }
+
+    .pdf-a4-content img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        background: white !important;
+    }
+
+    .pdf-a4-close-btn {
+        position: absolute !important;
+        top: 10px !important;
+        right: 10px !important;
+        color: #ff3333 !important;
+        background: #ffffff !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 1000000 !important;
+    }
+
+    @media(max-width:768px) {
+        .officer img { width: 180px; height: 240px; }
+        table td { font-size: 13px; padding: 10px; }
+        .loader-text { font-size: 16px; }
+    }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+
+<!-- INITIAL SCREEN PRELOADER -->
+<div id="preloader">
+    <div class="logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png" alt="Indian Armed Forces">
+    </div>
+    <div class="loader-text">INDIAN ARMED FORCES</div>
+</div>
+
+<!-- SINGLE DIRECT LOGIN PAGE -->
+<div id="loginPage">
+    <div class="login-box">
+        <div class="login-header">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Portal Access</h3>
+        </div>
+        <div id="error" style="display:none; color:#ff4d4d; font-size:11px; margin-bottom:10px; font-weight:700; text-align:center; letter-spacing:0.5px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> INVALID SERVICE ID
+        </div>
+        <div class="input-container">
+            <input type="text" id="serviceID" placeholder="SERVICE ID" autocomplete="off">
+        </div>
+        <button onclick="loginNow()"><i class="fa-solid fa-lock-open" style="margin-right:5px;"></i> PROCEED</button>
+    </div>
+</div>
+
+<!-- AUTHENTICATING SPINNER OVERLAY -->
+<div id="loading">
+    <div class="spin"></div>
+    <div style="font-weight:600; font-size:14px; letter-spacing:2px;">AUTHENTICATING...</div>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div id="dashboard">
+    <div class="topbar">
+        <div class="flex items-center gap-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png" style="height:45px;">
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Ministry_of_Defence_India.svg" style="height:40px;">
+    </div>
+
+    <div class="content">
+        <div class="officer">
+            <div class="story-circle" onclick="openStory()">
+                <div class="story-circle-inner">DUTY<br>Schedule</div>
+            </div>
+            <br/><br/>
+            <h2 style="font-size:26px; font-weight:700; margin-top:5px; color:#1e293b;">Capt. Manish Chaudhary</h2>
+            <p style="color:#64748b; font-size:13px; font-weight:500; margin-top:4px;">Yudh Seva Medal, Sena Medal,<br>COAS Commendation</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCHloBHTkY8lAYNgE2CFaQOfVCH5jD9S3Y5EdnNKmLM3-n0Uv6wphxOW8ZmNw_frMef_XJ2RhyaELuYiZ7VqMQIhFJU6PdSsHUHIBWbklZZo_Qr5IX98Dk3BujZljBTAtO7PYS-5TaF8Ju36QeUfBQB-52lBDnRRNMtsTBr8gz8l4WetEL-Q9HUj6EwlO4/s523/Untitled%20design.jpeg" alt="Officer Portrait">
+        </div>
+
+        <div class="table-box">
+            <table>
+                <tr><td>Allegiance</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png"> India</span></td></tr>
+                <tr><td>Branch</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png"> Indian Army</span></td></tr>
+                <tr><td>Years of Service</td><td>13 June 2020 – Present</td></tr>
+                <tr><td>Rank</td><td>Captain</td></tr>
+                <tr><td>Alma Mater</td><td> ➤ NDA (BSc) <br/> ➤ IMA</td></tr>
+                <tr><td>Service ID</td><td>IC-80129D</td></tr>
+                <tr><td>Unit</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Dogra_Regiment.svg/1280px-Dogra_Regiment.svg.png"> 18 Dogra</span></td></tr>
+                <tr><td>First Posting</td><td>Platoon Commander, Delta Company, Northern Command HQ, Udhampur, Jammu & Kashmir<br><b>Year 2020 - 2023</b></td></tr>
+                <tr><td>Currently Deployed</td><td>Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P<br><b>Year 2023 - Present</b></td></tr>
+                <tr><td>Conflicts</td><td>• OPS Sindoor<br>• OPS Mahadev<br>• OPS Jammu Drill<br>• Counter-Insurgency OPS<br>• POK Border OPS</td></tr>
+                <tr><td>Awards</td><td>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Yudh_Seva_Medal_ribbon.svg/1280px-Yudh_Seva_Medal_ribbon.svg.png"> Yudh Seva Medal</span>
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sena_Medal_ribbon.svg/1280px-Sena_Medal_ribbon.svg.png"> Sena Medal</span>
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Army_Commander_Commendation_disc.png/1280px-Army_Commander_Commendation_disc.png"> COAS Commendation</span>
+                    </div>
+                </td></tr>
+                <tr><td>Next of Kin (NOK): </td><td> Dr Megha Khandelwal (Spouse)</td></tr>
+                <tr><td> Relations </td><td><strong> Koushal Kishore </strong><br/>Retd. Subedar Major<br/> 23 JAT Regiment <br/>(Father) </td></tr>
+            </table>
+        </div>
+
+        <div class="custom-btn-container">
+            <div class="my-button-row">
+                <button class="my-popup-btn" id="popup-btn1" onclick="openFlipModal(1)"><i class="fa-solid fa-id-card"></i> Defence ID</button>
+                <button class="my-popup-btn" id="popup-btn2" onclick="openFlipModal(2)"><i class="fa-solid fa-id-card"></i> CSD</button>
+                <button class="my-popup-btn" id="popup-btn3" onclick="openFlipModal(3)"><i class="fa-solid fa-id-card"></i> Medical ID</button>
+            </div>
+        </div>
+
+        <div class="pdf-portal-container">
+            <div class="pdf-btn-row">
+                <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)"><i class="fa-solid fa-file-image"></i> Permission</button>
+                <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)"><i class="fa-solid fa-file-image"></i> Movement</button>
+                <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)"><i class="fa-solid fa-file-image"></i> Health Ins.</button>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(1)">Educational & Military Training Background <span>+</span></div>
+            <div class="acc-body" id="acc1">
+                <ol style="padding-left:20px;">
+                    <li><strong>National Defence Academy (NDA)</strong>
+                        <ul style="padding-left:20px;margin-top:10px;">
+                            <li> ➤ Course: 135th Course</li>
+                            <li> ➤ Joined NDA: 2015</li>
+                            <li> ➤ Passing Out Parade (POP): 30 November 2018 at Khetrapal Parade Ground at the NDA in Pune. </li>
+                            <li> ➤ Reviewing Officer: Chief of Army Staff, General Bipin Rawat</li>
+                        </ul>
+                    </li><br>
+                    <li><strong>Indian Military Academy (IMA)</strong>
+                        <ul style="padding-left:20px;margin-top:10px;">
+                            <li> ➤ Course: 146th Regular Course, Delta Company</li>
+                            <li> ➤ Joined IMA: July 2018</li>
+                            <li> ➤ Passing Out Parade (POP): 13 June 2020 at Chetwode Drill Square, IMA Dehradun.</li>
+                            <li> ➤ Reviewing Officer: Chief of Army Staff, General MM Naravane </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(2)">Military Career & Commissioning <span>+</span></div>
+            <div class="acc-body" id="acc2">
+                <p><strong>Commission as Lieutenant</strong></p>
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li> ➤ Date: 13 June 2020</li>
+                    <li> ➤ First Posting: 18th Battalion, Dogra Infantry Regiment</li>
+                </ul><br>
+                <p><strong>Promotion to Captain</strong></p>
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li> ➤ Date: 13 June 2022</li>
+                    <li> ➤ Current Posting: HQ I Corps, Strike 1 Corps</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(3)">Awards & Recognitions <span>+</span></div>
+            <div class="acc-body" id="acc3">
+                <ol style="padding-left:20px;">
+                    <li><strong>Yudh Seva Medal (YSM)</strong><br>Conferred by the Hon’ble President of India on 26 January 2026.</li><br>
+                    <li><strong>COAS Commendation Badge</strong><br>Awarded by Hon’ble Chief of Army Staff (COAS) General Upendra Dwivedi on 15 August 2025.</li><br/>
+                    <li><strong>Sena Medal (SM)</strong><br> Conferred by the Hon’ble President of India on 26 January 2023.</li><br>
+                </ol>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(4)">Professional & Ceremonial Engagements <span>+</span></div>
+            <div class="acc-body" id="acc4"><strong>Ceremonial Duties:</strong> Parades, Official Conferences, and Outreach.</div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(5)">Professional Skills & Competencies <span>+</span></div>
+            <div class="acc-body" id="acc5"><ul style="padding-left:20px;"><li>Operational Leadership, Strategic Planning, and Administration.</li></ul></div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(6)">Educational Qualification <span>+</span></div>
+            <div class="acc-body" id="acc6">
+                <ul style="padding-left:20px;">
+                    <li> ➤ Graduated from the National Defence Academy, Pune, earning a Bachelor of Science (B.Sc.) degree awarded by Jawaharlal Nehru University, New Delhi. </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Indian_Army_Insignia.png/1280px-Indian_Army_Insignia.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" style="height:45px;filter:brightness(0) invert(1);margin-bottom:10px;">
+            <div>Integrated Headquarters of MoD (Army)</div>
+        </div>
+    </div>
+</div>
+
+<div id="tricolorStripe"></div>
+
+<!-- ID CARD FLIP MODAL -->
+<div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
+    <div class="my-modal-content" id="myModalContent" style="display: none;">
+        <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
+        <div class="my-flip-card" id="myFlipCard" onclick="handleCardFlip(event)">
+            <div class="my-flip-card-inner">
+                <div class="my-flip-card-front"><img id="myFrontImg" src="" alt="Front ID"></div>
+                <div class="my-flip-card-back"><img id="myBackImg" src="" alt="Back ID"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- A4 DOCUMENT OVERLAY -->
+<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4Modal()">
+    <div class="pdf-a4-content">
+        <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
+        <img id="pdfA4Image" src="" alt="Document Image">
+    </div>
+</div>
+
+<!-- DUTY SCHEDULE STORY OVERLAY -->
+<div class="story-overlay" id="storyOverlay" 
+     onmousedown="pauseStory()" onmouseup="resumeStory()" 
+     ontouchstart="pauseStory()" ontouchend="resumeStory()">
+    <div class="story-progress-container">
+        <div class="story-progress-bar" id="storyProgressBar"></div>
+    </div>
+    <div class="story-content" onclick="event.stopPropagation()">
+        <div style="font-size:18px; font-weight:700; color:#000080; text-align:center; border-bottom:2px solid #f3f4f6; padding-bottom:10px;">DAILY DUTY CHART</div>
+        <table class="story-custom-table">
+            <tr><th>Morning</th><td>PT 0430 Hrs To 0630 Hrs</td></tr>
+            <tr><th>Afternoon</th><td>0930 Hrs To 1430 Hrs</td></tr>
+            <tr><th>Evening</th><td>1530 Hrs To 2000 Hrs</td></tr>
+            <tr><th>Night</th><td>2300 Hrs To 0500 Hrs</td></tr>
+        </table>
+    </div>
+</div>
+
+<script>
+// Initial Preloader Setup
+window.onload = function() {
+    setTimeout(() => {
+        const preloader = document.getElementById("preloader");
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+            preloader.style.display = "none";
+            document.getElementById("loginPage").style.display = "block";
+        }, 500);
+    }, 2500);
+}
+
+// Single Login Function with Animation & Strict ID Check
+function loginNow() {
+    let idInput = document.getElementById("serviceID").value.trim().toUpperCase();
+    
+    if(idInput === "IC80129D" || idInput === "IC-80129D") {
+        document.getElementById("error").style.display = "none";
+        document.getElementById("loading").style.display = "flex";
+        
+        setTimeout(() => {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+            document.getElementById("tricolorStripe").style.display = "block";
+            
+            if(window.feather) feather.replace();
+        }, 2200);
+    } else {
+        let errorBox = document.getElementById("error");
+        errorBox.style.display = "block";
+        
+        // Input Shake Animation on Error
+        let inputEl = document.getElementById("serviceID");
+        inputEl.style.borderColor = "#ef4444";
+        setTimeout(() => { inputEl.style.borderColor = "rgba(255, 255, 255, 0.2)"; }, 2000);
+    }
+}
+
+// Enter Key trigger for login
+document.getElementById("serviceID").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        loginNow();
+    }
+});
+
+function toggleAcc(num) {
+    let box = document.getElementById("acc" + num);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+if(window.feather) feather.replace();
+
+const customImageData = {
+    1: {
+        front: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpBW4eRg4MH1d-Tk1Z02s6V8XWJijJaVF2fKuHkUBJF1BOGpf2HaK8zUCq9fsGpRixt2PSrHCjA_F2Sm9uhShFN8MCXKgx1oN7f3kVvBOLp-IQ4gPgh1wFrg_t0zFCIhRMKKeIrQkW_IwEsfv8_fP-0hGI3zMf3IiK78PG6hydB8BLxKH888vohHddxy1M/s1588/IMG_5797.jpeg",
+        back: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdxOJB__mouwvqOKTSRKiHfB1X4tVAcTSOWlkMo2PIb4u97GPDWdCT8qdzb237VECJgUUIakgkLVg9uvdL9VOuYUhqfUDXK58y7qiiDO0YgobqleFJDXMqBbV-R6G37yE_8NeSkVT5XBhrQW-nicn-tiHYzcHI-GD8MgFiYiVqmVx_uXt6LRaO1_XUhyphenhyphenNI/s1588/IMG_5798.jpeg"
+    },
+    2: {
+        front: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRARZBr-sQ7OXslTFJiYSPGBFwTJ3OyfikI6DcSTpPs17XZLOlvagxd_9DQp5lax7ZlmgWbohRvuh8nl4_UsfP50U0z0WRGHHcJ-XRcalIXl4EyqPF2VTOEzlLWv_fDk8qiKvK0STeSE-6ep4onvCW0GJ6xxhHl0v_cRtWgCCVk_70xSzOj_8h9ZuuIaKK/s3200/IMG_5801.jpeg",
+        back: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfJrwzC6y0IyEMMgCEVis0SD2YwjvrBEnQz1ImHlxcEEMjz_a5oiglnM_crrXQgtAV9P3quHnd1AyFB3HY2tteH0auvXREgu6FM0zTvi8dSTM5oeMmIo1SkRNAg5b948wC9981Qbsz64F4tscTqjeQPCH5-MyFEQHIW2MBQ-_kVKgDCsu1pmPiq0WDn-Za/s3200/IMG_5802.jpeg"
+    },
+    3: {
+        front: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQTdmiW4Rt5bs18qmJ9K_N6Jj0ObftuOXwbWqOq4dKitqPPtdLR3dQFUxPpyaeu8dbyD5St_NvWnA1Dcl6UyHA8NhwDZSV4R5v5Yr9KAWEIJTBq_zCUgMIjJjX8pYeMGi32UzhlWvz7gYkG8-3kckxF2XOqSUK0sSoORGGclWphUgOY15tl4glAIbkqa4L/s3200/IMG_5799.jpeg",
+        back: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCd5ogDiBC-tscUXggAX0JNk7hHpjcVy-I5qphTwV4q_QCsIJwMYdEF-btV9QmRBOZQLtrNoe-9H8pGEYBOfwXaNaJ4cGGAXB8aPz09fEfGqGnpvAMHg1cc4QznMraIZwpNrV3aG4p4Q-8u3wNk4y2PUP4sdA929khlWQ_-w0HXHMVN-cm-SRPfRbIlYSI/s3200/IMG_5800.jpeg"
+    }
+};
+
+function openFlipModal(btnNumber) {
+    const modal = document.getElementById('myModalOverlay');
+    const modalContent = document.getElementById('myModalContent');
+    const frontImg = document.getElementById('myFrontImg');
+    const backImg = document.getElementById('myBackImg');
+    const card = document.getElementById('myFlipCard');
+
+    if (card) card.classList.remove('flipped');
+
+    if (frontImg && backImg && customImageData[btnNumber]) {
+        frontImg.src = customImageData[btnNumber].front;
+        backImg.src = customImageData[btnNumber].back;
+    }
+
+    if (modalContent) modalContent.style.setProperty('display', 'flex', 'important');
+    if (modal) modal.style.display = 'flex';
+}
+
+function toggleFlipModal(show) {
+    const modal = document.getElementById('myModalOverlay');
+    if (modal) modal.style.display = show ? 'flex' : 'none';
+}
+
+function handleCardFlip(event) {
+    event.stopPropagation(); 
+    const card = document.getElementById('myFlipCard');
+    if (card) card.classList.toggle('flipped');
+}
+
+function closeFlipModal(event) {
+    if (event.target.id === 'myModalOverlay') toggleFlipModal(false);
+}
+
+const customA4Images = {
+    1: "https://via.placeholder.com/794x1123/cccccc/000000?text=Permission+Document+Image", 
+    2: "https://via.placeholder.com/794x1123/dddddd/000000?text=Movement+Document+Image", 
+    3: "https://via.placeholder.com/794x1123/eeeeee/000000?text=Health+Insurance+Image"  
+};
+
+function openA4Modal(btnNumber) {
+    const overlay = document.getElementById('pdfA4Overlay');
+    const pdfImage = document.getElementById('pdfA4Image');
+    if (pdfImage && customA4Images[btnNumber]) {
+        pdfImage.src = customA4Images[btnNumber];
+    }
+    if (overlay) overlay.style.setProperty('display', 'flex', 'important');
+}
+
+function closeA4Modal() {
+    const overlay = document.getElementById('pdfA4Overlay');
+    const pdfImage = document.getElementById('pdfA4Image');
+    if (overlay) overlay.style.setProperty('display', 'none', 'important');
+    if (pdfImage) pdfImage.src = ""; 
+}
+
+/* STORY STATUS SCRIPT */
+const storyOverlay = document.getElementById('storyOverlay');
+const storyProgressBar = document.getElementById('storyProgressBar');
+
+function openStory() {
+    storyOverlay.style.display = 'flex';
+    storyProgressBar.classList.remove('active');
+    void storyProgressBar.offsetWidth;
+    storyProgressBar.classList.add('active');
+}
+
+function closeStory() {
+    storyOverlay.style.display = 'none';
+    storyProgressBar.classList.remove('active');
+}
+
+storyProgressBar.addEventListener('animationend', closeStory);
+
+function pauseStory() { storyOverlay.classList.add('paused'); }
+function resumeStory() { storyOverlay.classList.remove('paused'); }
+
+</script>
+</body>
+</html>
