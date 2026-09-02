@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLA University - Orientation Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background Image Container with Desktop and Mobile support */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1920&auto=format&fit=crop'); /* Default Desktop Image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            /* Security: Prevent image saving / dragging */
+            pointer-events: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Mobile View Background Image */
+        @media (max-width: 768px) {
+            .bg-container {
+                background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop'); /* Mobile Image */
+            }
+        }
+
+        /* Main Layout Container */
+        .main-wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Left Side YouTube Embed Container */
+        .video-container {
+            width: 50%;
+            max-width: 700px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .video-container {
+                width: 100%;
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="bg-container"></div>
+
+    <div class="main-wrapper">
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/G0OKoaIuanI" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // Disable Right Click and Image Dragging to prevent saving
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('dragstart', event => event.preventDefault());
+    </script>
+
+</body>
+</html>
